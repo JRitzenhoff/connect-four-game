@@ -1,0 +1,36 @@
+:root{
+    --black:#000000;
+    --purple:#7945FF;
+    --white:#ffffff;
+    --red:#FD6687;
+    --darkPurple:#5C2DD5;
+    --yellow:#FFCE67;
+   
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.headingLarge {
+    font-size: 56px;
+    font-weight: 71px;
+}
+
+.headingMedium {
+    font-size: 24px;
+    font-weight:31px;
+}
+
+.headingSmall {
+    font-size:20px;
+    font-weight: 26px;
+}
+
+.headingXSmall {
+    font-size: 16px;
+    font-weight: 21px;
+}
