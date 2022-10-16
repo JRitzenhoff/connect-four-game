@@ -5,48 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="style.css">
   <title>Frontend Mentor | Connect Four game</title>
 </head>
 <body>
 
   <!-- Main menu start -->
 
-   Play vs player
-   Game rules
+ <div class="game-container">
+<div class="main-menu">
+  <div class="manu-container">
+    <img src="assets/images/logo.svg">
+    <div class="playervsplayer">PLAY VS PLAYER</div>
+    <div class="game-rules">GAME RULES</div>
+  </div>
+</div>
+  
 
   <!-- Main menu end -->
 
   <!-- Rules start -->
 
-  Rules
+  <div class="rules-container">
+    <div class="rules-header">Rules</div>
 
-  Objective
+    <div class="rules-title">Objective</div>
+  
+    <div class="rules-text">
+    Be the first player to connect 4 of the same colored discs in a row (either 
+    vertically, horizontally, or diagonally).
+  </div>
+  
+    <div class="rules-title">How to play</div>
+  
+    <div class="rules-text">
+      <ol>
+    <li>Red goes first in the first game.</li> 
+    <li>Players must alternate turns, and only one disc can be dropped in each turn. </li> 
+    <li>The game ends when there is a 4-in-a-row or a stalemate.</li> 
+    <li>The starter of the previous game goes second on the next game.</li> 
+      </ol>
+  </div>
+  <img src="assets/images/icon-check.svg">
 
-  Be the first player to connect 4 of the same colored discs in a row (either 
-  vertically, horizontally, or diagonally).
+  </div>
 
-  How to play
-
-  Red goes first in the first game.
-  Players must alternate turns, and only one disc can be dropped in each turn. 
-  The game ends when there is a 4-in-a-row or a stalemate.
-  The starter of the previous game goes second on the next game.
 
   <!-- Rules end -->
 
   <!-- Ingame menu start -->
-
+<div class="game-menu">
   Pause
 
   Continue game
   Restart
   Quit game
-
+</div>
   <!-- Ingame menu end -->
   
   <!-- Game board start -->
-
+<div class="game-board">
   Menu
   Restart
 
@@ -58,8 +76,10 @@
 
   Wins
   Play again
+</div>
+
 
   <!-- Game board end -->
-
+</div> 
 </body>
 </html>

@@ -5,9 +5,24 @@
     --red:#FD6687;
     --darkPurple:#5C2DD5;
     --yellow:#FFCE67;
-   
-
+   --headingLarge-size:56px;
+   --headingLarge-weight:71px;
+   --headingMedium-size:24px;
+   --headingMedium-weight:31px;
+   --headingSmall-size:20px;
+   --headingSmall-weight:26px;
+   --headingXSmall-size:16px;
+   --headingXSmall-weight:21px;
 }
+@font-face {
+    font-family: 'SpaceGrotesk-Bold';
+    src: url('assets/fonts/static/SpaceGrotesk-Bold.ttf') format('truetype');
+  }
+
+@font-face {
+    font-family: 'SpaceGrotesk-Medium';
+    src: url('assets/fonts/static/SpaceGrotesk-Medium.ttf') format('truetype');
+  }
 
 * {
     box-sizing: border-box;
@@ -15,22 +30,112 @@
     padding: 0;
 }
 
-.headingLarge {
-    font-size: 56px;
-    font-weight: 71px;
+body {
+    font-family: "SpaceGrotesk-Medium";
 }
 
-.headingMedium {
-    font-size: 24px;
-    font-weight:31px;
+.game-container {
+    width: 375px;
+    height: 812px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--purple);
 }
 
-.headingSmall {
-    font-size:20px;
-    font-weight: 26px;
+.main-menu {
+    width: 335px;
+    height: 712px;
+    padding: 203px 0px;
+    display: none;
 }
 
-.headingXSmall {
-    font-size: 16px;
-    font-weight: 21px;
+.manu-container{
+    width: 335px;
+   height: 305px;
+   position: relative;
+   padding-top: 120px;
+    
 }
+.manu-container div {
+   height: 72px;
+   border: 2px solid var(--black); 
+   padding-left: 10px ;
+   padding-top: 25px;
+   padding-bottom: 15px;
+   border-radius: 15px;
+   margin-bottom: 15px;
+   box-shadow:  0px 10px #000000;
+}
+
+.main-menu img {
+    position: absolute;
+    left: 150px;
+    top:0px;
+    
+    
+}
+
+.playervsplayer {
+    background-color: var(--yellow);
+   
+}
+
+.game-rules {
+    background-color: var(--white);
+}
+
+
+.game-board {
+    display: none;
+}
+
+.game-menu {
+    display: none;
+}
+
+.rules-container {
+    width: 335px;
+    height: 618px;
+    padding: 0 20px;
+    border: 2px solid var(--black);
+    border-radius: 50px;
+    box-shadow:  0px 10px #000000;
+    background-color: var(--white);
+    display: none;
+}
+
+.rules-header {
+    color: var(--black);
+    font-size: var(--headingLarge-size);
+    font-weight: var(--headingLarge-weight);
+    text-align: center;
+    padding-top: 30px;
+    font-family: "SpaceGrotesk-Bold";
+
+    
+}
+.rules-title {
+    color: var(--purple);
+    font-size: var(--headingMedium-size);
+    font-weight: var(--headingMedium-weight);
+    padding-top: 25px;
+    padding-bottom: 15px;
+}
+
+
+.rules-text ol li{
+    margin-left: 15px;
+    padding: 5px;
+}
+
+.rules-container img {
+    position: relative;
+    left: 110px;
+    top:40px;
+}
+
+
+
+
