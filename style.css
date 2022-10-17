@@ -51,6 +51,22 @@ body {
     display: none;
 }
 
+.menu-top {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px;
+}
+.menu-item {
+    height: 39px;
+    width: 108px;
+    background-color: var(--darkPurple);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .manu-container{
     width: 335px;
    height: 305px;
@@ -88,7 +104,7 @@ body {
 
 
 .game-board {
-    display: none;
+   
 }
 
 .game-menu {
