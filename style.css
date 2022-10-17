@@ -66,6 +66,47 @@ body {
     align-items: center;
     
 }
+.logo {
+    height: 39px;
+    width: 108px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.players {
+    width: 359px;
+    height: 81px;
+    display: flex;
+    justify-content: space-around;
+  
+}
+.player {
+    width: 141px;
+    height: 81px;
+    border-radius: 15px;
+    background-color: var(--white);
+    border: 2px solid var(--black); 
+    box-shadow:  0px 10px #000000;
+    text-align: center;
+    padding-top: 15px;
+    position: relative;
+    
+}
+
+
+
+.icon1 {
+position: absolute;
+left: -20px;
+top:15px
+}
+
+.icon2 {
+    position: absolute;
+    right: -20px;
+    top:15px
+    }
 
 .manu-container{
     width: 335px;
