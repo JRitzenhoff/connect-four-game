@@ -52,9 +52,14 @@ body {
 }
 
 .menu-top {
+    position: absolute;
+    top:51px;
+    left: 20px;
+    width: 335px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
-    margin: 0 15px;
+    
 }
 .menu-item {
     height: 39px;
@@ -75,6 +80,9 @@ body {
     
 }
 .players {
+    position: absolute;
+    top:140px;
+    left: 9px;
     width: 359px;
     height: 81px;
     display: flex;
@@ -103,10 +111,62 @@ top:15px
 }
 
 .icon2 {
+position: absolute;
+right: -20px;
+top:15px
+}
+
+.game .bottom {
     position: absolute;
-    right: -20px;
-    top:15px
-    }
+    left: 20px;
+    top:271px;
+    z-index: 0;
+}
+
+.game .top {
+    position: absolute;
+    left: 20px;
+    top:271px;
+    z-index: 10;
+}
+
+.game-result {
+    width: 285px;
+    height: 160px;
+    position: absolute;
+    top:566px;
+    left:46px;
+    z-index: 20;
+    border-radius: 15px;
+    background-color: var(--white);
+    border: 2px solid var(--black); 
+    box-shadow:  0px 10px #000000;
+    text-align: center;
+    
+    
+}
+
+.turn {
+    width: 130px;
+    height: 93px;
+    position: absolute;
+    top:560px;
+    left:93px;
+    z-index: 20;
+}
+
+.counter-yellow {
+    width: 41px;
+    height: 46px;
+    position: absolute;
+    left:307px;
+    top:278px;
+    z-index: 5;
+   /* first line
+    left:27px; + 41
+    */
+
+}
 
 .manu-container{
     width: 335px;
