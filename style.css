@@ -88,6 +88,31 @@ body {
     width: 58px; 
    
 }
+
+@media screen and (min-width: 1440px) {
+    .menu-top {
+        position: relative;
+        left:15px;
+        top: 150px;
+        width: 632px;
+        height: 52px;
+       
+        
+    }
+    .menu-item {
+        height: 39px;
+        width: 86px;
+       
+        
+    }
+    .logo {
+        background-size: 52px 52px;
+       
+       
+    }
+}
+
+
 /*----menu top end --------*/
 
 
