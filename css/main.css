@@ -1,0 +1,31 @@
+.menu-top {
+  width: 335px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.menu-top .menu-item {
+  height: 39px;
+  width: 108px;
+  background-color: #5C2DD5;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-top .logo {
+  background-image: url("../assets/images/logo.svg");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  height: 40px;
+  width: 40px;
+}
+
+@media (min-width: 768px) {
+  .menu-top {
+    width: 632px;
+    height: 52px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

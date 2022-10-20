@@ -1,0 +1,33 @@
+.menu-top {
+    width: $mobileTopMenuWidht;
+    height: $mobileTopMenuHeight;
+    display: flex;
+    justify-content: space-between;
+
+    .menu-item {
+        height: 39px;
+        width: 108px;
+        background-color: $darkPurple;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .logo {
+        background-image: url("../assets/images/logo.svg");
+        background-repeat: no-repeat;
+        background-size: 40px 40px;
+        height: 40px;
+        width: 40px; 
+       
+    }
+}
+
+@media (min-width:$tabletWidth)
+{
+    .menu-top {
+    width: $tabletTopMenuWidht;
+    height: $tabletTopMenuHeight;
+    }
+}
