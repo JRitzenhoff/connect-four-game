@@ -1,0 +1,58 @@
+@mixin border-shadow {
+    border: 2px solid $black; 
+    box-shadow:  0px 10px $black;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin flex-center-vertical {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex-center-horizontal {
+    display: flex;
+    align-items: center;
+}
+@mixin flex-space-between-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin playerBox {
+    background-repeat: no-repeat;
+    width: 54px;
+    height: 59px;
+    position: relative;
+}
+
+@mixin menu-item {
+    height: 39px;
+        width: 108px;
+        background-color: $darkPurple;
+        border-radius: 15px;
+}
+
+@mixin  flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin  flex-column-center-top {
+    display: flex;
+    flex-direction: column;
+   
+ 
+}

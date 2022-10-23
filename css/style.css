@@ -24,15 +24,9 @@
     src: url('assets/fonts/static/SpaceGrotesk-Medium.ttf') format('truetype');
   }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    font-family: "SpaceGrotesk-Medium";
-}
+
+
 
 .screen {
     display: flex;
@@ -52,12 +46,7 @@ body {
     background-color: var(--purple);
 }
 
-.main-menu {
-    width: 335px;
-    height: 712px;
-    padding: 203px 0px;
-    display: none;
-}
+
 
 
 /*----menu top start --------*/
@@ -182,31 +171,7 @@ body {
     
     
 }
-.manu-container{
-    width: 335px;
-   height: 305px;
-   position: relative;
-   padding-top: 120px;
-    
-}
-.manu-container div {
-   height: 72px;
-   border: 2px solid var(--black); 
-   padding-left: 10px ;
-   padding-top: 25px;
-   padding-bottom: 15px;
-   border-radius: 15px;
-   margin-bottom: 15px;
-   box-shadow:  0px 10px #000000;
-}
 
-.main-menu img {
-    position: absolute;
-    left: 150px;
-    top:0px;
-    
-    
-}
 
 .playervsplayer {
     background-color: var(--yellow);

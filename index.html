@@ -17,95 +17,111 @@
     <!-- Main menu start -->
     <div class="screen">
       <div class="game-container">
-        <div class="main-menu">
+        <div class="flex-center-menu">
           <div class="manu-container">
-            <img src="assets/images/logo.svg" />
-            <div class="playervsplayer">PLAY VS PLAYER</div>
-            <div class="game-rules">GAME RULES</div>
+            <div class="icon"></div>
+            <div class="menu-item">
+              PLAY VS CPU
+              <img src="assets/images/player-vs-cpu.svg" class="vscpu" />
+            </div>
+            <div class="menu-item">
+              PLAY VS PLAYER<img
+                src="assets/images/player-vs-player.svg"
+                class="vsplayer"
+              />
+            </div>
+            <div class="menu-item">GAME RULES</div>
           </div>
         </div>
 
         <!-- Main menu end -->
 
         <!-- Rules start -->
+        <div class="flex-center-rules">
+          <div class="rules-container">
+            <div class="rules-header">Rules</div>
 
-        <div class="rules-container">
-          <div class="rules-header">Rules</div>
+            <div class="rules-title">Objective</div>
 
-          <div class="rules-title">Objective</div>
+            <div class="rules-text">
+              Be the first player to connect 4 of the same colored discs in a
+              row (either vertically, horizontally, or diagonally).
+            </div>
 
-          <div class="rules-text">
-            Be the first player to connect 4 of the same colored discs in a row
-            (either vertically, horizontally, or diagonally).
+            <div class="rules-title">How to play</div>
+
+            <div class="rules-text">
+              <ol>
+                <li>Red goes first in the first game.</li>
+                <li>
+                  Players must alternate turns, and only one disc can be dropped
+                  in each turn.
+                </li>
+                <li>
+                  The game ends when there is a 4-in-a-row or a stalemate.
+                </li>
+                <li>
+                  The starter of the previous game goes second on the next game.
+                </li>
+              </ol>
+            </div>
+            <div class="tick"></div>
           </div>
-
-          <div class="rules-title">How to play</div>
-
-          <div class="rules-text">
-            <ol>
-              <li>Red goes first in the first game.</li>
-              <li>
-                Players must alternate turns, and only one disc can be dropped
-                in each turn.
-              </li>
-              <li>The game ends when there is a 4-in-a-row or a stalemate.</li>
-              <li>
-                The starter of the previous game goes second on the next game.
-              </li>
-            </ol>
-          </div>
-          <img src="assets/images/icon-check.svg" />
         </div>
 
         <!-- Rules end -->
 
         <!-- Ingame menu start -->
-        <div class="game-menu">Pause Continue game Restart Quit game</div>
+        <div class="flex-center-pausemenu">
+          <div class="game-menu">
+            <div class="pause">PAUSE</div>
+            <div class="continue">CONTINUE GAME</div>
+            <div class="restart">RESTART</div>
+            <div class="quit">QUIT GAME</div>
+          </div>
+        </div>
         <!-- Ingame menu end -->
 
         <!-- Game board start -->
-        <div class="game-board">
+
+        <div class="flex-conter-board">
           <div class="menu-top">
             <div class="menu-item">Menu</div>
             <div class="logo"></div>
             <div class="menu-item">Restart</div>
           </div>
-
           <div class="players-container">
             <div class="player-box">
-              Player 1
-              <div class="player1">
-              </div>
-              <div class="player-score">12</div>
+              <div id="player1name" class="playername">Player 1</div>
+              <div id="player1icon" class="player1"></div>
+              <div id="player1score" class="player-score">12</div>
             </div>
             <div class="player-box">
-              Player 2
-
-              <div class="player2">
-                
-              </div>
-              <div class="player-score">12</div>
+              <div id="player2name" class="playername">Player 2</div>
+              <div id="player2icon" class="player2"></div>
+              <div id="player2score" class="player-score">12</div>
             </div>
           </div>
-
           <div class="game">
             <div class="bottom"></div>
             <div class="top"></div>
           </div>
-
-          <div class="turn">
-            <div class="turn-red">Player 1's turn</div>
-          </div>
-
-          <div class="counter-yellow"></div>
-          <div class="counter-red"></div>
-          <div class="yellow-marker"></div>
-          <!-- <div class="game-result">
-  <div class="playername"></div>
- <div class="win"> Wins</div>
-  <div class="playagain">Play again</div>
-</div> -->
+          <div class="game-board">
+            <div class="turn">
+              <div class="turn-red">Player 1's turn</div>
+            </div>
+            
+            <div class="game-result">
+              <div class="playername">PLAYER 1</div>
+              <div class="win">Wins</div>
+              <div class="playagain">Play again</div>
+            </div>
+            <div class="counter-red-small"></div>
+            <div class="counter-red-large"></div>
         </div>
+
+       
+        <div class="footer"></div>
 
         <!-- Game board end -->
       </div>

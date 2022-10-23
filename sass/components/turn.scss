@@ -1,0 +1,41 @@
+.turn {
+    width:$mobileTurnWidth;
+    height:$mobileTurnHeight;
+   position: absolute;
+   top:70%;
+  left:24%;
+    z-index: 30;
+    .turn-red {
+        background-image: url("../assets/images/turn-background-yellow.svg");
+        background-repeat: no-repeat;
+        width:$mobileTurnWidth;
+        height:$mobileTurnHeight;
+        background-size: $mobileTurnWidth $mobileTurnHeight;
+        @include flex-center-vertical;
+        padding-top: 50px;
+    }
+}
+
+@media (min-width:$tabletWidth)
+{
+    .turn {
+    width:$tabletTurnWidth;
+    height:$tabletTurnHeight;
+    position: absolute;
+    top:82%;
+    left:38%;
+    }
+}
+
+
+@media (min-width:$desktopWidth)
+{
+    .turn {
+    width:$desktopTurnWidth;
+    height:$desktopTurnHeight;
+    position: absolute;
+    top:80%;
+    left:43%;
+    }
+}
+

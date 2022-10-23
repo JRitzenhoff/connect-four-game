@@ -1,0 +1,105 @@
+.flex-center-rules {
+    width: $mobileWidth;
+    height: $mobileHeight; 
+    @include  flex-center;
+    display: none;
+}
+
+.rules-container {
+    width: $mobileRulesWidth;
+    height: $mobileRulesHeight;
+    padding: 0 20px;
+    margin: 0 20px;
+    border-radius: 50px;
+    background-color: $white;
+    font-family: $font-main;
+    
+  
+    @include border-shadow;
+    .rules-header {
+        color: $black;
+        font-size: $headingLarge-size;
+        font-weight: $headingLarge-weight;
+        text-align: center;
+        padding-top: 30px;
+    
+        
+    }
+    .rules-text {
+        ol li{
+        margin-left: 15px;
+        padding: 5px;
+        }
+    }
+    
+    .rules-title {
+        color: $purple;
+        font-size: $headingMedium-size;
+        font-weight:$headingMedium-weight;
+        padding-top: 25px;
+        padding-bottom: 15px;
+        
+    }
+  
+    .tick {
+        background-image: url("../assets/images/icon-check.svg");
+        background-repeat: no-repeat;
+        background-size: $mobileRulesIcon $mobileRulesIcon;
+        width: $mobileRulesIcon;
+        height: $mobileRulesIcon;
+        position: relative;
+        left: 125px;
+        top:55px;
+    }
+}
+@media (min-width:$tabletWidth)
+{
+
+    .flex-center-rules {
+        width: $tabletWidth;
+        height: $tabletHeight; 
+        @include  flex-center;
+        display: none;
+    }
+    .rules-container { 
+        width: $tabletRulesWidth;
+        height: $tabletRulesHeight;  
+        .tick {
+            position: relative;
+            left: 176px;
+            top:10px;
+        }
+    }
+   
+   
+}
+
+
+@media (min-width:$desktopWidth)
+{
+    
+    .flex-center-rules {
+        width: $desktopWidth;
+        height: $desktopHeight; 
+        @include  flex-center;
+        display: none;
+    }
+    .rules-container { 
+        width: $tabletRulesWidth;
+        height: $tabletRulesHeight;  
+        .tick {
+            position: relative;
+            left: 176px;
+            top:10px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+

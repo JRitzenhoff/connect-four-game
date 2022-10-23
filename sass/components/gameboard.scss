@@ -1,0 +1,102 @@
+.flex-conter-board {
+  width: $mobileWidth;
+  height: $mobileHeight;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.game {
+  .bottom {
+    background-image: url("../assets/images/board-layer-black-small.svg");
+    background-repeat: no-repeat;
+    background-size: $mobileGameboardWidht $mobileGameboardHeight;
+    width: $mobileGameboardWidht;
+    height: $mobileGameboardHeight;
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    z-index: 10;
+    border-radius: 15px;
+    @include border-shadow;
+  }
+  .top {
+    background-image: url("../assets/images/board-layer-white-small.svg");
+    background-repeat: no-repeat;
+    background-size: $mobileGameboardWidht $mobileGameboardHeight;
+    width: $mobileGameboardWidht;
+    height: $mobileGameboardHeight;
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    z-index: 20;
+  }
+}
+
+@media (min-width: $tabletWidth) {
+  .flex-conter-board {
+    width: $tabletWidth;
+    height: $tabletHeight;
+  }
+  .game {
+    margin-top: 40px;
+
+    .bottom {
+      background-image: url("../assets/images/board-layer-black-large.svg");
+      background-repeat: no-repeat;
+      background-size: $tabletGameboardWidht $tabletGameboardHeight;
+      width: $tabletGameboardWidht;
+      height: $tabletGameboardHeight;
+      position: absolute;
+      top: 31%;
+      left: 10%;
+      z-index: 10;
+      border-radius: 40px;
+    }
+    .top {
+      background-image: url("../assets/images/board-layer-white-large.svg");
+      background-repeat: no-repeat;
+      background-size: $tabletGameboardWidht $tabletGameboardHeight;
+      width: $tabletGameboardWidht;
+      height: $tabletGameboardHeight;
+      position: absolute;
+      top: 30%;
+      left: 10%;
+      z-index: 20;
+    }
+  }
+}
+
+@media (min-width: $desktopWidth) {
+  .flex-conter-board {
+    width: $desktopWidth;
+    height: $desktopHeight;
+  }
+  .game {
+    margin-top: 20px;
+
+    .bottom {
+      background-image: url("../assets/images/board-layer-black-large.svg");
+      background-repeat: no-repeat;
+      background-size: $desktopGameboardWidht $desktopGameboardHeight;
+      width: $desktopGameboardWidht;
+      height: $desktopGameboardHeight;
+      position: absolute;
+      top: 21%;
+      left: 28%;
+
+      @include border-shadow;
+    }
+    .top {
+      background-image: url("../assets/images/board-layer-white-large.svg");
+      background-repeat: no-repeat;
+      background-size: $desktopGameboardWidht $desktopGameboardHeight;
+      width: $desktopGameboardWidht;
+      height: $desktopGameboardHeight;
+      position: absolute;
+      top: 20%;
+      left: 28%;
+      z-index: 20;
+    }
+  }
+}

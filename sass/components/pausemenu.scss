@@ -1,0 +1,70 @@
+.flex-center-pausemenu {
+  width: $mobileWidth;
+  height: $mobileHeight;
+  @include flex-center;
+  display: none;
+}
+
+.game-menu {
+  width: $mobilePouseWidht;
+  height: $mobilePouseHeight;
+  background-color: $purple;
+  border-radius: $mobilePouseRadius;
+  margin: 0 20px;
+
+  @include flex-column-center;
+  @include border-shadow;
+
+  div:first-child {
+    font-size: $headingLarge-size;
+    font-weight: $headingLarge-weight;
+    color: $white;
+    margin-bottom: 25px;
+  }
+  div:not(.pause) {
+    height: 72px;
+    width: 295px;
+    font-size: $headingMedium-size;
+    font-weight: $headingMedium-weight;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    @include flex-center;
+    @include border-shadow;
+    &:nth-child(2) {
+      background-color: $white;
+      color: $black;
+    }
+    &:nth-child(3) {
+      background-color: $white;
+    }
+    &:nth-child(4) {
+      background-color: $red;
+    }
+  }
+}
+
+@media (min-width: $tabletWidth) {
+  .flex-center-pausemenu {
+    width: $tabletWidth;
+    height: $tabletHeight;
+    @include flex-center;
+    display: none;
+  }
+  .game-menu {
+    width: $tabletPouseWidht;
+    height: $tabletPouseHeight;
+  }
+}
+
+@media (min-width: $desktopWidth) {
+  .flex-center-pausemenu {
+    width: $desktopWidth;
+    height: $desktopHeight;
+    @include flex-center;
+    display: none;
+  }
+  .game-menu {
+    width: $desktopPouseWidht;
+    height: $desktopPouseHeight;
+  }
+}

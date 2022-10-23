@@ -1,0 +1,43 @@
+.game-result {
+  width: $PlayResultWidth;
+  height: $PlayResultheight;
+  border-radius: $PlayResultRadius;
+  @include border-shadow;
+  text-align: center;
+  background-color: $white;
+  @include flex-column-center;
+  position: absolute;
+  top:70%;
+  left:10%;
+  z-index: 90;
+  
+
+  .win {
+    font-size: $headingLarge-size;
+    font-weight: $headingLarge-weight;
+  }
+  .playagain {
+    @include flex-center;
+    @include menu-item;
+    width: 130px;
+    background-color: $red;
+  }
+}
+
+@media (min-width: $tabletWidth) {
+  .game-result {
+ 
+    top:82%;
+    left:33%;
+   
+  }
+}
+
+@media (min-width: $desktopWidth) {
+    .game-result {
+      
+        top:80%;
+        left:42%;
+      
+      }
+}

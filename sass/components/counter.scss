@@ -1,0 +1,39 @@
+.counter-red-small {
+    background-image: url("../assets/images/counter-red-small.svg");
+      background-repeat: no-repeat;
+      background-size: 41px 46px;
+      width: 41px;
+      height: 46px;
+      position: absolute;
+      left: 81.4%;top: 64.8%; 
+
+      z-index: 15;
+}
+
+.counter-red-large {
+    background-image: url("../assets/images/counter-red-large.svg");
+      background-repeat: no-repeat;
+      background-size: 70px 75px;
+      width: 70px;
+      height: 75px;
+      position: absolute;
+      left: 12.2%;
+      top: 74.8%;
+      z-index: 15;
+}
+
+.counter-yellow-small {
+    background-image: url("../assets/images/counter-yellow-small.svg");
+      background-repeat: no-repeat;
+      background-size: 41px 46px;
+      width: 41px;
+      height: 46px;
+}
+
+.counter-yellow-large {
+    background-image: url("../assets/images/counter-yellow-large.svg");
+      background-repeat: no-repeat;
+      background-size: 70px 75px;
+      width: 70px;
+      height: 75px;
+}

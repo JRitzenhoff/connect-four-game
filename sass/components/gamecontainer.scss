@@ -1,0 +1,28 @@
+.game-container {
+    width: $mobileWidth;
+    height: $mobileHeight; 
+    background-color: $purple; 
+}
+
+@media (min-width:$tabletWidth)
+{
+    .game-container {
+        width: $tabletWidth;
+        height: $tabletHeight; 
+     
+          
+    }
+}
+
+
+@media (min-width:$desktopWidth)
+{
+    .game-container {
+        width: $desktopWidth;
+        height: $desktopHeight;
+        
+          
+    }
+
+    
+}
