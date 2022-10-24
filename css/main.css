@@ -729,7 +729,7 @@ body {
   width: 70px;
   height: 75px;
   position: absolute;
-  left: 29.2%;
+  left: 12.2%;
   top: 74.8%;
   z-index: 15;
 }
@@ -750,12 +750,20 @@ body {
   height: 75px;
 }
 
-.marker-red {
+.marker-red-small {
   background-image: url("../assets/images/marker-red.svg");
   background-repeat: no-repeat;
   background-size: 38px 36px;
   width: 38px;
   height: 36px;
+}
+
+.marker-red-large {
+  background-image: url("../assets/images/marker-red.svg");
+  background-repeat: no-repeat;
+  background-size: 70px 75px;
+  width: 70px;
+  height: 75px;
 }
 
 .marker-yellow {
@@ -764,6 +772,23 @@ body {
   background-size: 70px 75px;
   width: 70px;
   height: 75px;
+}
+
+.dropbox {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 80px;
+}
+
+.droppoint {
+  width: 75px;
+  height: 150px;
+  background-color: #ffffff;
+  margin: 0 7px;
+  display: flex;
+  justify-content: center;
+  background-color: #7945FF;
 }
 
 /*# sourceMappingURL=main.css.map */

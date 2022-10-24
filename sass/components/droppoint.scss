@@ -1,0 +1,16 @@
+.dropbox {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top:80px;
+}
+
+.droppoint {
+    width: 75px;
+    height: 150px;
+    background-color: $white;
+    margin: 0 7px;
+    display: flex;
+    justify-content: center;
+    background-color: $purple;
+}

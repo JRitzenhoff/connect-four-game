@@ -1,4 +1,4 @@
-.marker-red {
+.marker-red-small {
     background-image: url("../assets/images/marker-red.svg");
     background-repeat: no-repeat;
     background-size: 38px 36px;
@@ -6,6 +6,13 @@
     height: 36px;
 }
 
+.marker-red-large {
+    background-image: url("../assets/images/marker-red.svg");
+    background-repeat: no-repeat;
+    background-size: 70px 75px;
+    width: 70px;
+    height: 75px;
+}
 
 .marker-yellow {
     background-image: url("../assets/images/marker-yellow.svg");
