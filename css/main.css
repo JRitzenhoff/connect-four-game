@@ -791,4 +791,19 @@ body {
   background-color: #ffffff;
 }
 
+@media (min-width: 768px) and (max-width: 1439px) {
+  .dropbox {
+    top: 230px;
+    margin-left: 25px;
+  }
+  droppoint {
+    width: 65px;
+    height: 145px;
+    background-color: #ffffff;
+    margin: 0 3px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */

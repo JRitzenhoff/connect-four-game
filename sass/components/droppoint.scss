@@ -14,3 +14,19 @@
     justify-content: center;
     background-color: $white;
 }
+
+@media(min-width:768px) and (max-width:1439px) {
+    .dropbox {
+        top:230px;
+        margin-left: 25px;
+    }
+    droppoint {
+        width: 65px;
+        height: 145px;
+        background-color: $white;
+        margin: 0 3px;
+        display: flex;
+        justify-content: center;
+        
+    }
+}
