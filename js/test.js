@@ -1,11 +1,12 @@
 let desktopAnimation = [
   [
-    { left: "29.2%", top: " 22%" },
-    { left: "29.2%", top: " 32%" },
-    { leftt: "29.2%", top: " 41.5%" },
-    { left: "29.2%", top: " 51.5%" },
-    { leftt: "29.2%", top: " 61.2%" },
-    { left: "29.2%", top: " 71%" },
+    { left: "29.2%", top: "22%" },
+    { left: "29.2%", top: "22%" },
+    { left: "29.2%", top: "32%" },
+    { left: "29.2%", top: "41.5%" },
+    { left: "29.2%", top: "51.5%" },
+    { left: "29.2%", top: "61.2%" },
+    { left: "29.2%", top: "71%" },
   ],
   [
     { left: "35.4%", top: " 22%" },
@@ -18,7 +19,7 @@ let desktopAnimation = [
   [
     { left: "41.4%", top: " 22%" },
     { left: "41.4%", top: " 32%" },
-    { leftt: "41.4%", top: " 41.5%" },
+    { left: "41.4%", top: " 41.5%" },
     { left: "41.4%", top: " 51.5%" },
     { left: "41.4%", top: " 61.2%" },
     { left: "41.4%", top: " 71%" },
@@ -34,7 +35,7 @@ let desktopAnimation = [
   [
     { left: "53.7%", top: " 22%" },
     { left: "53.7%", top: " 32%" },
-    { leftt: "53.7%", top: " 41.5%" },
+    { left: "53.7%", top: " 41.5%" },
     { left: "53.7%", top: " 51.5%" },
     { left: "53.7%", top: " 61.2%" },
     { left: "53.7%", top: " 71%" },
@@ -52,7 +53,7 @@ let desktopAnimation = [
     { left: "65.9%", top: " 32%" },
     { left: "65.9%", top: " 41.5%" },
     { left: "65.9%", top: " 51.5%" },
-    { leftt: "65.9%", top: " 61.2%" },
+    { left: "65.9%", top: " 61.2%" },
     { left: "65.9%", top: " 71%" },
   ],
 ];
@@ -75,12 +76,12 @@ let tabletAnimation = [
     { left: "23.7%", top: "75%" },
   ],
   [
-    { leftt: "35.2%", top: " 31.5%" },
-    { leftt: "35.2%", top: " 40.1%" },
-    { leftt: "35.2%", top: " 49%" },
-    { leftt: "35.2%", top: " 57.5%" },
-    { leftt: "35.2%", top: " 66.2%" },
-    { leftt: "35.2%", top: "75%" },
+    { left: "35.2%", top: " 31.5%" },
+    { left: "35.2%", top: " 40.1%" },
+    { left: "35.2%", top: " 49%" },
+    { left: "35.2%", top: " 57.5%" },
+    { left: "35.2%", top: " 66.2%" },
+    { left: "35.2%", top: "75%" },
   ],
   [
     { left: "46.5%", top: " 31.5%" },
@@ -120,10 +121,10 @@ let mobileAnimation = [
   [
     { left: "6.5%", top: " 35.8%" },
     { left: "6.5%", top: " 41.8%" },
-    { leftt: "6.5%", top: " 47.3%" },
+    { left: "6.5%", top: " 47.3%" },
     { left: "6.5%", top: " 53.3%" },
-    { leftt: "6.5%", top: " 59.1%" },
-    { leftt: "6.5%", top: " 64.8%" },
+    { left: "6.5%", top: " 59.1%" },
+    { left: "6.5%", top: " 64.8%" },
   ],
   [
     { left: "19.5%", top: " 35.8%" },
@@ -181,10 +182,15 @@ let game = document.getElementsByClassName("flex-conter-board");
 
 function animate(element, frames) {
   element.animate(frames, {
-    duration: 1000,
+    duration: 500,
     iterations: 1,
     fill: "forwards",
   });
+ 
+    
+  
+  
+  
 }
 
 function checkScreenSize() {
@@ -203,16 +209,19 @@ function checkScreenSize() {
   return screen;
 }
 
-function animateOnScreen() {
+function animateOnScreen(element,frameNumber,callback) {
   switch (checkScreenSize()) {
     case "mobile":
-      animate(small, mobileAnimation[(0, 0)]);
+      animate(element, mobileAnimation[frameNumber]);
+      callback(mobileAnimation[frameNumber]);
       break;
     case "tablet":
-      animate(large, tabletAnimation[(0, 0)]);
+      animate(element, tabletAnimation[frameNumber]);
+      callback(tabletAnimation[frameNumber]);
       break;
     case "desktop":
-      animate(large, desktopAnimation[(0, 0)]);
+      animate(element, desktopAnimation[frameNumber])
+      esktopAnimation[frameNumber];
       break;
   }
 }
@@ -262,6 +271,7 @@ function dragEnter(e) {
 
 function dragOver(e) {
   e.preventDefault();
+  
   e.target.classList.add("marker-red-large");
 
 }
@@ -275,6 +285,14 @@ function drop(e) {
   const id = e.dataTransfer.getData("text/plain");
   const draggable = document.getElementById(id);
   e.target.classList.remove("marker-red-large");
-  animate(draggable, desktopAnimation[(0, parseInt(e.target.id))]);
+  animateOnScreen(draggable,parseInt(e.target.id),removeLastElement)
  
 }
+
+
+function removeLastElement(frames) {
+  let element=frames.length -1;
+  frames.splice(element,1);
+}
+
+

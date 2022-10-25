@@ -734,6 +734,21 @@ body {
   z-index: 15;
 }
 
+@media (min-width: 768px) and (max-width: 1439px) {
+  .counter-red-large {
+    left: 12.2%;
+    top: 89.8%;
+  }
+}
+@media (max-width: 767px) {
+  .counter-red-large {
+    display: none;
+  }
+  .counter-red-small {
+    left: 80.4%;
+    top: 90%;
+  }
+}
 .counter-yellow-small {
   background-image: url("../assets/images/counter-yellow-small.svg");
   background-repeat: no-repeat;
