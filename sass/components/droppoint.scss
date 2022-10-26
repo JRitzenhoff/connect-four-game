@@ -20,9 +20,26 @@
         top:230px;
         margin-left: 25px;
     }
-    droppoint {
+    .droppoint {
         width: 65px;
         height: 145px;
+        background-color: $white;
+        margin: 0 11.5px;
+        display: flex;
+        justify-content: center;
+        
+    }
+}
+
+
+@media(max-width:767px) {
+    .dropbox {
+        top:230px;
+        
+    }
+    .droppoint {
+        width: 41px;
+        height: 100px;
         background-color: $white;
         margin: 0 3px;
       

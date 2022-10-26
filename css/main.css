@@ -734,6 +734,21 @@ body {
   z-index: 15;
 }
 
+@media (min-width: 768px) and (max-width: 1439px) {
+  .counter-red-large {
+    left: 12.2%;
+    top: 89.8%;
+  }
+}
+@media (max-width: 767px) {
+  .counter-red-large {
+    display: none;
+  }
+  .counter-red-small {
+    left: 80.4%;
+    top: 90%;
+  }
+}
 .counter-yellow-small {
   background-image: url("../assets/images/counter-yellow-small.svg");
   background-repeat: no-repeat;
@@ -796,9 +811,22 @@ body {
     top: 230px;
     margin-left: 25px;
   }
-  droppoint {
+  .droppoint {
     width: 65px;
     height: 145px;
+    background-color: #ffffff;
+    margin: 0 11.5px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 767px) {
+  .dropbox {
+    top: 230px;
+  }
+  .droppoint {
+    width: 41px;
+    height: 100px;
     background-color: #ffffff;
     margin: 0 3px;
     display: flex;
