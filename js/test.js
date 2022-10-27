@@ -191,16 +191,15 @@ let small = document.getElementById("counter1");
 let game = document.getElementsByClassName("flex-conter-board");
 
 function animate(element, frames) {
-  element.animate(frames, {
-    duration: 500,
-    iterations: 1,
-    fill: "forwards",
-  });
- 
-    
-  
-  
-  
+  if(frames.length===1)
+  {
+    frames.push(frames[0]);
+  }
+    element.animate(frames, {
+      duration: 500,
+      iterations: 1,
+      fill: "forwards",
+    });
 }
 
 function checkScreenSize() {
@@ -261,6 +260,7 @@ createCounters(20,"counter-red-large","cl0");
 
 const drops = document.querySelectorAll(".droppoint");
 const counters = document.querySelectorAll(".counters div");
+const gamecounters = document.querySelector(".game-counters");
 
 drops.forEach((droppoint) => {
   droppoint.addEventListener("dragenter", dragEnter);
@@ -296,14 +296,13 @@ function dragLeave(e) {
 
 function drop(e) {
   const id = e.dataTransfer.getData("text/plain");
-  const draggable = document.getElementById(id);
+  const dragElement = document.getElementById(id);
   e.target.classList.remove("marker-red-large");
-  animateOnScreen(draggable,parseInt(e.target.id),removeLastElement,savePlayerMove);
- 
+  animateOnScreen(dragElement,parseInt(e.target.id),removeLastElement,savePlayerMove);
+  gamecounters.appendChild(dragElement);
 }
 
 function savePlayerMove(element,animationFrameArr,position) {
-
 let arraynumber =getArraySize(animationFrameArr);
 gameArray[arraynumber][position] =element.className;
 
