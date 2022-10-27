@@ -1,6 +1,6 @@
 let desktopAnimation = [
   [
-    { left: "29.2%", top: "22%" },
+    
     { left: "29.2%", top: "22%" },
     { left: "29.2%", top: "32%" },
     { left: "29.2%", top: "41.5%" },
@@ -176,6 +176,16 @@ let mobileAnimation = [
   ],
 ];
 
+const gameArray = [
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [1,0,0,0,0,0,0],
+ 
+]
+
 let large = document.getElementById("counter");
 let small = document.getElementById("counter1");
 let game = document.getElementsByClassName("flex-conter-board");
@@ -209,19 +219,22 @@ function checkScreenSize() {
   return screen;
 }
 
-function animateOnScreen(element,frameNumber,callback) {
+function animateOnScreen(element,frameNumber,removeLastElement,savePlayerMove) {
   switch (checkScreenSize()) {
     case "mobile":
       animate(element, mobileAnimation[frameNumber]);
-      callback(mobileAnimation[frameNumber]);
+      savePlayerMove(element,mobileAnimation[frameNumber],frameNumber);
+      removeLastElement(mobileAnimation[frameNumber]);
       break;
     case "tablet":
       animate(element, tabletAnimation[frameNumber]);
-      callback(tabletAnimation[frameNumber]);
+      savePlayerMove(element,tabletAnimation[frameNumber],frameNumber);
+      removeLastElement(tabletAnimation[frameNumber]);
       break;
     case "desktop":
       animate(element, desktopAnimation[frameNumber])
-      esktopAnimation[frameNumber];
+      savePlayerMove(element,desktopAnimation[frameNumber],frameNumber);
+      removeLastElement(desktopAnimation[frameNumber]);
       break;
   }
 }
@@ -272,27 +285,39 @@ function dragEnter(e) {
 function dragOver(e) {
   e.preventDefault();
   
-  e.target.classList.add("marker-red-large");
+  //e.target.classList.add("marker-red-large");
 
 }
 
 function dragLeave(e) {
   e.preventDefault();
-  e.target.classList.remove("marker-red-large");
+  //e.target.classList.remove("marker-red-large");
 }
 
 function drop(e) {
   const id = e.dataTransfer.getData("text/plain");
   const draggable = document.getElementById(id);
   e.target.classList.remove("marker-red-large");
-  animateOnScreen(draggable,parseInt(e.target.id),removeLastElement)
+  animateOnScreen(draggable,parseInt(e.target.id),removeLastElement,savePlayerMove);
  
 }
 
+function savePlayerMove(element,animationFrameArr,position) {
 
+let arraynumber =getArraySize(animationFrameArr);
+gameArray[arraynumber][position] =element.className;
+
+  
+ 
+}
 function removeLastElement(frames) {
-  let element=frames.length -1;
+  let element=getArraySize(frames);
   frames.splice(element,1);
+}
+
+
+function getArraySize(arr) {
+  return arr.length -1;
 }
 
 
