@@ -4,10 +4,10 @@
 */
 
 function createCounters(quantity = 1,className,prefix) {
-    let location = document.querySelector(".counters");
+    let location = document.querySelector(".counters ."+prefix);
     for (let i = 1; i < quantity + 1; i++) {
       let element = document.createElement("div");
-      element.id = prefix+i;
+      element.id = prefix+"#"+i;
       element.className = className;
       element.draggable = true;
       location.appendChild(element);

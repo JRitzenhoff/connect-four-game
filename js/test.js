@@ -235,11 +235,11 @@ function setDisplayCounters(counters) {
 }
 
 
-function animateOnScreen(element,frameNumber,removeLastElement,savePlayerMove) {
+function animateOnScreen(element,frameNumber,savePlayerMove) {
   switch (checkScreenSize()) {
     case "mobile":
-      setDisplayCounters(countersTabletAll);
-      setDisplayCounters(countersDesktopAll);
+      // setDisplayCounters(countersTabletAll);
+      // setDisplayCounters(countersDesktopAll);
 
   
       animate(element, mobileAnimation[frameNumber]);
@@ -247,23 +247,28 @@ function animateOnScreen(element,frameNumber,removeLastElement,savePlayerMove) {
       
       break;
     case "tablet":
-      setDisplayCounters(countersMobileAll);
-      setDisplayCounters(countersDesktopAll);
+      // setDisplayCounters(countersMobileAll);
+      // setDisplayCounters(countersDesktopAll);
       animate(element, tabletAnimation[frameNumber]);
       savePlayerMove(element,tabletAnimation[frameNumber],frameNumber);
-      
+     
       break;
     case "desktop":
-      setDisplayCounters(countersTabletAll);
-      setDisplayCounters(countersMobileAll);
+      // setDisplayCounters(countersTabletAll);
+      // setDisplayCounters(countersMobileAll);
+      console.log(element);
       animate(element, desktopAnimation[frameNumber])
       savePlayerMove(element,desktopAnimation[frameNumber],frameNumber);
       
       break;
   }
-  removeLastElement(desktopAnimation[frameNumber]);
-  removeLastElement(tabletAnimation[frameNumber]);
-  removeLastElement(mobileAnimation[frameNumber]);
+  let desktopPosition=desktopAnimation[frameNumber].pop();
+  let tabletPosition=tabletAnimation[frameNumber].pop();
+  let mobilePosition=mobileAnimation[frameNumber].pop();
+  console.log(desktopPosition);
+  element.style.left = desktopPosition.left;
+  element.style.top = desktopPosition.top;
+  
 }
 
 
@@ -282,8 +287,8 @@ counters.forEach((counter) => {
 function dragStart(e) {
   e.dataTransfer.setData("text/plain", e.target.id);
 
-  console.log(e.target.id);
-  console.log("dragStart");
+  
+ 
 }
 
 function dragEnter(e) {
@@ -307,23 +312,20 @@ function drop(e) {
   const id = e.dataTransfer.getData("text/plain");
   const dragElement = document.getElementById(id);
   e.target.classList.remove("marker-red-large");
-  animateOnScreen(dragElement,parseInt(e.target.id),removeLastElement,savePlayerMove);
-  moveCounters(dragElement);
+  animateOnScreen(dragElement,parseInt(e.target.id),savePlayerMove);
+ 
 }
 
 function savePlayerMove(element,animationFrameArr,position) {
 let arraynumber =getArraySize(animationFrameArr);
-gameArray[arraynumber][position] =element.className;
-
+gameArray[arraynumber][position] ="RED";
+}
 function moveCounters(dragElement) {
   countersDesktop.appendChild(dragElement);
 }
  
-}
-function removeLastElement(frames) {
-  let element=getArraySize(frames);
-  frames.splice(element,1);
-}
+
+
 
 
 function getArraySize(arr) {
