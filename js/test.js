@@ -1,6 +1,5 @@
 let desktopAnimation = [
   [
-    
     { left: "29.2%", top: "22%" },
     { left: "29.2%", top: "32%" },
     { left: "29.2%", top: "41.5%" },
@@ -177,14 +176,13 @@ let mobileAnimation = [
 ];
 
 const gameArray = [
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [1,0,0,0,0,0,0],
- 
-]
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0, 0, 0],
+];
 
 let large = document.getElementById("counter");
 let small = document.getElementById("counter1");
@@ -196,20 +194,19 @@ const countersMobile = document.querySelector(".game-counters .mobile");
 const countersTablet = document.querySelector(".game-counters .tablet");
 const countersDesktop = document.querySelector(".game-counters .desktop");
 
-const countersMobileAll = document.querySelectorAll(".game-counters .mobile");
-const countersTabletAll = document.querySelectorAll(".game-counters .tablet");
-const countersDesktopAll = document.querySelectorAll(".game-counters .desktop");
+const countersMobileAll = document.querySelectorAll(".counters .mobile");
+const countersTabletAll = document.querySelectorAll("counters .tablet");
+const countersDesktopAll = document.querySelectorAll(".counters .desktop");
 
 function animate(element, frames) {
-  if(frames.length===1)
-  {
+  if (frames.length === 1) {
     frames.push(frames[0]);
   }
-    element.animate(frames, {
-      duration: 500,
-      iterations: 1,
-      fill: "forwards",
-    });
+  element.animate(frames, {
+    duration: 500,
+    iterations: 1,
+    fill: "forwards",
+  });
 }
 
 function checkScreenSize() {
@@ -229,50 +226,67 @@ function checkScreenSize() {
 }
 
 function setDisplayCounters(counters) {
-  counters.forEach(item => {
-        item.display = none;
-  })
+  counters.forEach((item) => {
+    item.display = none;
+  });
 }
 
-
-function animateOnScreen(element,frameNumber,savePlayerMove) {
+function animateOnScreen(element, frameNumber, savePlayerMove) {
   switch (checkScreenSize()) {
     case "mobile":
       // setDisplayCounters(countersTabletAll);
       // setDisplayCounters(countersDesktopAll);
 
-  
       animate(element, mobileAnimation[frameNumber]);
-      savePlayerMove(element,mobileAnimation[frameNumber],frameNumber);
-      
+      savePlayerMove(element, mobileAnimation[frameNumber], frameNumber);
+
       break;
     case "tablet":
       // setDisplayCounters(countersMobileAll);
       // setDisplayCounters(countersDesktopAll);
       animate(element, tabletAnimation[frameNumber]);
-      savePlayerMove(element,tabletAnimation[frameNumber],frameNumber);
-     
+      savePlayerMove(element, tabletAnimation[frameNumber], frameNumber);
+
       break;
     case "desktop":
       // setDisplayCounters(countersTabletAll);
       // setDisplayCounters(countersMobileAll);
-      console.log(element);
-      animate(element, desktopAnimation[frameNumber])
-      savePlayerMove(element,desktopAnimation[frameNumber],frameNumber);
-      
+     
+      animate(element, desktopAnimation[frameNumber]);
+      savePlayerMove(element, desktopAnimation[frameNumber], frameNumber);
       break;
   }
-  let desktopPosition=desktopAnimation[frameNumber].pop();
-  let tabletPosition=tabletAnimation[frameNumber].pop();
-  let mobilePosition=mobileAnimation[frameNumber].pop();
-  console.log(desktopPosition);
-  element.style.left = desktopPosition.left;
-  element.style.top = desktopPosition.top;
-  
+  setCounterPosition(element, frameNumber);
 }
 
+function setCounterPosition(element, frameNumber) {
+  let desktop = desktopAnimation[frameNumber].pop();
+  let tablet = tabletAnimation[frameNumber].pop();
+  let mobile = mobileAnimation[frameNumber].pop();
+  const prefix = ["desktop", "tablet", "mobile"];
+  let elementNumber = element.id.split("#")[1];
+  prefix.forEach((item) => {
+    let name = item + "#" + elementNumber;
+    let newElement = document.getElementById(name.toString());
+    switch (item) {
+      case "desktop":
+        newElement.style.left = desktop.left;
+        newElement.style.top = desktop.top;
+        break;
+      case "tablet":
+        newElement.style.left = tablet.left;
+        newElement.style.top = tablet.top;
+        break;
+      case "mobile":
+        newElement.style.left = mobile.left;
+        newElement.style.top = mobile.top;
+        break;
+    }
+    
+  });
 
-
+ 
+}
 
 drops.forEach((droppoint) => {
   droppoint.addEventListener("dragenter", dragEnter);
@@ -286,21 +300,16 @@ counters.forEach((counter) => {
 
 function dragStart(e) {
   e.dataTransfer.setData("text/plain", e.target.id);
-
-  
- 
 }
 
 function dragEnter(e) {
   e.preventDefault();
-  
 }
 
 function dragOver(e) {
   e.preventDefault();
-  
-  //e.target.classList.add("marker-red-large");
 
+  //e.target.classList.add("marker-red-large");
 }
 
 function dragLeave(e) {
@@ -312,24 +321,17 @@ function drop(e) {
   const id = e.dataTransfer.getData("text/plain");
   const dragElement = document.getElementById(id);
   e.target.classList.remove("marker-red-large");
-  animateOnScreen(dragElement,parseInt(e.target.id),savePlayerMove);
- 
+  animateOnScreen(dragElement, parseInt(e.target.id), savePlayerMove);
 }
 
-function savePlayerMove(element,animationFrameArr,position) {
-let arraynumber =getArraySize(animationFrameArr);
-gameArray[arraynumber][position] ="RED";
+function savePlayerMove(element, animationFrameArr, position) {
+  let arraynumber = getArraySize(animationFrameArr);
+  gameArray[arraynumber][position] = "RED";
 }
 function moveCounters(dragElement) {
   countersDesktop.appendChild(dragElement);
 }
- 
-
-
-
 
 function getArraySize(arr) {
-  return arr.length -1;
+  return arr.length - 1;
 }
-
-
