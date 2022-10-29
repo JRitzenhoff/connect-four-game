@@ -190,6 +190,16 @@ let large = document.getElementById("counter");
 let small = document.getElementById("counter1");
 let game = document.getElementsByClassName("flex-conter-board");
 
+const drops = document.querySelectorAll(".droppoint");
+const counters = document.querySelectorAll(".counters div");
+const countersMobile = document.querySelector(".game-counters .mobile");
+const countersTablet = document.querySelector(".game-counters .tablet");
+const countersDesktop = document.querySelector(".game-counters .desktop");
+
+const countersMobileAll = document.querySelectorAll(".game-counters .mobile");
+const countersTabletAll = document.querySelectorAll(".game-counters .tablet");
+const countersDesktopAll = document.querySelectorAll(".game-counters .desktop");
+
 function animate(element, frames) {
   if(frames.length===1)
   {
@@ -218,49 +228,46 @@ function checkScreenSize() {
   return screen;
 }
 
+function setDisplayCounters(counters) {
+  counters.forEach(item => {
+        item.display = none;
+  })
+}
+
+
 function animateOnScreen(element,frameNumber,removeLastElement,savePlayerMove) {
   switch (checkScreenSize()) {
     case "mobile":
+      setDisplayCounters(countersTabletAll);
+      setDisplayCounters(countersDesktopAll);
+
+  
       animate(element, mobileAnimation[frameNumber]);
       savePlayerMove(element,mobileAnimation[frameNumber],frameNumber);
-      removeLastElement(mobileAnimation[frameNumber]);
+      
       break;
     case "tablet":
+      setDisplayCounters(countersMobileAll);
+      setDisplayCounters(countersDesktopAll);
       animate(element, tabletAnimation[frameNumber]);
       savePlayerMove(element,tabletAnimation[frameNumber],frameNumber);
-      removeLastElement(tabletAnimation[frameNumber]);
+      
       break;
     case "desktop":
+      setDisplayCounters(countersTabletAll);
+      setDisplayCounters(countersMobileAll);
       animate(element, desktopAnimation[frameNumber])
       savePlayerMove(element,desktopAnimation[frameNumber],frameNumber);
-      removeLastElement(desktopAnimation[frameNumber]);
+      
       break;
   }
+  removeLastElement(desktopAnimation[frameNumber]);
+  removeLastElement(tabletAnimation[frameNumber]);
+  removeLastElement(mobileAnimation[frameNumber]);
 }
 
-/*
- function create a counter elements and set them on the screen 
-*/
-function createCounters(quantity = 1,className,prefix) {
-  let location = document.querySelector(".counters");
-  for (let i = 1; i < quantity + 1; i++) {
-    let element = document.createElement("div");
-    element.id = prefix+i;
-    element.className = className;
-    element.draggable = true;
-    location.appendChild(element);
-  }
-}
 
-createCounters(20,"counter-red-large","cl0");
 
-/*
- function create a counter elements and set them on the screen 
-*/
-
-const drops = document.querySelectorAll(".droppoint");
-const counters = document.querySelectorAll(".counters div");
-const gamecounters = document.querySelector(".game-counters");
 
 drops.forEach((droppoint) => {
   droppoint.addEventListener("dragenter", dragEnter);
@@ -274,7 +281,9 @@ counters.forEach((counter) => {
 
 function dragStart(e) {
   e.dataTransfer.setData("text/plain", e.target.id);
-  
+
+  console.log(e.target.id);
+  console.log("dragStart");
 }
 
 function dragEnter(e) {
@@ -299,14 +308,16 @@ function drop(e) {
   const dragElement = document.getElementById(id);
   e.target.classList.remove("marker-red-large");
   animateOnScreen(dragElement,parseInt(e.target.id),removeLastElement,savePlayerMove);
-  gamecounters.appendChild(dragElement);
+  moveCounters(dragElement);
 }
 
 function savePlayerMove(element,animationFrameArr,position) {
 let arraynumber =getArraySize(animationFrameArr);
 gameArray[arraynumber][position] =element.className;
 
-  
+function moveCounters(dragElement) {
+  countersDesktop.appendChild(dragElement);
+}
  
 }
 function removeLastElement(frames) {
