@@ -181,8 +181,11 @@ const gameArray = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
 ];
+
+
+
 
 let large = document.getElementById("counter");
 let small = document.getElementById("counter1");
@@ -231,7 +234,7 @@ function setDisplayCounters(counters) {
   });
 }
 
-function animateOnScreen(element, frameNumber, savePlayerMove) {
+function animateOnScreen(element, frameNumber) {
   switch (checkScreenSize()) {
     case "mobile":
       // setDisplayCounters(countersTabletAll);
@@ -330,18 +333,68 @@ function dragLeave(e) {
 function drop(e) {
   const id = e.dataTransfer.getData("text/plain");
   const dragElement = document.getElementById(id);
-  e.target.classList.remove("marker-red-large");
-  animateOnScreen(dragElement, parseInt(e.target.id), savePlayerMove);
+  let color = getCounterColor(dragElement);
+  animateOnScreen(dragElement, parseInt(e.target.id));
+
+  checkWinner(color);
 }
 
 function savePlayerMove(element, animationFrameArr, position) {
-  let arraynumber = getArraySize(animationFrameArr);
-  gameArray[arraynumber][position] = "RED";
-}
-function moveCounters(dragElement) {
-  countersDesktop.appendChild(dragElement);
+ 
+  gameArray[animationFrameArr.length -1][position] = getCounterColor(element);
 }
 
-function getArraySize(arr) {
-  return arr.length - 1;
+function getCounterColor(element) {
+  return element.id.split("-")[1];
 }
+
+
+
+function checkMatch(one,two,three,four,color)
+{
+  if(one === two && one === three && one === four && one === color ) {
+    return true;
+  }
+}
+
+function checkWinner(color) {
+  for(let column = 0;column <7;column++) {
+    for(let row=0;row<3;row++)
+    {
+      if(checkMatch(gameArray[row][column],gameArray[row+1][column],gameArray[row+2][column],gameArray[row+3][column],color))
+      {
+          console.log("win hotizontal"+color);
+      }
+      if(checkMatch(gameArray[row][column],gameArray[row][column+1],gameArray[row][column+2],gameArray[row][column+3],color))
+      {
+        console.log("win verticla"+color);
+      }
+     
+    }
+  }
+
+  for(let column=0;column<4;column++)
+  {
+    for(let row=0;row<3;row++)
+    {
+      if(checkMatch(gameArray[row][column],gameArray[row+1][column+1],gameArray[row+2][column+2],gameArray[row+3][column+3],color))
+      {
+        console.log("win diagonal"+color);
+      }
+    }
+  }
+
+  for(let column=0;column<4;column++)
+  {
+    for(let row=5;row>2;row--)
+    {
+      if(checkMatch(gameArray[row][column],gameArray[row-1][column+1],gameArray[row-2][column+2],gameArray[row-3][column+3],color))
+      {
+        console.log("win diagonal 2"+color);
+      }
+    }
+  }
+
+ 
+}
+

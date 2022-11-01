@@ -23,6 +23,30 @@
       z-index: 15;
 }
 
+.counter-yellow-small {
+  background-image: url("../assets/images/counter-yellow-small.svg");
+    background-repeat: no-repeat;
+    background-size: 41px 46px;
+    width: 41px;
+    height: 46px;
+    position: absolute;
+    left: 84.4%;
+    top: 92.8%;
+    z-index: 15;
+}
+
+.counter-yellow-large {
+  background-image: url("../assets/images/counter-yellow-large.svg");
+    background-repeat: no-repeat;
+    background-size: 70px 75px;
+    width: 70px;
+    height: 75px;
+    position: absolute;
+    left: 84.2%;
+    top: 74.8%;
+    z-index: 15;
+}
+
 .game-counters .mobile {
   display: none;
 }
@@ -41,6 +65,11 @@
 @media(min-width:768px) and (max-width:1439px) {
   .counter-red-large {
     left: 12.2%;
+    top: 89.8%;
+  }
+
+  .counter-yellow-large {
+    left: 84.2%;
     top: 89.8%;
   }
 
@@ -93,23 +122,13 @@
   }
 
   .counter-red-small {
-    left: 80.4%;
-      top: 90%; 
+    left: 12.4%;
+      top: 92%; 
+  }
+
+  .counter-yellow-small {
+    left: 84.4%;
+      top: 92%; 
   }
 }
 
-.counter-yellow-small {
-    background-image: url("../assets/images/counter-yellow-small.svg");
-      background-repeat: no-repeat;
-      background-size: 41px 46px;
-      width: 41px;
-      height: 46px;
-}
-
-.counter-yellow-large {
-    background-image: url("../assets/images/counter-yellow-large.svg");
-      background-repeat: no-repeat;
-      background-size: 70px 75px;
-      width: 70px;
-      height: 75px;
-}
