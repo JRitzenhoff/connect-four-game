@@ -272,20 +272,30 @@ function setCounterPosition(element, frameNumber) {
       case "desktop":
         newElement.style.left = desktop.left;
         newElement.style.top = desktop.top;
+        moveCounterToGameBoard(newElement,"desktop");
         break;
       case "tablet":
         newElement.style.left = tablet.left;
         newElement.style.top = tablet.top;
+        moveCounterToGameBoard(newElement,"tablet");
         break;
       case "mobile":
         newElement.style.left = mobile.left;
         newElement.style.top = mobile.top;
+        moveCounterToGameBoard(newElement,"mobile");
         break;
     }
     
   });
 
  
+}
+
+function moveCounterToGameBoard(element,boardElement)
+{
+  let board = document.querySelector(".game-counters ."+boardElement);
+  board.appendChild(element);
+
 }
 
 drops.forEach((droppoint) => {

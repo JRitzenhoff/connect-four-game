@@ -734,15 +734,61 @@ body {
   z-index: 15;
 }
 
+.game-counters .mobile {
+  display: none;
+}
+
+.game-counters .tablet {
+  display: none;
+}
+
+.counters .mobile {
+  display: none;
+}
+
+.counters .tablet {
+  display: none;
+}
+
 @media (min-width: 768px) and (max-width: 1439px) {
   .counter-red-large {
     left: 12.2%;
     top: 89.8%;
   }
+  .counters .desktop {
+    display: none;
+  }
+  .game-counters .desktop {
+    display: none;
+  }
+  .game-counters .tablet {
+    display: block;
+  }
+  .counters .tablet {
+    display: block;
+  }
 }
 @media (max-width: 767px) {
   .counter-red-large {
     display: none;
+  }
+  .game-counters .desktop {
+    display: none;
+  }
+  .game-counters .tablet {
+    display: none;
+  }
+  .counters .desktop {
+    display: none;
+  }
+  .counters .tablet {
+    display: none;
+  }
+  .game-counters .mobile {
+    display: block;
+  }
+  .counters .mobile {
+    display: block;
   }
   .counter-red-small {
     left: 80.4%;
@@ -829,8 +875,6 @@ body {
     height: 100px;
     background-color: #ffffff;
     margin: 0 3px;
-    display: flex;
-    justify-content: center;
   }
 }
 
