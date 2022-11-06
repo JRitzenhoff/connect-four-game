@@ -6,7 +6,7 @@
   left:24%;
     z-index: 30;
     .turn-red {
-        background-image: url("../assets/images/turn-background-yellow.svg");
+        background-image: url("../assets/images/turn-background-red.svg");
         background-repeat: no-repeat;
         width:$mobileTurnWidth;
         height:$mobileTurnHeight;
@@ -14,6 +14,7 @@
         @include flex-center-vertical;
         padding-top: 50px;
     }
+ 
 }
 
 @media (min-width:$tabletWidth)

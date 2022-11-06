@@ -235,7 +235,7 @@ body {
   z-index: 30;
 }
 .turn .turn-red {
-  background-image: url("../assets/images/turn-background-yellow.svg");
+  background-image: url("../assets/images/turn-background-red.svg");
   background-repeat: no-repeat;
   width: 191px;
   height: 150px;
@@ -843,7 +843,7 @@ body {
   height: 75px;
 }
 
-.marker-yellow {
+.marker-yellow-large {
   background-image: url("../assets/images/marker-yellow.svg");
   background-repeat: no-repeat;
   background-size: 70px 75px;
@@ -851,46 +851,62 @@ body {
   height: 75px;
 }
 
+.marker-yellow-small {
+  background-image: url("../assets/images/marker-yellow.svg");
+  background-repeat: no-repeat;
+  background-size: 38px 36px;
+  width: 38px;
+  height: 36px;
+}
+
 .dropbox {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: 80px;
+  top: 195px;
 }
 
 .droppoint {
   width: 75px;
-  height: 150px;
-  background-color: #ffffff;
+  height: 75px;
+  background-color: transparent;
   margin: 0 7px;
   display: flex;
   justify-content: center;
-  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: relative;
+  z-index: 100;
 }
 
 @media (min-width: 768px) and (max-width: 1439px) {
   .dropbox {
-    top: 230px;
+    top: 320px;
     margin-left: 25px;
   }
   .droppoint {
-    width: 65px;
-    height: 145px;
-    background-color: #ffffff;
-    margin: 0 11.5px;
-    display: flex;
-    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    margin: 0 4px;
+    position: relative;
+    z-index: 100;
   }
 }
 @media (max-width: 767px) {
   .dropbox {
-    top: 230px;
+    top: 290px;
+    left: 22px;
   }
   .droppoint {
-    width: 41px;
-    height: 100px;
-    background-color: #ffffff;
-    margin: 0 3px;
+    width: 45px;
+    height: 45px;
+    background-color: transparent;
+    margin: 0 1px;
+    position: relative;
+    z-index: 100;
+    border: 1px solid black;
+    border-radius: 50%;
   }
 }
 
