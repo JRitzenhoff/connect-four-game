@@ -214,7 +214,7 @@ let large = document.getElementById("counter");
 let small = document.getElementById("counter1");
 let game = document.getElementsByClassName("flex-conter-board");
 let board = document.getElementById("3");
-let markers =  document.querySelectorAll(".markers div");
+let markers = document.querySelectorAll(".markers div");
 let markerRedSmall = document.querySelector(".marker-red-small");
 let markerRedLarge = document.querySelector(".marker-red-large");
 let markerYellowSmall = document.querySelector(".marker-yellow-small");
@@ -222,8 +222,8 @@ let markerYellowLarge = document.querySelector(".marker-yellow-large");
 
 let gameboard = document.querySelector(".game-container");
 let screen = document.querySelector(".screen");
-let gameResult=document.querySelector(".game-result");
-let turn=document.querySelector(".turn-red");
+let gameResult = document.querySelector(".game-result");
+let turn = document.querySelector(".turn-red");
 
 const drops = document.querySelectorAll(".droppoint");
 const counters = document.querySelectorAll(".counters div");
@@ -376,17 +376,14 @@ counters.forEach((counter) => {
 
 function dragStart(e) {
   e.dataTransfer.setData("text/plain", e.target.id);
-  
 }
 
 function dragEnter(e) {
   e.preventDefault();
 
-
-let color=e.dataTransfer.getData("text/plain").split('-')[1];
+  let color = e.dataTransfer.getData("text/plain").split("-")[1];
   let target = e.target.id;
-  showMarker(color, target)
- 
+  showMarker(color, target);
 }
 
 function dragOver(e) {
@@ -398,17 +395,12 @@ function dragLeave(e) {
 }
 
 function drop(e) {
-  
   const id = e.dataTransfer.getData("text/plain");
   const dragElement = document.getElementById(id);
   let color = getCounterColor(dragElement);
   animateOnScreen(dragElement, parseInt(e.target.id));
-  
-  
-respondForMove(color);
 
-  
-  
+  respondForMove(color);
 }
 
 var activeEvent = "";
@@ -429,41 +421,39 @@ counters.forEach((counter) => {
 function TouchStart(e) {
   originalX = e.target.offsetLeft + "px";
   originalY = e.target.offsetTop + "px";
-
+  hideAllMarkes();
   activeEvent = "start";
 }
 
 function TouchMove(e) {
   e.preventDefault();
   let width = parseInt(window.getComputedStyle(e.target).width);
-  let height = parseInt(window.getComputedStyle(e.target).height);
   var touchLocation = e.targetTouches[0];
-  let  color=touchLocation.target.id.split("-")[0];
+
+  let color = touchLocation.target.id.split("-")[1];
   var pageX = touchLocation.pageX - 50 + "px";
   var pageY = touchLocation.pageY - 50 + "px";
-  let pageXX = parseInt(e.target.style.left);
-  let pageYY = parseInt(e.target.style.top);
   e.target.style.zIndex = 100;
   e.target.style.position = "absolute";
   e.target.style.left = pageX;
   e.target.style.top = pageY;
+
   activeEvent = "move";
-  if (detectTouchEnd(pageXX, pageYY, drop0, width, height)) {
-    showMarker(color,0)
-  } else if (detectTouchEnd(pageXX, pageYY, drop1, width, height)) {
-    showMarker(color,1)
-  } else if (detectTouchEnd(pageXX, pageYY, drop2, width, height)) {
-    showMarker(color,2)
-  } else if (detectTouchEnd(pageXX, pageYY, drop3, width, height)) {
-    showMarker(color,3)
-  } else if (detectTouchEnd(pageXX, pageYY, drop4, width, height)) {
-    showMarker(color,4)
-  } else if (detectTouchEnd(pageXX, pageYY, drop5, width, height)) {
-    showMarker(color,5)
-  } else if (detectTouchEnd(pageXX, pageYY, drop6, width, height)) {
-    showMarker(color,6)
+  if (detectTouchEnd(pageX, pageY, drop0, width)) {
+    showMarker(color, 0);
+  } else if (detectTouchEnd(pageX, pageY, drop1, width)) {
+    showMarker(color, 1);
+  } else if (detectTouchEnd(pageX, pageY, drop2, width)) {
+    showMarker(color, 2);
+  } else if (detectTouchEnd(pageX, pageY, drop3, width)) {
+    showMarker(color, 3);
+  } else if (detectTouchEnd(pageX, pageY, drop4, width)) {
+    showMarker(color, 4);
+  } else if (detectTouchEnd(pageX, pageY, drop5, width)) {
+    showMarker(color, 5);
+  } else if (detectTouchEnd(pageX, pageY, drop6, width)) {
+    showMarker(color, 6);
   }
-  
 }
 
 function TouchEnd(e) {
@@ -471,43 +461,41 @@ function TouchEnd(e) {
   e.stopImmediatePropagation();
   let element = e.target;
   if (activeEvent === "move") {
-    
     let pageX = parseInt(e.target.style.left);
     let pageY = parseInt(e.target.style.top);
     let width = parseInt(window.getComputedStyle(e.target).width);
-    let height = parseInt(window.getComputedStyle(e.target).height);
     element.style.zIndex = 10;
 
-    if (detectTouchEnd(pageX, pageY, drop0, width, height)) {
+    if (detectTouchEnd(pageX, pageY, drop0, width)) {
       animateOnScreen(element, 0);
-    } else if (detectTouchEnd(pageX, pageY, drop1, width, height)) {
+    } else if (detectTouchEnd(pageX, pageY, drop1, width)) {
       animateOnScreen(element, 1);
-    } else if (detectTouchEnd(pageX, pageY, drop2, width, height)) {
+    } else if (detectTouchEnd(pageX, pageY, drop2, width)) {
       animateOnScreen(element, 2);
-    } else if (detectTouchEnd(pageX, pageY, drop3, width, height)) {
+    } else if (detectTouchEnd(pageX, pageY, drop3, width)) {
       animateOnScreen(element, 3);
-    } else if (detectTouchEnd(pageX, pageY, drop4, width, height)) {
+    } else if (detectTouchEnd(pageX, pageY, drop4, width)) {
       animateOnScreen(element, 4);
-    } else if (detectTouchEnd(pageX, pageY, drop5, width, height)) {
+    } else if (detectTouchEnd(pageX, pageY, drop5, width)) {
       animateOnScreen(element, 5);
-    } else if (detectTouchEnd(pageX, pageY, drop6, width, height)) {
+    } else if (detectTouchEnd(pageX, pageY, drop6, width)) {
       animateOnScreen(element, 6);
     } else {
       e.target.style.left = originalX;
       e.target.style.top = originalY;
     }
   }
-  let color=getCounterColor(element);
+  let color = getCounterColor(element);
   respondForMove(color);
-  
 }
 
-function detectTouchEnd(pageX, pageY, drop, width, height) {
+function detectTouchEnd(pageX, pageY, drop, width,callback) {
+  let scrollTop =window.pageYOffset;
   if (
-    pageX + width / 2 > drop.getBoundingClientRect().left &&
-    pageX + width / 2 < drop.getBoundingClientRect().left + height &&
-    pageY + height / 2 > drop.getBoundingClientRect().top &&
-    pageY + height / 2 < drop.getBoundingClientRect().top + height
+    parseInt(pageX) + width / 2 > drop.getBoundingClientRect().left &&
+    parseInt(pageX) + width / 2 < drop.getBoundingClientRect().right &&
+    parseInt(pageY) + width / 2 > drop.getBoundingClientRect().top &&
+    parseInt(pageY) + width / 2 < drop.getBoundingClientRect().bottom + scrollTop
   ) {
     return true;
   } else {
@@ -516,50 +504,46 @@ function detectTouchEnd(pageX, pageY, drop, width, height) {
 }
 
 function showMarker(color, target) {
-
   console.log(color);
-       let  markerSmall=markerRedSmall;
-        let  markerLarge=markerRedLarge;
-        if(color === "yellow") {
-          markerSmall=markerYellowSmall;
-          markerLarge=markerYellowLarge;
-        }
-      
-      if (checkScreenSize() === "mobile") {
-        markerSmall.style.position = "absolute";
-        markerSmall.style.left = mobileMarker[target];
-        markerSmall.style.top = "230px";
-        markerSmall.style.display= "block";
-      } else if (checkScreenSize() === "tablet" ) {
-        markerLarge.style.position = "absolute";
-        markerLarge.style.left = tabletMarker[target];
-        markerLarge.style.top = "230px";
-        markerLarge.style.display= "block";
-      }else if (checkScreenSize() === "desktop") {
-        markerLarge.style.position = "absolute";
-        markerLarge.style.left = desktopMarker[target];
-        markerLarge.style.top = "100px";
-        markerLarge.style.display= "block";
-      }
-  
-     
+  let markerSmall = markerRedSmall;
+  let markerLarge = markerRedLarge;
+  if (color === "yellow") {
+    markerSmall = markerYellowSmall;
+    markerLarge = markerYellowLarge;
   }
 
+  if (checkScreenSize() === "mobile") {
+    markerSmall.style.position = "absolute";
+    markerSmall.style.left = mobileMarker[target];
+    markerSmall.style.top = "230px";
+    markerSmall.style.display = "block";
+  } else if (checkScreenSize() === "tablet") {
+    markerLarge.style.position = "absolute";
+    markerLarge.style.left = tabletMarker[target];
+    markerLarge.style.top = "230px";
+    markerLarge.style.display = "block";
+  } else if (checkScreenSize() === "desktop") {
+    markerLarge.style.position = "absolute";
+    markerLarge.style.left = desktopMarker[target];
+    markerLarge.style.top = "100px";
+    markerLarge.style.display = "block";
+  }
+}
+
 function respondForMove(color) {
-  if(checkWinner(color)) {
-    turn.style.display ="none";
-    gameResult.style.display ="block";
-    }
-    else {
-      color==="red"? color="yellow":color="red";
-      changeTurn(color);
-    }
+  if (checkWinner(color)) {
+    turn.style.display = "none";
+    gameResult.style.display = "block";
+  } else {
+    color === "red" ? (color = "yellow") : (color = "red");
+    changeTurn(color);
+  }
 }
 
 function hideAllMarkes() {
-  markers.forEach(marker => {
+  markers.forEach((marker) => {
     marker.style.display = "none";
-  })
+  });
 }
 
 hideAllMarkes();
@@ -577,7 +561,7 @@ function checkMatch(one, two, three, four, color) {
     return true;
   }
 }
-// ---------- game function 
+// ---------- game function
 function checkWinner(color) {
   for (let column = 0; column < 7; column++) {
     for (let row = 0; row < 3; row++) {
@@ -590,7 +574,7 @@ function checkWinner(color) {
           color
         )
       ) {
-       return true;
+        return true;
       }
       if (
         checkMatch(
@@ -639,16 +623,15 @@ function checkWinner(color) {
   }
 }
 
-function changeTurn(color)
-{
-  if(color==="red")
-  {
-    turn.style.backgroundImage = "url('../assets/images/turn-background-red.svg')"; 
-    turn.textContent="Player 1's turn";
-  }
-  else {
-    turn.style.backgroundImage = "url('../assets/images/turn-background-yellow.svg')"; 
-    turn.textContent="Player 2's turn";
+function changeTurn(color) {
+  if (color === "red") {
+    turn.style.backgroundImage =
+      "url('../assets/images/turn-background-red.svg')";
+    turn.textContent = "Player 1's turn";
+  } else {
+    turn.style.backgroundImage =
+      "url('../assets/images/turn-background-yellow.svg')";
+    turn.textContent = "Player 2's turn";
   }
 }
 

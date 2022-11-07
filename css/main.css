@@ -16,6 +16,10 @@ body {
   padding: 0;
 }
 
+body {
+  height: 100vh;
+}
+
 .menu-top {
   width: 335px;
   height: 40px;
@@ -230,8 +234,8 @@ body {
   width: 191px;
   height: 150px;
   position: absolute;
-  top: 70%;
-  left: 24%;
+  top: 568.4px;
+  left: 90px;
   z-index: 30;
 }
 .turn .turn-red {
@@ -250,8 +254,8 @@ body {
     width: 191px;
     height: 150px;
     position: absolute;
-    top: 82%;
-    left: 38%;
+    top: 839px;
+    left: 292px;
   }
 }
 @media (min-width: 1440px) {
@@ -259,8 +263,8 @@ body {
     width: 191px;
     height: 150px;
     position: absolute;
-    top: 80%;
-    left: 43%;
+    top: 720px;
+    left: 619.2px;
   }
 }
 .flex-conter-board {
@@ -279,8 +283,8 @@ body {
   width: 335px;
   height: 310px;
   position: absolute;
-  top: 35%;
-  left: 5%;
+  top: 284.2px;
+  left: 18.75px;
   z-index: 10;
   border-radius: 15px;
   border: 2px solid #000000;
@@ -293,8 +297,8 @@ body {
   width: 335px;
   height: 310px;
   position: absolute;
-  top: 35%;
-  left: 5%;
+  top: 280.1px;
+  left: 18.75px;
   z-index: 20;
 }
 
@@ -313,8 +317,8 @@ body {
     width: 632px;
     height: 584px;
     position: absolute;
-    top: 31%;
-    left: 10%;
+    top: 317.44px;
+    left: 76.8px;
     z-index: 10;
     border-radius: 40px;
   }
@@ -325,8 +329,8 @@ body {
     width: 632px;
     height: 584px;
     position: absolute;
-    top: 30%;
-    left: 10%;
+    top: 307.2px;
+    left: 76.8px;
     z-index: 20;
   }
 }
@@ -345,8 +349,8 @@ body {
     width: 632px;
     height: 584px;
     position: absolute;
-    top: 21%;
-    left: 28%;
+    top: 189px;
+    left: 403.2px;
     border: 2px solid #000000;
     box-shadow: 0px 10px #000000;
   }
@@ -357,8 +361,8 @@ body {
     width: 632px;
     height: 584px;
     position: absolute;
-    top: 20%;
-    left: 28%;
+    top: 180px;
+    left: 403.2px;
     z-index: 20;
   }
 }
@@ -592,8 +596,8 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 70%;
-  left: 10%;
+  top: 568.4px;
+  left: 37.5px;
   z-index: 90;
 }
 .game-result .win {
@@ -614,14 +618,14 @@ body {
 
 @media (min-width: 768px) {
   .game-result {
-    top: 82%;
-    left: 33%;
+    top: 839px;
+    left: 253.5px;
   }
 }
 @media (min-width: 1440px) {
   .game-result {
-    top: 80%;
-    left: 42%;
+    top: 720px;
+    left: 604.8px;
   }
 }
 .flex-center-pausemenu {
@@ -717,8 +721,6 @@ body {
   width: 41px;
   height: 46px;
   position: absolute;
-  left: 81.4%;
-  top: 64.8%;
   z-index: 15;
 }
 
@@ -729,8 +731,8 @@ body {
   width: 70px;
   height: 75px;
   position: absolute;
-  left: 12.2%;
-  top: 74.8%;
+  left: 175.6px;
+  top: 673.2px;
   z-index: 15;
 }
 
@@ -741,8 +743,6 @@ body {
   width: 41px;
   height: 46px;
   position: absolute;
-  left: 84.4%;
-  top: 92.8%;
   z-index: 15;
 }
 
@@ -753,8 +753,8 @@ body {
   width: 70px;
   height: 75px;
   position: absolute;
-  left: 84.2%;
-  top: 74.8%;
+  left: 1212px;
+  top: 673.2px;
   z-index: 15;
 }
 
@@ -776,12 +776,12 @@ body {
 
 @media (min-width: 768px) and (max-width: 1439px) {
   .counter-red-large {
-    left: 12.2%;
-    top: 89.8%;
+    left: 93.5px;
+    top: 919.5px;
   }
   .counter-yellow-large {
-    left: 84.2%;
-    top: 89.8%;
+    left: 646.6px;
+    top: 919.5px;
   }
   .counters .desktop {
     display: none;
@@ -819,12 +819,12 @@ body {
     display: block;
   }
   .counter-red-small {
-    left: 12.4%;
-    top: 92%;
+    left: 46.5px;
+    top: 747px;
   }
   .counter-yellow-small {
-    left: 84.4%;
-    top: 92%;
+    left: 316.5px;
+    top: 747px;
   }
 }
 .marker-red-small {
@@ -874,7 +874,6 @@ body {
   display: flex;
   justify-content: center;
   border: 1px solid black;
-  border-radius: 50%;
   position: relative;
   z-index: 100;
 }
@@ -906,7 +905,6 @@ body {
     position: relative;
     z-index: 100;
     border: 1px solid black;
-    border-radius: 50%;
   }
 }
 

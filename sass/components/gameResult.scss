@@ -7,8 +7,8 @@
   background-color: $white;
   @include flex-column-center;
   position: absolute;
-  top:70%;
-  left:10%;
+  top:568.4px;
+  left:37.5px;
   z-index: 90;
   
 
@@ -27,8 +27,8 @@
 @media (min-width: $tabletWidth) {
   .game-result {
  
-    top:82%;
-    left:33%;
+    top:839px;
+    left:253.5px;
    
   }
 }
@@ -36,8 +36,8 @@
 @media (min-width: $desktopWidth) {
     .game-result {
       
-        top:80%;
-        left:42%;
+        top:720px;
+        left:604.8px;
       
       }
 }

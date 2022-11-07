@@ -2,8 +2,8 @@
     width:$mobileTurnWidth;
     height:$mobileTurnHeight;
    position: absolute;
-   top:70%;
-  left:24%;
+   top:568.4px;
+  left:90px;
     z-index: 30;
     .turn-red {
         background-image: url("../assets/images/turn-background-red.svg");
@@ -23,8 +23,8 @@
     width:$tabletTurnWidth;
     height:$tabletTurnHeight;
     position: absolute;
-    top:82%;
-    left:38%;
+    top:839px;
+    left:292px;
     }
 }
 
@@ -35,8 +35,8 @@
     width:$desktopTurnWidth;
     height:$desktopTurnHeight;
     position: absolute;
-    top:80%;
-    left:43%;
+    top:720px;
+    left:619.2px;
     }
 }
 
