@@ -407,10 +407,7 @@ var activeEvent = "";
 var originalX = "";
 var originalY = "";
 
-// drops.forEach((droppoint) => {
-//   droppoint.addEventListener("touchstart", TouchStart);
 
-// });
 
 counters.forEach((counter) => {
   counter.addEventListener("touchstart", TouchStart);
@@ -439,12 +436,10 @@ function TouchMove(e) {
   e.target.style.top = pageY;
 
   activeEvent = "move";
-  if (detectTouchEnd(pageX, pageY, width)!= null) {
-    let current=detectTouchEnd(pageX, pageY, width);
+  if (detectTouchEnd(pageX, pageY, width) != null) {
+    let current = detectTouchEnd(pageX, pageY, width);
     showMarker(color, current.id);
   }
-  
-  
 }
 
 function TouchEnd(e) {
@@ -456,12 +451,11 @@ function TouchEnd(e) {
     let pageY = parseInt(e.target.style.top);
     let width = parseInt(window.getComputedStyle(e.target).width);
     element.style.zIndex = 10;
-   
-    if (detectTouchEnd(pageX, pageY, width)!= null) {
-      let current=detectTouchEnd(pageX, pageY, width);
+
+    if (detectTouchEnd(pageX, pageY, width) != null) {
+      let current = detectTouchEnd(pageX, pageY, width);
       animateOnScreen(element, parseInt(current.id));
-    }  
-   else {
+    } else {
       e.target.style.left = originalX;
       e.target.style.top = originalY;
     }
@@ -470,20 +464,20 @@ function TouchEnd(e) {
   respondForMove(color);
 }
 
-function detectTouchEnd(pageX, pageY,width) {
-  let scrollTop =window.pageYOffset;
-  let currentDrop=null;
-  drops.forEach(current => {
+function detectTouchEnd(pageX, pageY, width) {
+  let scrollTop = window.pageYOffset;
+  let currentDrop = null;
+  drops.forEach((current) => {
     if (
       parseInt(pageX) + width / 2 > current.getBoundingClientRect().left &&
       parseInt(pageX) + width / 2 < current.getBoundingClientRect().right &&
       parseInt(pageY) + width / 2 > current.getBoundingClientRect().top &&
-      parseInt(pageY) + width / 2 < current.getBoundingClientRect().bottom + scrollTop
+      parseInt(pageY) + width / 2 <
+        current.getBoundingClientRect().bottom + scrollTop
     ) {
-      currentDrop= current;
-    } 
-
-  })
+      currentDrop = current;
+    }
+  });
   return currentDrop;
 }
 
