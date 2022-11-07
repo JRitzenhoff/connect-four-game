@@ -439,21 +439,12 @@ function TouchMove(e) {
   e.target.style.top = pageY;
 
   activeEvent = "move";
-  if (detectTouchEnd(pageX, pageY, drop0, width)) {
-    showMarker(color, 0);
-  } else if (detectTouchEnd(pageX, pageY, drop1, width)) {
-    showMarker(color, 1);
-  } else if (detectTouchEnd(pageX, pageY, drop2, width)) {
-    showMarker(color, 2);
-  } else if (detectTouchEnd(pageX, pageY, drop3, width)) {
-    showMarker(color, 3);
-  } else if (detectTouchEnd(pageX, pageY, drop4, width)) {
-    showMarker(color, 4);
-  } else if (detectTouchEnd(pageX, pageY, drop5, width)) {
-    showMarker(color, 5);
-  } else if (detectTouchEnd(pageX, pageY, drop6, width)) {
-    showMarker(color, 6);
+  if (detectTouchEnd(pageX, pageY, width)!= null) {
+    let current=detectTouchEnd(pageX, pageY, width);
+    showMarker(color, current.id);
   }
+  
+  
 }
 
 function TouchEnd(e) {
@@ -465,22 +456,12 @@ function TouchEnd(e) {
     let pageY = parseInt(e.target.style.top);
     let width = parseInt(window.getComputedStyle(e.target).width);
     element.style.zIndex = 10;
-
-    if (detectTouchEnd(pageX, pageY, drop0, width)) {
-      animateOnScreen(element, 0);
-    } else if (detectTouchEnd(pageX, pageY, drop1, width)) {
-      animateOnScreen(element, 1);
-    } else if (detectTouchEnd(pageX, pageY, drop2, width)) {
-      animateOnScreen(element, 2);
-    } else if (detectTouchEnd(pageX, pageY, drop3, width)) {
-      animateOnScreen(element, 3);
-    } else if (detectTouchEnd(pageX, pageY, drop4, width)) {
-      animateOnScreen(element, 4);
-    } else if (detectTouchEnd(pageX, pageY, drop5, width)) {
-      animateOnScreen(element, 5);
-    } else if (detectTouchEnd(pageX, pageY, drop6, width)) {
-      animateOnScreen(element, 6);
-    } else {
+   
+    if (detectTouchEnd(pageX, pageY, width)!= null) {
+      let current=detectTouchEnd(pageX, pageY, width);
+      animateOnScreen(element, parseInt(current.id));
+    }  
+   else {
       e.target.style.left = originalX;
       e.target.style.top = originalY;
     }
@@ -489,18 +470,21 @@ function TouchEnd(e) {
   respondForMove(color);
 }
 
-function detectTouchEnd(pageX, pageY, drop, width,callback) {
+function detectTouchEnd(pageX, pageY,width) {
   let scrollTop =window.pageYOffset;
-  if (
-    parseInt(pageX) + width / 2 > drop.getBoundingClientRect().left &&
-    parseInt(pageX) + width / 2 < drop.getBoundingClientRect().right &&
-    parseInt(pageY) + width / 2 > drop.getBoundingClientRect().top &&
-    parseInt(pageY) + width / 2 < drop.getBoundingClientRect().bottom + scrollTop
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+  let currentDrop=null;
+  drops.forEach(current => {
+    if (
+      parseInt(pageX) + width / 2 > current.getBoundingClientRect().left &&
+      parseInt(pageX) + width / 2 < current.getBoundingClientRect().right &&
+      parseInt(pageY) + width / 2 > current.getBoundingClientRect().top &&
+      parseInt(pageY) + width / 2 < current.getBoundingClientRect().bottom + scrollTop
+    ) {
+      currentDrop= current;
+    } 
+
+  })
+  return currentDrop;
 }
 
 function showMarker(color, target) {
