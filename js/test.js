@@ -403,7 +403,11 @@ function drop(e) {
   const dragElement = document.getElementById(id);
   let color = getCounterColor(dragElement);
   animateOnScreen(dragElement, parseInt(e.target.id));
+  
+  
+respondForMove(color);
 
+  
   
 }
 
@@ -465,8 +469,9 @@ function TouchMove(e) {
 function TouchEnd(e) {
   e.preventDefault();
   e.stopImmediatePropagation();
+  let element = e.target;
   if (activeEvent === "move") {
-    let element = e.target;
+    
     let pageX = parseInt(e.target.style.left);
     let pageY = parseInt(e.target.style.top);
     let width = parseInt(window.getComputedStyle(e.target).width);
@@ -492,6 +497,9 @@ function TouchEnd(e) {
       e.target.style.top = originalY;
     }
   }
+  let color=getCounterColor(element);
+  respondForMove(color);
+  
 }
 
 function detectTouchEnd(pageX, pageY, drop, width, height) {
@@ -537,7 +545,16 @@ function showMarker(color, target) {
      
   }
 
- 
+function respondForMove(color) {
+  if(checkWinner(color)) {
+    turn.style.display ="none";
+    gameResult.style.display ="block";
+    }
+    else {
+      color==="red"? color="yellow":color="red";
+      changeTurn(color);
+    }
+}
 
 function hideAllMarkes() {
   markers.forEach(marker => {
@@ -631,7 +648,7 @@ function changeTurn(color)
   }
   else {
     turn.style.backgroundImage = "url('../assets/images/turn-background-yellow.svg')"; 
-    turn.textContent="Player 1's turn";
+    turn.textContent="Player 2's turn";
   }
 }
 
