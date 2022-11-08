@@ -174,3 +174,5 @@ let mobileAnimation = [
     { left: "81.5%", top: " 64.8%" },
   ],
 ];
+
+export {mobileAnimation,tabletAnimation,desktopAnimation}
