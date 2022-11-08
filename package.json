@@ -4,7 +4,8 @@
   "description": "Connect four game ",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch sass:css"
+    "sass": "sass --no-source-map --watch src/sass:dist/css",
+    "gulp": "gulp concat "
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,9 @@
   "homepage": "https://github.com/kmlson/Connect-Four-game#readme",
   "dependencies": {
     "sass": "^1.55.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1"
   }
 }

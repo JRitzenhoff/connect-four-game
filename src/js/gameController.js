@@ -1,19 +1,39 @@
-const gameArray = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-  ];
+class gameController {
+  constructor(gameview) {
+    this.gameview = gameview;
+    const gameArray = [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+    ];
+  }
 
-function checkMatch(one, two, three, four, color) {
-    if (one === two && one === three && one === four && one === color) {
-      return true;
+  createCounters(quantity = 1,className,prefix,color) {
+    let location = document.querySelector(".counters ."+prefix);
+    for (let i = 1; i < quantity + 1; i++) {
+      let element = document.createElement("div");
+      element.id = prefix+"#"+i+"-"+color;
+      element.className = className;
+      element.draggable = true;
+      location.appendChild(element);
     }
   }
+
+  init() {
+    this.gameview.addListeners();
+    this.createCounters(20, "counter-red-large", "desktop", "red");
+    this.createCounters(20, "counter-red-large", "tablet", "red");
+    this.createCounters(20, "counter-red-small", "mobile", "red");
+    this.createCounters(20, "counter-yellow-large", "desktop", "yellow");
+    this.createCounters(20, "counter-yellow-large", "tablet", "yellow");
+    this.createCounters(20, "counter-yellow-small", "mobile", "yellow");
+  }
+
   // ---------- game function
-  function checkWinner(color) {
+  checkWinner(color) {
     for (let column = 0; column < 7; column++) {
       for (let row = 0; row < 3; row++) {
         if (
@@ -40,7 +60,7 @@ function checkMatch(one, two, three, four, color) {
         }
       }
     }
-  
+
     for (let column = 0; column < 4; column++) {
       for (let row = 0; row < 3; row++) {
         if (
@@ -56,7 +76,7 @@ function checkMatch(one, two, three, four, color) {
         }
       }
     }
-  
+
     for (let column = 0; column < 4; column++) {
       for (let row = 5; row > 2; row--) {
         if (
@@ -74,4 +94,13 @@ function checkMatch(one, two, three, four, color) {
     }
   }
 
-  export {gameArray,checkMatch,checkWinner}
+  checkMatch(one, two, three, four, color) {
+    if (one === two && one === three && one === four && one === color) {
+      return true;
+    }
+  }
+
+}
+
+const game = new gameController(new gameView());
+game.init();
