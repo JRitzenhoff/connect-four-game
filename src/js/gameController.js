@@ -1,106 +1,128 @@
+import gameModel from "./gameModel.js";
+import gameView from "./gameView.js";
+
 class gameController {
-  constructor(gameview) {
-    this.gameview = gameview;
-    const gameArray = [
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-    ];
-  }
+  constructor() {
+    this.model = new gameModel();
+    this.view = new gameView();
 
-  createCounters(quantity = 1,className,prefix,color) {
-    let location = document.querySelector(".counters ."+prefix);
-    for (let i = 1; i < quantity + 1; i++) {
-      let element = document.createElement("div");
-      element.id = prefix+"#"+i+"-"+color;
-      element.className = className;
-      element.draggable = true;
-      location.appendChild(element);
-    }
-  }
+    this.view.dropEvent.addListener((drop) => {
+      this.model.play(drop);
+      this.view.hideAllMarkes();
+      
+     
+    });
 
-  init() {
-    this.gameview.addListeners();
-    this.createCounters(20, "counter-red-large", "desktop", "red");
-    this.createCounters(20, "counter-red-large", "tablet", "red");
-    this.createCounters(20, "counter-red-small", "mobile", "red");
-    this.createCounters(20, "counter-yellow-large", "desktop", "yellow");
-    this.createCounters(20, "counter-yellow-large", "tablet", "yellow");
-    this.createCounters(20, "counter-yellow-small", "mobile", "yellow");
-  }
+    this.view.dragover.addListener((over) => {
+      this.dragover(over);
+    });
 
-  // ---------- game function
-  checkWinner(color) {
-    for (let column = 0; column < 7; column++) {
-      for (let row = 0; row < 3; row++) {
-        if (
-          checkMatch(
-            gameArray[row][column],
-            gameArray[row + 1][column],
-            gameArray[row + 2][column],
-            gameArray[row + 3][column],
-            color
-          )
-        ) {
-          return true;
-        }
-        if (
-          checkMatch(
-            gameArray[row][column],
-            gameArray[row][column + 1],
-            gameArray[row][column + 2],
-            gameArray[row][column + 3],
-            color
-          )
-        ) {
-          return true;
-        }
+    this.view.showMenuEvent.addListener((over) => {
+      this.view.showMenu();
+    });
+
+   
+
+    this.view.mainmenuGameRulesOpenEvent.addListener(()=>{
+      this.view.hideMenu();
+      this.view.showGameRules()
+    })
+
+    this.view.mainmenuGameRulesCloseEvent.addListener(() => {
+      this.view.hideGameRules();
+      this.view.showMenu();
+    })
+
+    this.view.mainmenuVsPlayerEvent.addListener(()=>{
+      this.view.checkScreenSize();
+      this.view.init();
+      
+      this.view.hideMenu();
+      this.view.showGameboard();
+      this.view.renderGame();
+    })
+
+    this.view.playagainEvent.addListener(()=>{
+      if(this.model.getCurrentPlayer()=== "red"){
+        this.model.setCurrentPlayer("yellow");
+        this.view.changeTurn("yellow");
+        this.view.CountersNotDraggable(this.model.currentPlayer);
       }
-    }
-
-    for (let column = 0; column < 4; column++) {
-      for (let row = 0; row < 3; row++) {
-        if (
-          checkMatch(
-            gameArray[row][column],
-            gameArray[row + 1][column + 1],
-            gameArray[row + 2][column + 2],
-            gameArray[row + 3][column + 3],
-            color
-          )
-        ) {
-          return true;
-        }
+      else {
+        this.model.setCurrentPlayer("red");
+        this.view.changeTurn("red");
+        this.view.CountersNotDraggable(this.model.currentPlayer);
       }
-    }
+      this.model.clearGameArray();
+      this.view.hideAllMarkes();
+      this.view.removeGameCounters();
+      this.view.hideGameResult();
+    })
 
-    for (let column = 0; column < 4; column++) {
-      for (let row = 5; row > 2; row--) {
-        if (
-          checkMatch(
-            gameArray[row][column],
-            gameArray[row - 1][column + 1],
-            gameArray[row - 2][column + 2],
-            gameArray[row - 3][column + 3],
-            color
-          )
-        ) {
-          return true;
-        }
-      }
-    }
+    this.view.resetGameEvent.addListener((over) => {
+      
+      restartGame();
+    
+    });
+
+    this.model.updateViewEvent.addListener(data => {
+      this.view.runAnimation(data);
+      
+    });
+
+    this.model.winEvent.addListener(data => {
+        this.view.showGameResult(data);
+    });
+
+    this.model.switchPlayerEvent.addListener(player => {
+      this.view.changeTurn(player);
+      this.view.CountersNotDraggable(player);
+    })
+
+    this.view.showPauseMenuEvent.addListener(()=>{
+      this.view.showPauseMenu();
+    })
+
+    this.view.PauseMenuContinueEvent.addListener(()=>{
+      this.view.hidePauseMenu();
+    })
+
+    this.view.PauseMenuResetEvent.addListener(()=>{
+      restartGame();
+    })
+
+    // default setup of game 
+    
+    
+   
   }
 
-  checkMatch(one, two, three, four, color) {
-    if (one === two && one === three && one === four && one === color) {
-      return true;
-    }
+  restartGame()
+  {
+      this.model.clearGameArray();
+      this.model.setCurrentPlayer("red");
+      this.view.hideAllMarkes();
+      this.view.removeGameCounters();
+      this.view.changeTurn("red");
+      this.view.CountersNotDraggable(this.model.currentPlayer);
+      this.model.Player1.score=0;
+      this.model.Player2.score=0;
+      this.view.setPlayerScore(0,0);
+      this.view.setPlayerScore(1,0);
   }
 
+  run() {
+    //this.view.hideGameboard();
+    this.view.render();
+    this.view.showMenu();
+    
+  }
+
+  
+
+  dragover(over) {
+    this.view.showMarker(this.model.currentPlayer, over);
+  }
 }
 
-const game = new gameController(new gameView());
-game.init();
+export default gameController;

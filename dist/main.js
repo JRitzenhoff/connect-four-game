@@ -291,7 +291,7 @@ class gameView {
   }
 
   animateOnScreen(element, frameNumber) {
-    console.log(this);
+    
     switch (this.checkScreenSize()) {
       case "mobile":
         this.animate(element, this.mobileAnimation[frameNumber]);
@@ -306,7 +306,7 @@ class gameView {
         this.savePlayerMove(element, this.desktopAnimation[frameNumber], frameNumber);
         break;
     }
-    setCounterPosition(element, frameNumber);
+    this.setCounterPosition(element, frameNumber);
   }
 
   setCounterPosition(element, frameNumber) {
@@ -342,27 +342,70 @@ class gameView {
     let board = document.querySelector(".game-counters ." + boardElement);
     board.appendChild(element);
   }
-  addListeners() {
-    this.drops.forEach((droppoint) => {
-      droppoint.addEventListener("dragenter", this.dragEnter.bind(this));
-      droppoint.addEventListener("dragover", this.dragOver.bind(this));
-      droppoint.addEventListener("dragleave", this.dragLeave.bind(this));
-      droppoint.addEventListener("drop", this.drop.bind(this));
-    });
-    this.counters.forEach((counter) => {
-      counter.addEventListener("dragstart", this.dragStart.bind(this));
-      counter.addEventListener("touchstart", this.TouchStart.bind(this));
-      counter.addEventListener("touchmove", this.TouchMove.bind(this));
-      counter.addEventListener("touchend", this.TouchEnd.bind(this));
-    });
+
+    // this.drops.forEach((droppoint) => {
+    //   droppoint.addEventListener("dragenter", this.dragEnter.bind(this));
+    //   droppoint.addEventListener("dragover", this.dragOver.bind(this));
+    //   droppoint.addEventListener("dragleave", this.dragLeave.bind(this));
+    //   droppoint.addEventListener("drop", this.drop.bind(this));
+    // });
+    // this.counters.forEach((counter) => {
+    //   counter.addEventListener("dragstart", this.dragStart.bind(this));
+    //   counter.addEventListener("touchstart", this.TouchStart.bind(this));
+    //   counter.addEventListener("touchmove", this.TouchMove.bind(this));
+    //   counter.addEventListener("touchend", this.TouchEnd.bind(this));
+    // });
 
    
+    bindDragEnter(handler) {
+    this.drops.forEach((droppoint) => { 
+      droppoint.addEventListener("dragstart", e => {
+        e.preventDefault();
+        e.dataTransfer.setData("text/plain", e.target.id);
+        handler(e.target.id);
+      })
+    });
   }
+   
+  
+
+  bindDragOver(handler) {
+    this.drops.forEach((droppoint) => { 
+      droppoint.addEventListener("dragover", e => {
+        e.preventDefault();
+        const id=e.target.id;
+        handler(id);
+      })
+    });
+  }
+
+  bindDragLeave(handler) {
+    this.drops.forEach((droppoint) => { 
+      droppoint.addEventListener("dragleave", e => {
+        e.preventDefault();
+        const id=e.target.id;
+        handler(id);
+      })
+    });
+  }
+
+  bindDrop(handler) {
+    this.drops.forEach((droppoint) => { 
+      droppoint.addEventListener("dragleave", e => {
+        e.preventDefault();
+        const id = e.dataTransfer.getData("text/plain");
+      
+        handler(id);
+      })
+    });
+  }
+
+
 
   detectTouchEnd(pageX, pageY, width) {
     let scrollTop = window.pageYOffset;
     let currentDrop = null;
-    drops.forEach((current) => {
+    this.drops.forEach((current) => {
       if (
         parseInt(pageX) + width / 2 > current.getBoundingClientRect().left &&
         parseInt(pageX) + width / 2 < current.getBoundingClientRect().right &&
@@ -405,23 +448,23 @@ class gameView {
 
   respondForMove(color) {
     if (this.checkWinner(color)) {
-      turn.style.display = "none";
-      gameResult.style.display = "block";
+      this.turn.style.display = "none";
+      this.gameResult.style.display = "block";
     } else {
-      color === "red" ? (color = "yellow") : (color = "red");
+      this.color === "red" ? (color = "yellow") : (color = "red");
       this.changeTurn(color);
     }
   }
 
   hideAllMarkes() {
     this.markers.forEach((marker) => {
-      this.marker.style.display = "none";
+      marker.style.display = "none";
     });
   }
 
   savePlayerMove(element, animationFrameArr, position) {
     gameArray[animationFrameArr.length - 1][position] =
-      getCounterColor(element);
+      this.getCounterColor(element);
   }
 
   getCounterColor(element) {
@@ -440,8 +483,8 @@ class gameView {
     }
   }
 
-  runGame() {
-    gameResult.style.display = "none";
+ hideGameResult() {
+    this.gameResult.style.display = "none";
   }
 
   dragStart(e) {
@@ -494,18 +537,20 @@ class gameView {
     e.target.style.left = pageX;
     e.target.style.top = pageY;
 
-    activeEvent = "move";
+    this.activeEvent = "move";
     if (this.detectTouchEnd(pageX, pageY, width) != null) {
-      let current = self.detectTouchEnd(pageX, pageY, width);
+      let current = this.detectTouchEnd(pageX, pageY, width);
       this.showMarker(color, current.id);
     }
   }
+
+
 
   TouchEnd(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     let element = e.target;
-    if (activeEvent === "move") {
+    if (this.activeEvent === "move") {
       let pageX = parseInt(e.target.style.left);
       let pageY = parseInt(e.target.style.top);
       let width = parseInt(window.getComputedStyle(e.target).width);
@@ -515,8 +560,8 @@ class gameView {
         let current = this.detectTouchEnd(pageX, pageY, width);
         this.animateOnScreen(element, parseInt(current.id));
       } else {
-        e.target.style.left = originalX;
-        e.target.style.top = originalY;
+        e.target.style.left = this.originalX;
+        e.target.style.top = this.originalY;
       }
     }
     let color = this.getCounterColor(element);
@@ -531,8 +576,13 @@ class gameView {
 
 
 class gameController {
-  constructor(gameview) {
-    this.gameview = gameview;
+  constructor(gameView) {
+    this.gameview = gameView;
+
+    this.gameview.bindDragEnter(this.dragEnter)
+    //this.gameview.bindDragOver(this.dragOver)
+    //this.gameview.bindDragLeave(this.dragLeave)
+    this.gameview.bindDrop(this.drop)
     const gameArray = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
@@ -554,8 +604,12 @@ class gameController {
     }
   }
 
+  drop = dropResult => {
+   console.log(dropResult);
+  }
+
   init() {
-    this.gameview.addListeners();
+   
     this.createCounters(20, "counter-red-large", "desktop", "red");
     this.createCounters(20, "counter-red-large", "tablet", "red");
     this.createCounters(20, "counter-red-small", "mobile", "red");
@@ -563,6 +617,8 @@ class gameController {
     this.createCounters(20, "counter-yellow-large", "tablet", "yellow");
     this.createCounters(20, "counter-yellow-small", "mobile", "yellow");
   }
+
+  
 
   // ---------- game function
   checkWinner(color) {
@@ -636,3 +692,4 @@ class gameController {
 
 const game = new gameController(new gameView());
 game.init();
+
