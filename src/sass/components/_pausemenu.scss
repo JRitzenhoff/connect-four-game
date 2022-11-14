@@ -23,7 +23,7 @@
   }
   div:not(.pause) {
     height: 72px;
-    width: 295px;
+    width: 400px;
     font-size: $headingMedium-size;
     font-weight: $headingMedium-weight;
     border-radius: 15px;
@@ -41,7 +41,11 @@
       background-color: $red;
     }
   }
+  div:not(.pause):hover {
+    @include border-shadow-hover;
+  }
 }
+
 
 @media (min-width: $tabletWidth) {
   .flex-center-pausemenu {

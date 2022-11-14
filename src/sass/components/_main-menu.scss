@@ -18,7 +18,7 @@
 
   .menu-item {
     height: 72px;
-    width: 335px;
+    width: 400px;
     border-radius: 15px;
     margin-bottom: 15px;
     padding: 0 15px;
@@ -30,11 +30,20 @@
       color: $white;
      
     }
-    &:nth-child(3) {
+    &:nth-child(2) {
       background-color: $yellow;
     }
-    &:nth-child(4) {
+    &:nth-child(3) {
       background-color: $white;
+    }
+    &:nth-child(2):hover {
+      background-color: $yellow;
+      @include border-shadow-hover;
+    }
+    &:nth-child(3):hover {
+      background-color: $white;
+      @include border-shadow-hover;
+      
     }
   }
   .icon {

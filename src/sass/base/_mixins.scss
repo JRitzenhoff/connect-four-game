@@ -3,6 +3,12 @@
     box-shadow:  0px 10px $black;
 }
 
+@mixin border-shadow-hover {
+    border: 2px solid #5C2DD5;
+    box-shadow: 0px 10px #5C2DD5;
+    
+}
+
 @mixin flex-center {
     display: flex;
     justify-content: center;

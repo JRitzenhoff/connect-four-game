@@ -13,6 +13,9 @@
     @include menu-item;
     @include flex-center;
   }
+  .menu-item:hover {
+    background-color: $red;
+  }
   .logo {
     background-image: url("../assets/images/logo.svg");
     background-repeat: no-repeat;

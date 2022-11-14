@@ -51,6 +51,10 @@
         left: 125px;
         top:55px;
     }
+    .tick:hover {
+        background-image: url("../assets/images/icon-check1.svg");
+        
+    }
 }
 @media (min-width:$tabletWidth)
 {
