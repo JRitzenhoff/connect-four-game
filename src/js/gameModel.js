@@ -5,6 +5,7 @@ class gameModel {
     this.Player1 = { playerName: "Player 1", counters: "red" ,score:0};
     this.Player2 = { playerName: "Player 2", counters: "yellow",score:0 };
     this.currentPlayer = "red";
+    this.gameStarter="red";
     this.lenght = 0;
     this.gameArray = [
       [0, 0, 0, 0, 0, 0, 0],
@@ -146,6 +147,11 @@ class gameModel {
   switchPlayer() {
     this.currentPlayer = this.currentPlayer === "red" ? "yellow" : "red";
     return true;
+  }
+
+  switchColor(color) {
+    color ==="red"?color="yellow":color="red";
+    return color;
   }
 
   draw() {

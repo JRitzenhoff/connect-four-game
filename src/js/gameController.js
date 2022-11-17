@@ -40,29 +40,19 @@ class gameController {
       this.view.hideMenu();
       this.view.showGameboard();
       this.view.renderGame();
+      
     })
 
     this.view.playagainEvent.addListener(()=>{
-      if(this.model.getCurrentPlayer()=== "red"){
-        this.model.setCurrentPlayer("yellow");
-        this.view.changeTurn("yellow");
-        this.view.CountersNotDraggable(this.model.currentPlayer);
-        
-      }
-      else {
-        this.model.setCurrentPlayer("red");
-        this.view.changeTurn("red");
-        this.view.CountersNotDraggable(this.model.currentPlayer);
-      }
-      this.model.clearGameArray();
+      this.playagain();
       this.view.hideAllMarkes();
-      this.view.removeGameCounters();
       this.view.hideGameResult();
     })
 
     this.view.resetGameEvent.addListener((over) => {
       
       this.restartGame();
+      
     
     });
 
@@ -77,7 +67,9 @@ class gameController {
 
     this.model.switchPlayerEvent.addListener(player => {
       this.view.changeTurn(player);
+      this.view.removeListeners();
       this.view.CountersNotDraggable(player);
+      this.view.addListenersCounters(this.model.currentPlayer);
       
     })
 
@@ -115,6 +107,18 @@ class gameController {
       this.model.Player2.score=0;
       this.view.setPlayerScore(0,0);
       this.view.setPlayerScore(1,0);
+  }
+
+  playagain() {
+      this.model.clearGameArray();
+      this.view.removeGameCounters();
+      this.view.init();
+      this.model.switchPlayer(this.model.gameStarter)
+      this.view.changeTurn(this.model.currentPlayer);
+      this.model.gameStarter =this.model.currentPlayer;
+      this.view.removeListeners();
+      this.view.CountersNotDraggable(this.model.switchColor(this.model.currentPlayer));
+      this.view.addListenersCounters(this.model.currentPlayer);
   }
 
   run() {
