@@ -13,7 +13,7 @@ class gameController {
      
     });
 
-    this.view.dragover.addListener((over) => {
+    this.view.dragoverEvent.addListener((over) => {
       this.dragover(over);
     });
 
@@ -47,6 +47,7 @@ class gameController {
         this.model.setCurrentPlayer("yellow");
         this.view.changeTurn("yellow");
         this.view.CountersNotDraggable(this.model.currentPlayer);
+        
       }
       else {
         this.model.setCurrentPlayer("red");
@@ -61,7 +62,7 @@ class gameController {
 
     this.view.resetGameEvent.addListener((over) => {
       
-      restartGame();
+      this.restartGame();
     
     });
 
@@ -77,6 +78,7 @@ class gameController {
     this.model.switchPlayerEvent.addListener(player => {
       this.view.changeTurn(player);
       this.view.CountersNotDraggable(player);
+      
     })
 
     this.view.showPauseMenuEvent.addListener(()=>{
@@ -88,7 +90,13 @@ class gameController {
     })
 
     this.view.PauseMenuResetEvent.addListener(()=>{
-      restartGame();
+      this.restartGame();
+      this.view.hidePauseMenu();
+    })
+
+    this.view.PauseQuitEvent.addListener(()=>{
+      this.restartGame();
+      this.view.showMenu();
     })
 
     // default setup of game 
@@ -100,11 +108,9 @@ class gameController {
   restartGame()
   {
       this.model.clearGameArray();
-      this.model.setCurrentPlayer("red");
-      this.view.hideAllMarkes();
       this.view.removeGameCounters();
+      this.view.init();
       this.view.changeTurn("red");
-      this.view.CountersNotDraggable(this.model.currentPlayer);
       this.model.Player1.score=0;
       this.model.Player2.score=0;
       this.view.setPlayerScore(0,0);

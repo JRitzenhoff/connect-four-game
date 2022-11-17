@@ -3,8 +3,9 @@ import {mobileAnimation,tabletAnimation,desktopAnimation} from "./animationFrame
 
 class gameView {
   constructor() {
+    this.object = this;
     this.dropEvent = new Event();
-    this.dragover= new Event();
+    this.dragoverEvent= new Event();
     this.showMenuEvent= new Event();
     this.showPauseMenuEvent= new Event();
     this.PauseMenuContinueEvent= new Event();
@@ -58,6 +59,7 @@ class gameView {
     this.turn = document.querySelector(".turn-red");
     this.drops = document.querySelectorAll(".droppoint");
     this.counters = document.querySelectorAll(".counters div");
+    this.prefix = ["desktop", "tablet", "mobile"];
     //gameboard menu
     this.menu =document.querySelector(".menu-top div:first-child");
     this.reset =document.querySelector(".menu-top div:last-child");
@@ -132,9 +134,9 @@ class gameView {
     let desktop = this.desktopAnimation[column].slice(lenght,lenght+1);
     let tablet = this.tabletAnimation[column].slice(lenght,lenght+1);
     let mobile = this.mobileAnimation[column].slice(lenght,lenght+1);
-    const prefix = ["desktop", "tablet", "mobile"];
+    
     let elementNumber = element.id.split("#")[1];
-    prefix.forEach((item) => {
+    this.prefix.forEach((item) => {
       let name = item + "#" + elementNumber;
       let newElement = document.getElementById(name.toString());
       switch (item) {
@@ -223,7 +225,11 @@ class gameView {
 
   removeGameCounters() {
     let deleteGameCounters=document.querySelectorAll(".game-counters div:not(.desktop):not(.tablet):not(.mobile)");
+    let deleteCounters=document.querySelectorAll(".counters div:not(.desktop):not(.tablet):not(.mobile)")
     deleteGameCounters.forEach(element => {
+      element.remove();
+    })
+    deleteCounters.forEach(element => {
       element.remove();
     })
   }
@@ -393,88 +399,111 @@ class gameView {
     addEventListener('resize', (event) => {
       this.checkScreenSize();
     });
-    this.drops.forEach((droppoint) => {
-      droppoint.addEventListener("dragenter", (event) => {
-        event.preventDefault();
 
-        let color = event.dataTransfer.getData("text/plain").split("-")[1];
-        let target = event.target.id;
+    this.addListenersDroppoint();
+    this.addListenersCounters();
 
-        
-        
-      });
-      droppoint.addEventListener("dragover", (event) => {
-        event.preventDefault();
-        this.dragover.trigger(event.target.id);
-      });
-      droppoint.addEventListener("dragleave", (event) => {
-        event.preventDefault();
-      });
-      droppoint.addEventListener("drop", (event) => {
-        const id = event.dataTransfer.getData("text/plain");
-        const dragElement = document.getElementById(id);
-       
-
-
-        this.dropEvent.trigger([event.target.id,dragElement]);
-      });
-    });
-
-
-
-    this.counters.forEach((counter) => {
-      counter.addEventListener("dragstart", (event) => {
-        event.dataTransfer.setData("text/plain", event.target.id);
-      });
-      counter.addEventListener("touchstart", (event) => {
-        this.originalX = event.target.offsetLeft + "px";
-        this.originalY = event.target.offsetTop + "px";
-        this.activeEvent = "start";
-      });
-      counter.addEventListener("touchmove", (event) => {
-        event.preventDefault();
-        let width = parseInt(window.getComputedStyle(event.target).width);
-        let touchLocation = event.targetTouches[0];
-
-        let color = touchLocation.target.id.split("-")[1];
-        let pageX = touchLocation.pageX - 50 + "px";
-        let pageY = touchLocation.pageY - 50 + "px";
-        event.target.style.zIndex = 100;
-        event.target.style.position = "absolute";
-        event.target.style.left = pageX;
-        event.target.style.top = pageY;
-
-        this.activeEvent = "move";
-        if (this.detectTouchEnd(pageX, pageY, width) != null) {
-          let current = this.detectTouchEnd(pageX, pageY, width);
-          this.showMarker(color, current.id);
-        }
-      });
-      counter.addEventListener("touchend", (event) => {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        let element = event.target;
-        if (this.activeEvent === "move") {
-          let pageX = parseInt(event.target.style.left);
-          let pageY = parseInt(event.target.style.top);
-          let width = parseInt(window.getComputedStyle(event.target).width);
-          element.style.zIndex = 10;
-    
-          if (this.detectTouchEnd(pageX, pageY, width) != null) {
-            let current = this.detectTouchEnd(pageX, pageY, width);
-            this.dropEvent.trigger([current.id,event.target]);
-            
-          } else {
-            event.target.style.left = this.originalX;
-            event.target.style.top = this.originalY;
-          }
-        }
-      });
-    });
-    
-    
   }
 
+  
+addListenersDroppoint(){
+  this.drops.forEach((droppoint) => {
+    droppoint.addEventListener("dragenter", this.dragEnter.bind(this));
+    droppoint.addEventListener("dragover", this.dragOver.bind(this));
+    droppoint.addEventListener("dragleave", this.dragLeave.bind(this));
+    droppoint.addEventListener("drop", this.drop.bind(this));
+  });
+ 
+}
+
+addListenersCounters()
+{
+  this.counters.forEach((counter) => {
+    counter.addEventListener("dragstart", this.dragStart.bind(this));
+  });
+  this.counters.forEach((counter) => {
+    counter.addEventListener("touchstart", this.TouchStart.bind(this));
+    counter.addEventListener("touchmove", this.TouchMove.bind(this));
+    counter.addEventListener("touchend", this.TouchEnd.bind(this));
+  });
+}
+  
+  
+   dragStart(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
+  }
+  
+   dragEnter(event) {
+    event.preventDefault();
+  
+    let color = event.dataTransfer.getData("text/plain").split("-")[1];
+    let target = event.target.id;
+   
+  }
+  
+   dragOver(event) {
+    event.preventDefault();
+    this.dragoverEvent.trigger(event.target.id);
+    
+  }
+  
+   dragLeave(event) {
+    event.preventDefault();
+  }
+  
+   drop(event) {
+    const id = event.dataTransfer.getData("text/plain");
+    const dragElement = document.getElementById(id);
+    this.dropEvent.trigger([event.target.id,dragElement]);
+
+  }
+  
+   TouchStart(event) {
+    this.originalX = event.target.offsetLeft + "px";
+    this.originalY = event.target.offsetTop + "px";
+    this.activeEvent = "start";
+  }
+  
+   TouchMove(event) {
+    event.preventDefault();
+    let width = parseInt(window.getComputedStyle(event.target).width);
+    let touchLocation = event.targetTouches[0];
+
+    let color = touchLocation.target.id.split("-")[1];
+    let pageX = touchLocation.pageX - 50 + "px";
+    let pageY = touchLocation.pageY - 50 + "px";
+    event.target.style.zIndex = 100;
+    event.target.style.position = "absolute";
+    event.target.style.left = pageX;
+    event.target.style.top = pageY;
+
+    this.activeEvent = "move";
+    if (this.detectTouchEnd(pageX, pageY, width) != null) {
+      let current = this.detectTouchEnd(pageX, pageY, width);
+      this.showMarker(color, current.id);
+    }
+  }
+  
+   TouchEnd(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    let element = event.target;
+    if (this.activeEvent === "move") {
+      let pageX = parseInt(event.target.style.left);
+      let pageY = parseInt(event.target.style.top);
+      let width = parseInt(window.getComputedStyle(event.target).width);
+      element.style.zIndex = 10;
+
+      if (this.detectTouchEnd(pageX, pageY, width) != null) {
+        let current = this.detectTouchEnd(pageX, pageY, width);
+        this.dropEvent.trigger([current.id,event.target]);
+        
+      } else {
+        event.target.style.left = this.originalX;
+        event.target.style.top = this.originalY;
+      }
+    }
+  }
 
 
   init() {
