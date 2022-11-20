@@ -293,12 +293,12 @@ class gameView {
     {
       case "red":
         this.turn.style.backgroundImage =
-        "url('../src/assets/images/turn-background-red.svg')";
+        "url('./src/assets/images/turn-background-red.svg')";
       this.turn.textContent = "Player 1's turn";
         break;
       case "yellow":
         this.turn.style.backgroundImage =
-        "url('../src/assets/images/turn-background-yellow.svg')";
+        "url('./src/assets/images/turn-background-yellow.svg')";
       this.turn.textContent = "Player 2's turn";
         break;
     }
