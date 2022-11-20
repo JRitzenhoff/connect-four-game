@@ -2,10 +2,9 @@ import Event from "./event.js";
 
 class gameModel {
   constructor() {
-    this.Player1 = { playerName: "Player 1", counters: "red" ,score:0};
-    this.Player2 = { playerName: "Player 2", counters: "yellow",score:0 };
-    this.currentPlayer = "red";
-    this.gameStarter="red";
+    this.Players =[ { playerName: "Player 1", counters: "red" ,score:0,currentPlayer:true,startGame:true},
+    { playerName: "Player 2", counters: "yellow",score:0,currentPlayer:false,startGame:false}];
+    this.currentPlayer = this.Players[0].counters;
     this.lenght = 0;
     this.gameArray = [
       [0, 0, 0, 0, 0, 0, 0],
@@ -19,6 +18,7 @@ class gameModel {
     this.drawEvent = new Event();
     this.updateViewEvent = new Event();
     this.switchPlayerEvent = new Event();
+
   }
   play(drop) {
     this.saveInArray(drop);
@@ -27,14 +27,16 @@ class gameModel {
       lenght: this.lenght,
       element: drop[1],
     });
+  
+   
 
     if (this.checkWinner(this.currentPlayer)) {
-      if (this.Player1.counters == this.currentPlayer) {
-        this.Player1.score+=10;
-        this.winEvent.trigger(this.Player1);
+      if (this.Players[0].counters == this.currentPlayer) {
+        this.Players[0].score+=10;
+        this.winEvent.trigger(this.Players[0]);
       } else {
-        this.Player2.score+=10;
-        this.winEvent.trigger(this.Player2);
+        this.Players[1].score+=10;
+        this.winEvent.trigger(this.Players[1]);
       }
     } else {
       this.switchPlayer();
@@ -51,15 +53,18 @@ class gameModel {
     })
   }
 
-  setCurrentPlayer(color)
-  {
-    this.currentPlayer = color;
-  }
+  resetPlayers() {
+    this.lenght = 0;
+    this.Players.map(el=> el.score=0);
+    this.Players.map(el=> el.currentPlayer=false);
+    this.Players.map(el=> el.startGame=false);
+    this.Players.find(el =>el.counters=="red").currentPlayer=true; 
+    this.Players.find(el =>el.counters=="red").startGame=true; 
+    this.currentPlayer= this.Players[0].counters;
+ 
 
-  getCurrentPlayer()
-  {
-    return this.currentPlayer
   }
+ 
 
   saveInArray(params) {
     let col = parseInt(params[0]);
@@ -68,6 +73,7 @@ class gameModel {
       if (this.gameArray[i][col] === 0) {
         this.gameArray[i][col] = this.currentPlayer;
         this.lenght = i;
+        
         break;
       }
     }
@@ -145,14 +151,24 @@ class gameModel {
   }
 
   switchPlayer() {
-    this.currentPlayer = this.currentPlayer === "red" ? "yellow" : "red";
-    return true;
+    this.Players.map((el)=> {
+      el.currentPlayer==true?el.currentPlayer=false:el.currentPlayer=true
+    });
+    this.currentPlayer = this.Players.find(el =>el.currentPlayer==true).counters; 
+ 
   }
 
-  switchColor(color) {
-    color ==="red"?color="yellow":color="red";
-    return color;
+  switchStarter() {
+    this.Players.map((el)=> {
+      el.startGame==true?el.currentPlayer=false:el.currentPlayer=true;
+      el.startGame==true?el.startGame=false:el.startGame=true
+    });
+    this.currentPlayer = this.Players.find(el =>el.startGame==true).counters; 
+
   }
+
+
+
 
   draw() {
     let result;

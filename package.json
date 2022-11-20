@@ -4,7 +4,7 @@
   "description": "Connect four game ",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --no-source-map --watch src/sass:dist/css",
+    "sass": "sass --no-source-map --watch src/sass:src/css",
     "gulp": "gulp concat "
   },
   "repository": {

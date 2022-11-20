@@ -5,6 +5,7 @@ class gameController {
   constructor() {
     this.model = new gameModel();
     this.view = new gameView();
+    this.pauseMenuQuitEvent = false;
 
     this.view.dropEvent.addListener((drop) => {
       this.model.play(drop);
@@ -35,11 +36,28 @@ class gameController {
 
     this.view.mainmenuVsPlayerEvent.addListener(()=>{
       this.view.checkScreenSize();
-      this.view.init();
+      if(this.pauseMenuQuitEvent===true)
+      {
+        this.restartGame();
+        this.pauseMenuQuitEvent== false;
+        this.view.hideMenu();
+        this.view.showGameboard();
+      }
+      else {
+        this.view.init();
+        this.view.renderGame();
+        this.view.hideMenu();
+        this.view.showGameboard();
+        this.view.setPlayerScore(0,0);
+        this.view.setPlayerScore(1,0);
+        this.view.hideAllMarkes();
+        this.view.hideGameResult();
+        this.view.CountersNotDraggable(this.model.Players[0].currentPlayer,this.model.Players[1].currentPlayer);
+        this.view.addListenersDroppoint();
+        this.view.addListenersCounters(this.model.currentPlayer);
+      }
+     
       
-      this.view.hideMenu();
-      this.view.showGameboard();
-      this.view.renderGame();
       
     })
 
@@ -47,13 +65,11 @@ class gameController {
       this.playagain();
       this.view.hideAllMarkes();
       this.view.hideGameResult();
+      this.view.changefooterColor();
     })
 
     this.view.resetGameEvent.addListener((over) => {
-      
       this.restartGame();
-      
-    
     });
 
     this.model.updateViewEvent.addListener(data => {
@@ -63,12 +79,13 @@ class gameController {
 
     this.model.winEvent.addListener(data => {
         this.view.showGameResult(data);
+       this.view.changefooterColor(data.counters);
     });
 
     this.model.switchPlayerEvent.addListener(player => {
       this.view.changeTurn(player);
       this.view.removeListeners();
-      this.view.CountersNotDraggable(player);
+      this.view.CountersNotDraggable(this.model.Players[0].currentPlayer,this.model.Players[1].currentPlayer);
       this.view.addListenersCounters(this.model.currentPlayer);
       
     })
@@ -84,11 +101,15 @@ class gameController {
     this.view.PauseMenuResetEvent.addListener(()=>{
       this.restartGame();
       this.view.hidePauseMenu();
+      this.view.hideGameResult();
     })
 
     this.view.PauseQuitEvent.addListener(()=>{
-      this.restartGame();
+     this.restartGame();
+      this.view.hidePauseMenu();
+      this.view.hideGameboard()
       this.view.showMenu();
+      this.pauseMenuQuitEvent= true;
     })
 
     // default setup of game 
@@ -99,26 +120,28 @@ class gameController {
 
   restartGame()
   {
-      this.model.clearGameArray();
-      this.view.removeGameCounters();
-      this.view.init();
-      this.view.changeTurn("red");
-      this.model.Player1.score=0;
-      this.model.Player2.score=0;
-      this.view.setPlayerScore(0,0);
-      this.view.setPlayerScore(1,0);
+    this.model.clearGameArray();
+    this.view.removeAllGameCounters();
+    this.view.init();
+    this.model.resetPlayers();
+    this.view.setPlayerScore(0,0);
+    this.view.setPlayerScore(1,0);
+    this.view.removeListeners();
+    this.view.CountersNotDraggable(this.model.Players[0].currentPlayer,this.model.Players[1].currentPlayer);
+    this.view.addListenersCounters(this.model.currentPlayer);
+    this.view.changeTurn(this.model.currentPlayer); 
+   
   }
 
   playagain() {
-      this.model.clearGameArray();
-      this.view.removeGameCounters();
-      this.view.init();
-      this.model.switchPlayer(this.model.gameStarter)
-      this.view.changeTurn(this.model.currentPlayer);
-      this.model.gameStarter =this.model.currentPlayer;
-      this.view.removeListeners();
-      this.view.CountersNotDraggable(this.model.switchColor(this.model.currentPlayer));
-      this.view.addListenersCounters(this.model.currentPlayer);
+    this.model.clearGameArray();
+    this.view.removeAllGameCounters();
+    this.view.init();
+    this.view.removeListeners();
+    this.model.switchStarter();
+    this.view.CountersNotDraggable(this.model.Players[0].currentPlayer,this.model.Players[1].currentPlayer);
+    this.view.addListenersCounters(this.model.currentPlayer);
+    this.view.changeTurn(this.model.currentPlayer); 
   }
 
   run() {

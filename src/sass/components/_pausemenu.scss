@@ -3,7 +3,11 @@
   height: $mobileHeight;
   @include flex-center;
   display: none;
+  position: absolute;
+  z-index: 250;
+  background-color: rgba(17, 19, 17, 0.5); 
 }
+
 
 .game-menu {
   width: $mobilePouseWidht;
@@ -11,6 +15,8 @@
   background-color: $purple;
   border-radius: $mobilePouseRadius;
   margin: 0 20px;
+  margin-bottom: 50px;
+ 
 
   @include flex-column-center;
   @include border-shadow;
@@ -23,7 +29,7 @@
   }
   div:not(.pause) {
     height: 72px;
-    width: 400px;
+    width: 295px;
     font-size: $headingMedium-size;
     font-weight: $headingMedium-weight;
     border-radius: 15px;
@@ -53,10 +59,12 @@
     height: $tabletHeight;
     @include flex-center;
     display: none;
+    background-color: rgba(17, 19, 17, 0.5); 
   }
   .game-menu {
     width: $tabletPouseWidht;
     height: $tabletPouseHeight;
+    margin-top: 150px;
   }
 }
 
@@ -66,9 +74,11 @@
     height: $desktopHeight;
     @include flex-center;
     display: none;
+   
   }
   .game-menu {
     width: $desktopPouseWidht;
     height: $desktopPouseHeight;
+    margin-bottom: 150px;
   }
 }

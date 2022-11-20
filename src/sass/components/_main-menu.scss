@@ -4,6 +4,8 @@
     height: $mobileHeight;
     @include  flex-center;
     display: none;
+    position: absolute;
+    z-index: 300;
     
 }
 
@@ -18,7 +20,7 @@
 
   .menu-item {
     height: 72px;
-    width: 400px;
+    width: 335px;
     border-radius: 15px;
     margin-bottom: 15px;
     padding: 0 15px;
@@ -88,7 +90,8 @@
   
     .flex-center-menu {
         width: $desktopWidth;
-        height: $desktopHeight;  
+        height: $desktopHeight; 
+        
     }
     .manu-container {
         width:$desktopMenuWidth;

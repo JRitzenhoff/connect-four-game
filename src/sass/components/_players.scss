@@ -1,8 +1,8 @@
 .players-container {
-    
-    margin: 0 20px;
     height: $mobilePlayerContainerHeight;
     @include flex-space-between;
+    position: relative;
+    top: 70px;
   
     .player-box {
         width: $mobilePlayerBoxWidth;
@@ -48,7 +48,7 @@
        
         width: $tabletPlayerContainerWidth;
         height: $tabletPlayerContainerHeight;
-        top:250px;
+        top:100px;
         .player-box {
             width: $tabletPlayerBoxWidth;
             height: $tabletPlayerBoxHeight;
