@@ -2,7 +2,15 @@
 {
 	"name": "Connect4 Node.js project",
 	"build": {
+		"context": "../..",
 		"dockerfile": "Dockerfile"
 	},
-  "remoteUser": "node"
+	"mounts": [
+		"source=${localEnv:SSH_AUTH_SOCK},target=/ssh-agent,type=bind,consistency=cached"
+	],
+	"remoteEnv": {
+		"SSH_AUTH_SOCK": "/ssh-agent"
+	},
+	"postCreateCommand": "eval $(ssh-agent -s)",
+	"remoteUser": "vscode"
 }

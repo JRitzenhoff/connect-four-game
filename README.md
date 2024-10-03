@@ -24,3 +24,11 @@ https://sass-lang.com/guide/
 https://gulpjs.com/docs/en/getting-started/quick-start
 
 `gulp` is essentially `make` for Javascript. The `gulpfile.js` can set how various files should be combined.ß
+
+
+## Complications
+
+With an ssh-cloned repo, there appear to be difficulties accessing github from within the container. 
+
+Possible solutions include:
+* https://tom01098.github.io/2022/12/05/devcontainer-ssh.html

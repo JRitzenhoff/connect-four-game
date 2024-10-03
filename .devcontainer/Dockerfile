@@ -1,22 +1,31 @@
 FROM node:20
 
-# Install basic development tools
-RUN apt update && apt install -y less man-db sudo
+RUN apt-get update \
+    && apt-get install -y sudo
 
-# Ensure default `node` user has access to `sudo`
-ARG USERNAME=node
-RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+# Create the user
+ARG USERNAME=vscode
+ARG USER_UID=1001
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
-# Set `DEVCONTAINER` environment variable to help with orientation
-ENV DEVCONTAINER=true
+# Copy the project (include the .git folder)
+COPY --chown=${USERNAME} . /workspaces/connect-four/
+
+USER ${USERNAME}:${USERNAME}
+
+WORKDIR /workspaces/connect-four
 
 # Install gulp (globally)
-RUN npm install --global gulp-cli
+RUN npm install gulp-cli
 RUN npm install --save-dev gulp
 
 # Install sass (globally)
-RUN npm install -g sass
+RUN npm install sass
 
 # Actually update the npm packages (potentially dangerous)
 RUN npm audit fix --force
