@@ -6,7 +6,6 @@ const app = express();
 const PORT = 3000;
 
 let eventClients = [];
-let columnNumber = 0;
 
 
 // ----------------------------------------
@@ -30,9 +29,9 @@ app.listen(PORT, () => {
 // ----------------------------------------
 // Logic related to event handling/sending
 // ---------------------
-function formatColumnNumberEvent(number) {
+function formatColumnNumberEventMessage(number) {
     // https://web.dev/articles/eventsource-basics
-    return `data: ${columnNumber}\n\n`;
+    return `data: ${number}\n\n`;
 }
 
 // save the client and send an initial data message
@@ -46,8 +45,8 @@ function registerEventClient(request, response, next) {
     response.writeHead(200, headers);
 
     // send an initial message with the data value (need specific format)
-    const columnNumberEvent = formatColumnNumberEvent(columnNumber);
-    response.write(columnNumberEvent);
+    // const columnNumberEventMessage = formatColumnNumberEventMessage(0);
+    // response.write(columnNumberEventMessage);
 
     // save the client (connection stays open because of the 'keep-alive')
     const clientId = Date.now();
@@ -69,10 +68,10 @@ app.get('/receive_events', registerEventClient);
 
 // Function that writes to the active eventClients
 function sendPlacedColumnEvent(columnNumber) {
-    const updatedColumn = formatColumnNumberEvent(columnNumber);
+    const updatedColumnEventMessage = formatColumnNumberEventMessage(columnNumber);
 
     eventClients.forEach(client =>
-        client.response.write(updatedColumn)
+        client.response.write(updatedColumnEventMessage)
     );
 }
 

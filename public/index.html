@@ -151,17 +151,21 @@
     <script type="text/javascript">
       const evntSource = new EventSource('/receive_events');
 
-      /*
-      * This will listen only for events
-      * similar to the following:
-      *
-      * event: 'columnNumber' (or empty)
-      * data: <actual data value>
-      * id: <actual id value>
-      */
-      evntSource.addEventListener('columnNumber', message => {
-        console.log('Got', message);
-      });
+      // /*
+      // * This will listen only for events
+      // * similar to the following:
+      // *
+      // * event: 'columnNumber' (or empty)
+      // * data: <actual data value>
+      // * id: <actual id value>
+      // */
+      // evntSource.addEventListener('columnNumber', message => {
+      //   console.log('Got', message);
+      // });
+
+      evntSource.onmessage = (eventMessage) => {
+        console.log('Got event', eventMessage.data);
+      };
     </script>
 </body>
 
