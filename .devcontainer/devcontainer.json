@@ -6,6 +6,9 @@
 		"dockerfile": "Dockerfile"
 	},
 	"remoteUser": "vscode",
+	"forwardPorts": [
+		3000
+	],
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -17,5 +20,5 @@
 				}
 			}
 		}
-	},
+	}
 }
