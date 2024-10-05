@@ -5,12 +5,5 @@
 		"context": "../..",
 		"dockerfile": "Dockerfile"
 	},
-	"mounts": [
-		"source=${localEnv:SSH_AUTH_SOCK},target=/ssh-agent,type=bind,consistency=cached"
-	],
-	"remoteEnv": {
-		"SSH_AUTH_SOCK": "/ssh-agent"
-	},
-	"postCreateCommand": "eval $(ssh-agent -s)",
 	"remoteUser": "vscode"
 }
