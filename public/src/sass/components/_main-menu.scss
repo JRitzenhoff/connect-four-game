@@ -1,22 +1,21 @@
-
 .flex-center-menu {
-    width: $mobileWidth;
-    height: $mobileHeight;
-    @include  flex-center;
-    display: none;
-    position: absolute;
-    z-index: 300;
-    
+  width: $mobileWidth;
+  height: $mobileHeight;
+  @include flex-center;
+  display: none;
+  position: absolute;
+  z-index: 300;
+
 }
 
 .manu-container {
-  width:$mobileMenuWidth;
+  width: $mobileMenuWidth;
   height: $mobilepMenuHeight;
   position: relative;
   padding-top: 120px;
   margin: 0 10px;
- 
-  
+
+
 
   .menu-item {
     height: 72px;
@@ -27,27 +26,33 @@
     @include flex-space-between-center;
     @include border-shadow;
     font-size: $headingMedium-size;
+
     &:nth-child(2) {
       background-color: $red;
       color: $white;
-     
+
     }
+
     &:nth-child(2) {
       background-color: $yellow;
     }
+
     &:nth-child(3) {
       background-color: $white;
     }
+
     &:nth-child(2):hover {
       background-color: $yellow;
       @include border-shadow-hover;
     }
+
     &:nth-child(3):hover {
       background-color: $white;
       @include border-shadow-hover;
-      
+
     }
   }
+
   .icon {
     background-image: url("../assets/images/logo.svg");
     background-repeat: no-repeat;
@@ -60,42 +65,45 @@
 }
 
 @media (min-width: $tabletWidth) {
- 
 
-    .flex-center-menu {
-        width: $tabletWidth;
-        height: $tabletHeight; 
-        background-color: $darkPurple;
-       
-    }
-    .manu-container {
-        width:$tabletMenuWidth;
-        height: $tabletMenuHeight;
-        border-radius: 50px;
-        background-color: $purple;
-        @include border-shadow;
-        @include flex-column-center; 
-        .icon {
-            position: absolute;
-            left: 220px;
-            top: 50px;
-          }
-    }
 
-   
-  
+  .flex-center-menu {
+    width: $tabletWidth;
+    height: $tabletHeight;
+    background-color: $darkPurple;
+
+  }
+
+  .manu-container {
+    width: $tabletMenuWidth;
+    height: $tabletMenuHeight;
+    border-radius: 50px;
+    background-color: $purple;
+    @include border-shadow;
+    @include flex-column-center;
+
+    .icon {
+      position: absolute;
+      left: 220px;
+      top: 50px;
+    }
+  }
+
+
+
 }
 
 @media (min-width: $desktopWidth) {
-  
-    .flex-center-menu {
-        width: $desktopWidth;
-        height: $desktopHeight; 
-        
-    }
-    .manu-container {
-        width:$desktopMenuWidth;
-        height: $desktopMenuHeight;
-    }
-  
+
+  .flex-center-menu {
+    width: $desktopWidth;
+    height: $desktopHeight;
+
+  }
+
+  .manu-container {
+    width: $desktopMenuWidth;
+    height: $desktopMenuHeight;
+  }
+
 }

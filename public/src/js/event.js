@@ -8,17 +8,16 @@ class Event {
     }
 
     trigger(params) {
-       
+
         this.listeners.forEach(listener => {
             listener(params);
         });
     }
-    showListener()
-    {
+    showListener() {
         return this.listeners;
     }
-   
-  
+
+
 }
 
 export default Event;

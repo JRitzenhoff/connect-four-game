@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     position: absolute;
-    top:195px;
+    top: 195px;
 }
 
 .droppoint {
@@ -18,9 +18,10 @@
 
 @media(min-width:768px) and (max-width:1439px) {
     .dropbox {
-        top:320px;
+        top: 320px;
         margin-left: 25px;
     }
+
     .droppoint {
         width: 80px;
         height: 80px;
@@ -28,18 +29,19 @@
         margin: 0 4px;
         position: relative;
         z-index: 100;
-        
-        
+
+
     }
 }
 
 
 @media(max-width:767px) {
     .dropbox {
-        top:290px;
-        left:22px;
-        
+        top: 290px;
+        left: 22px;
+
     }
+
     .droppoint {
         width: 45px;
         height: 45px;
@@ -47,6 +49,6 @@
         margin: 0 1px;
         position: relative;
         z-index: 100;
- 
+
     }
 }

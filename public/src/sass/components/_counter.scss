@@ -1,53 +1,54 @@
 .counter-red-small {
-    background-image: url("../assets/images/counter-red-small.svg");
-      background-repeat: no-repeat;
-      background-size: 41px 46px;
-      width: 41px;
-      height: 46px;
-      position: absolute;
-      
+  background-image: url("../assets/images/counter-red-small.svg");
+  background-repeat: no-repeat;
+  background-size: 41px 46px;
+  width: 41px;
+  height: 46px;
+  position: absolute;
 
-      z-index: 15;
+
+  z-index: 15;
 }
 
 .counter-red-large {
-    background-image: url("../assets/images/counter-red-large.svg");
-      background-repeat: no-repeat;
-      background-size: 70px 75px;
-      width: 70px;
-      height: 75px;
-      position: absolute;
-      left: 175.6px;
-      top: 673.2px;
-      z-index: 15;
+  background-image: url("../assets/images/counter-red-large.svg");
+  background-repeat: no-repeat;
+  background-size: 70px 75px;
+  width: 70px;
+  height: 75px;
+  position: absolute;
+  left: 175.6px;
+  top: 673.2px;
+  z-index: 15;
 }
 
 .counter-yellow-small {
   background-image: url("../assets/images/counter-yellow-small.svg");
-    background-repeat: no-repeat;
-    background-size: 41px 46px;
-    width: 41px;
-    height: 46px;
-    position: absolute;
-   
-    z-index: 15;
+  background-repeat: no-repeat;
+  background-size: 41px 46px;
+  width: 41px;
+  height: 46px;
+  position: absolute;
+
+  z-index: 15;
 }
 
 .counter-yellow-large {
   background-image: url("../assets/images/counter-yellow-large.svg");
-    background-repeat: no-repeat;
-    background-size: 70px 75px;
-    width: 70px;
-    height: 75px;
-    position: absolute;
-    left: 1212px;
-    top: 673.2px;
-    z-index: 15;
+  background-repeat: no-repeat;
+  background-size: 70px 75px;
+  width: 70px;
+  height: 75px;
+  position: absolute;
+  left: 1212px;
+  top: 673.2px;
+  z-index: 15;
 }
 
 .game-counters .mobile {
   display: none;
 }
+
 .game-counters .tablet {
   display: none;
 }
@@ -72,7 +73,7 @@
   }
 
 
-  
+
   .counters .desktop {
     display: none;
   }
@@ -80,7 +81,7 @@
   .game-counters .desktop {
     display: none;
   }
- 
+
 
   .game-counters .tablet {
     display: block;
@@ -99,14 +100,15 @@
   .game-counters .desktop {
     display: none;
   }
+
   .game-counters .tablet {
     display: none;
   }
-  
+
   .counters .desktop {
     display: none;
   }
-  
+
   .counters .tablet {
     display: none;
   }
@@ -114,19 +116,18 @@
   .game-counters .mobile {
     display: block;
   }
-  
+
   .counters .mobile {
     display: block;
   }
 
   .counter-red-small {
     left: 46.5px;
-      top: 747px; 
+    top: 747px;
   }
 
   .counter-yellow-small {
     left: 316.5px;
-    top: 747px; 
+    top: 747px;
   }
 }
-

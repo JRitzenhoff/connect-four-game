@@ -7,15 +7,16 @@
   background-color: $white;
   @include flex-column-center;
   position: absolute;
-  top:568.4px;
-  left:37.5px;
+  top: 568.4px;
+  left: 37.5px;
   z-index: 90;
-  
+
 
   .win {
     font-size: $headingLarge-size;
     font-weight: $headingLarge-weight;
   }
+
   .playagain {
     @include flex-center;
     @include menu-item;
@@ -26,18 +27,18 @@
 
 @media (min-width: $tabletWidth) {
   .game-result {
- 
-    top:839px;
-    left:253.5px;
-   
+
+    top: 839px;
+    left: 253.5px;
+
   }
 }
 
 @media (min-width: $desktopWidth) {
-    .game-result {
-      
-        top:720px;
-        left:604.8px;
-      
-      }
+  .game-result {
+
+    top: 720px;
+    left: 604.8px;
+
+  }
 }

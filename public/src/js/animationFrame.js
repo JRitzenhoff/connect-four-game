@@ -175,4 +175,4 @@ let mobileAnimation = [
   ],
 ];
 
-export {mobileAnimation,tabletAnimation,desktopAnimation}
+export { mobileAnimation, tabletAnimation, desktopAnimation }

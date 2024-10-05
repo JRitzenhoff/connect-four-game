@@ -5,7 +5,7 @@
   display: none;
   position: absolute;
   z-index: 250;
-  background-color: rgba(17, 19, 17, 0.5); 
+  background-color: rgba(17, 19, 17, 0.5);
 }
 
 
@@ -16,7 +16,7 @@
   border-radius: $mobilePouseRadius;
   margin: 0 20px;
   margin-bottom: 50px;
- 
+
 
   @include flex-column-center;
   @include border-shadow;
@@ -27,6 +27,7 @@
     color: $white;
     margin-bottom: 25px;
   }
+
   div:not(.pause) {
     height: 72px;
     width: 295px;
@@ -36,17 +37,21 @@
     margin-bottom: 15px;
     @include flex-center;
     @include border-shadow;
+
     &:nth-child(2) {
       background-color: $white;
       color: $black;
     }
+
     &:nth-child(3) {
       background-color: $white;
     }
+
     &:nth-child(4) {
       background-color: $red;
     }
   }
+
   div:not(.pause):hover {
     @include border-shadow-hover;
   }
@@ -59,8 +64,9 @@
     height: $tabletHeight;
     @include flex-center;
     display: none;
-    background-color: rgba(17, 19, 17, 0.5); 
+    background-color: rgba(17, 19, 17, 0.5);
   }
+
   .game-menu {
     width: $tabletPouseWidht;
     height: $tabletPouseHeight;
@@ -74,8 +80,9 @@
     height: $desktopHeight;
     @include flex-center;
     display: none;
-   
+
   }
+
   .game-menu {
     width: $desktopPouseWidht;
     height: $desktopPouseHeight;

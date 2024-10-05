@@ -5,31 +5,29 @@
     border-top-right-radius: $mobileFooterRadius;
     background-color: $darkPurple;
     position: absolute;
-    top:576px;
+    top: 576px;
     z-index: 0;
 }
 
-@media (min-width:$tabletWidth)
-{
+@media (min-width:$tabletWidth) {
     .footer {
         width: $tabletFooterWidth;
         height: $tabletFooterHeight;
         position: absolute;
-        top:790px;
-       
+        top: 790px;
+
         z-index: 0;
     }
 
 
 }
 
-@media (min-width:$desktopWidth)
-{
+@media (min-width:$desktopWidth) {
     .footer {
         width: $desktopFooterWidth;
         height: $desktopFooterHeight;
         position: absolute;
-        top:700px;
+        top: 700px;
         z-index: 0;
     }
 

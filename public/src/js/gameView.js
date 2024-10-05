@@ -1,22 +1,22 @@
 import Event from "./event.js";
-import {mobileAnimation,tabletAnimation,desktopAnimation} from "./animationFrame.js"
+import { mobileAnimation, tabletAnimation, desktopAnimation } from "./animationFrame.js"
 
 class gameView {
   constructor() {
     this.object = this;
     this.dropEvent = new Event();
-    this.dragoverEvent= new Event();
-    this.dragLeaveEvent= new Event();
-    this.showMenuEvent= new Event();
-    this.showPauseMenuEvent= new Event();
-    this.PauseMenuContinueEvent= new Event();
-    this.PauseMenuResetEvent= new Event();
-    this.PauseQuitEvent= new Event();
-    this.resetGameEvent= new Event();
-    this.playagainEvent= new Event();
-    this.mainmenuVsCpuEvent =new Event();
-    this.mainmenuVsPlayerEvent=new Event();
-    this.mainmenuGameRulesOpenEvent=new Event();
+    this.dragoverEvent = new Event();
+    this.dragLeaveEvent = new Event();
+    this.showMenuEvent = new Event();
+    this.showPauseMenuEvent = new Event();
+    this.PauseMenuContinueEvent = new Event();
+    this.PauseMenuResetEvent = new Event();
+    this.PauseQuitEvent = new Event();
+    this.resetGameEvent = new Event();
+    this.playagainEvent = new Event();
+    this.mainmenuVsCpuEvent = new Event();
+    this.mainmenuVsPlayerEvent = new Event();
+    this.mainmenuGameRulesOpenEvent = new Event();
     this.mainmenuGameRulesCloseEvent = new Event();
     this.desktopAnimation = desktopAnimation;
     this.tabletAnimation = tabletAnimation;
@@ -48,7 +48,7 @@ class gameView {
       "540px",
       "630px",
     ];
-    
+
     this.game = document.getElementsByClassName("flex-conter-board");
     this.markers = document.querySelectorAll(".markers div");
     this.markerRedSmall = document.querySelector(".marker-red-small");
@@ -60,38 +60,38 @@ class gameView {
     this.gameResultPlayer = document.querySelector(".game-result .playername");
     this.turn = document.querySelector(".turn-red");
     this.drops = document.querySelectorAll(".droppoint");
-    
+
     this.prefix = ["desktop", "tablet", "mobile"];
-   
+
     //gameboard menu
-    this.menu =document.querySelector(".menu-top div:first-child");
-    this.reset =document.querySelector(".menu-top div:last-child");
+    this.menu = document.querySelector(".menu-top div:first-child");
+    this.reset = document.querySelector(".menu-top div:last-child");
     //gameboard menu
-    this.playerName =document.querySelectorAll('.player-box .playername')
-    this.playerScore=document.querySelectorAll('.player-box .player-score')
+    this.playerName = document.querySelectorAll('.player-box .playername')
+    this.playerScore = document.querySelectorAll('.player-box .player-score')
     this.playagain = document.querySelector(".playagain");
     //main menu
-    this.mainmenu =document.querySelector(".flex-center-menu");
-    this.gameRules=document.querySelector(".flex-center-rules");
-    this.mainmenuGameRulesClose=document.querySelector('.rules-container .tick');
-    this.mainmenuGameRulesOpen  =document.querySelector(".flex-center-menu .menu-item:nth-child(3)");
-    this.mainmenuVsCpu =document.querySelector(".flex-center-menu .menu-item:nth-child(3)");
-    this.mainmenuVsPlayer =document.querySelector(".flex-center-menu .menu-item:nth-child(2)");
+    this.mainmenu = document.querySelector(".flex-center-menu");
+    this.gameRules = document.querySelector(".flex-center-rules");
+    this.mainmenuGameRulesClose = document.querySelector('.rules-container .tick');
+    this.mainmenuGameRulesOpen = document.querySelector(".flex-center-menu .menu-item:nth-child(3)");
+    this.mainmenuVsCpu = document.querySelector(".flex-center-menu .menu-item:nth-child(3)");
+    this.mainmenuVsPlayer = document.querySelector(".flex-center-menu .menu-item:nth-child(2)");
     //main menu
-    this.gameboard =document.querySelector(".flex-conter-board");
-    
+    this.gameboard = document.querySelector(".flex-conter-board");
+
     //pause menu
-    this.pauseMenu=document.querySelector(".flex-center-pausemenu");
-    this.pauseMenuContinue=document.querySelector(".flex-center-pausemenu .continue");
-    this.pauseMenuRestart=document.querySelector(".flex-center-pausemenu .restart");
-    this.pauseMenuQuit=document.querySelector(".flex-center-pausemenu .quit");
+    this.pauseMenu = document.querySelector(".flex-center-pausemenu");
+    this.pauseMenuContinue = document.querySelector(".flex-center-pausemenu .continue");
+    this.pauseMenuRestart = document.querySelector(".flex-center-pausemenu .restart");
+    this.pauseMenuQuit = document.querySelector(".flex-center-pausemenu .quit");
     //pause menu
     this.activeEvent = "";
     this.originalX = "";
     this.originalY = "";
     this.screen = "";
-    
-    
+
+
   }
 
   animate(element, frames) {
@@ -127,19 +127,19 @@ class gameView {
   }
 
   runAnimation(data) {
-    
-    this.screen =="mobile"? this.animate(data.element, this.mobileAnimation[data.column].slice(0,data.lenght+1)):"";
-    this.screen =="tablet"? this.animate(data.element, this.tabletAnimation[data.column].slice(0,data.lenght+1)):"";
-    this.screen =="desktop"? this.animate(data.element, this.desktopAnimation[data.column].slice(0,data.lenght+1)):"";
-    this.setCounterPosition(data.element, data.column,data.lenght);
+
+    this.screen == "mobile" ? this.animate(data.element, this.mobileAnimation[data.column].slice(0, data.lenght + 1)) : "";
+    this.screen == "tablet" ? this.animate(data.element, this.tabletAnimation[data.column].slice(0, data.lenght + 1)) : "";
+    this.screen == "desktop" ? this.animate(data.element, this.desktopAnimation[data.column].slice(0, data.lenght + 1)) : "";
+    this.setCounterPosition(data.element, data.column, data.lenght);
   }
 
   // function move counters on gameboard for all screen size
-  setCounterPosition(element, column,lenght) {
-    let desktop = this.desktopAnimation[column].slice(lenght,lenght+1);
-    let tablet = this.tabletAnimation[column].slice(lenght,lenght+1);
-    let mobile = this.mobileAnimation[column].slice(lenght,lenght+1);
-    
+  setCounterPosition(element, column, lenght) {
+    let desktop = this.desktopAnimation[column].slice(lenght, lenght + 1);
+    let tablet = this.tabletAnimation[column].slice(lenght, lenght + 1);
+    let mobile = this.mobileAnimation[column].slice(lenght, lenght + 1);
+
     let elementNumber = element.id.split("#")[1];
     this.prefix.forEach((item) => {
       let name = item + "#" + elementNumber;
@@ -175,39 +175,38 @@ class gameView {
   detectTouchEnd(pageX, pageY, width) {
     let scrollTop = window.pageYOffset;
     let currentDrop = null;
-    let shift =(this.screenSize.offsetWidth -this.gameboard.offsetWidth)/2;
-    if(this.screenSize.offsetWidth>this.gameboard.offsetWidth)
-    {
+    let shift = (this.screenSize.offsetWidth - this.gameboard.offsetWidth) / 2;
+    if (this.screenSize.offsetWidth > this.gameboard.offsetWidth) {
       this.drops.forEach((current) => {
         if (
-          (parseInt(pageX) + width / 2)-shift > current.getBoundingClientRect().left &&
-          (parseInt(pageX) + width/ 2)-shift < current.getBoundingClientRect().right &&
+          (parseInt(pageX) + width / 2) - shift > current.getBoundingClientRect().left &&
+          (parseInt(pageX) + width / 2) - shift < current.getBoundingClientRect().right &&
           (parseInt(pageY) + width / 2) > current.getBoundingClientRect().top &&
           (parseInt(pageY) + width / 2) <
-            current.getBoundingClientRect().bottom + scrollTop
+          current.getBoundingClientRect().bottom + scrollTop
         ) {
           currentDrop = current;
         }
       });
-    }else {
+    } else {
       this.drops.forEach((current) => {
         if (
           parseInt(pageX) + width / 2 > current.getBoundingClientRect().left &&
           parseInt(pageX) + width / 2 < current.getBoundingClientRect().right &&
           parseInt(pageY) + width / 2 > current.getBoundingClientRect().top &&
           parseInt(pageY) + width / 2 <
-            current.getBoundingClientRect().bottom + scrollTop
+          current.getBoundingClientRect().bottom + scrollTop
         ) {
           currentDrop = current;
         }
       });
     }
-   
+
     return currentDrop;
   }
 
   showMarker(color, target) {
-   
+
     let markerSmall = this.markerRedSmall;
     let markerLarge = this.markerRedLarge;
     if (color === "yellow") {
@@ -215,26 +214,26 @@ class gameView {
       markerLarge = this.markerYellowLarge;
     }
 
-   
-    if (this.screen=== "mobile") {
+
+    if (this.screen === "mobile") {
       markerSmall.style.position = "absolute";
       markerSmall.style.left = this.mobileMarker[target];
       markerSmall.style.top = "230px";
       markerSmall.style.display = "block";
-    
+
     } else if (this.screen === "tablet") {
       markerLarge.style.position = "absolute";
       markerLarge.style.left = this.tabletMarker[target];
       markerLarge.style.top = "230px";
       markerLarge.style.display = "block";
-      
+
     } else if (this.screen === "desktop") {
       markerLarge.style.position = "absolute";
       markerLarge.style.left = this.desktopMarker[target];
       markerLarge.style.top = "100px";
       markerLarge.style.display = "block";
-     
-      
+
+
     }
   }
 
@@ -246,8 +245,8 @@ class gameView {
   }
   // remove all counters from the game 
   removeAllGameCounters() {
-    let deleteGameCounters=document.querySelectorAll(".game-counters div:not(.desktop):not(.tablet):not(.mobile)");
-    let deleteCounters=document.querySelectorAll(".counters div:not(.desktop):not(.tablet):not(.mobile)")
+    let deleteGameCounters = document.querySelectorAll(".game-counters div:not(.desktop):not(.tablet):not(.mobile)");
+    let deleteCounters = document.querySelectorAll(".counters div:not(.desktop):not(.tablet):not(.mobile)")
     deleteGameCounters.forEach(element => {
       element.remove();
     })
@@ -255,69 +254,67 @@ class gameView {
       element.remove();
     })
 
-   
+
   }
 
-  changefooterColor(color)
-  {
+  changefooterColor(color) {
     let footer = document.querySelector(".footer");
-    switch(color) {
+    switch (color) {
       case "red":
-        footer.style.backgroundColor="#FD6687";
-      break;
+        footer.style.backgroundColor = "#FD6687";
+        break;
       case "yellow":
-        footer.style.backgroundColor="#FFCE67";
-      break;
+        footer.style.backgroundColor = "#FFCE67";
+        break;
       default:
-        footer.style.backgroundColor="#5C2DD5";
+        footer.style.backgroundColor = "#5C2DD5";
         break;
     }
-    
+
   }
 
 
 
-  setPlayerName(playerNumber,playerName) {
-   
+  setPlayerName(playerNumber, playerName) {
+
     let player = document.getElementById(this.playerName[playerNumber].id);
-    player.innerHTML=playerScore;
+    player.innerHTML = playerScore;
   }
-  setPlayerScore(playerNumber,playerScore) {
+  setPlayerScore(playerNumber, playerScore) {
     let player = document.getElementById(this.playerScore[playerNumber].id);
-    player.innerHTML=playerScore;
+    player.innerHTML = playerScore;
   }
 
   changeTurn(color) {
 
-    switch(color)
-    {
+    switch (color) {
       case "red":
         this.turn.style.backgroundImage =
-        "url('./src/assets/images/turn-background-red.svg')";
-      this.turn.textContent = "Player 1's turn";
+          "url('./src/assets/images/turn-background-red.svg')";
+        this.turn.textContent = "Player 1's turn";
         break;
       case "yellow":
         this.turn.style.backgroundImage =
-        "url('./src/assets/images/turn-background-yellow.svg')";
-      this.turn.textContent = "Player 2's turn";
+          "url('./src/assets/images/turn-background-yellow.svg')";
+        this.turn.textContent = "Player 2's turn";
         break;
     }
-   
+
 
 
   }
 
-  CountersNotDraggable(red,yellow) {
-    
+  CountersNotDraggable(red, yellow) {
+
     let countersRed = document.querySelectorAll(".counters .counter-red-small, .counter-red-large");
     let countersYellow = document.querySelectorAll(".counters .counter-yellow-small, .counter-yellow-large");
 
-      countersRed.forEach(element => {
-        element.draggable = red;
-      })
-      countersYellow.forEach(element => {
-        element.draggable = yellow;
-      }) 
+    countersRed.forEach(element => {
+      element.draggable = red;
+    })
+    countersYellow.forEach(element => {
+      element.draggable = yellow;
+    })
   }
 
   hideGameResult() {
@@ -327,27 +324,27 @@ class gameView {
   showGameResult(data) {
     this.gameResult.style.display = "flex";
     this.gameResultPlayer.innerHTML = data.playerName;
-    data.counters==="red"? this.setPlayerScore(0,data.score):this.setPlayerScore(1,data.score);
-    
-      
-    
+    data.counters === "red" ? this.setPlayerScore(0, data.score) : this.setPlayerScore(1, data.score);
+
+
+
 
   }
 
   hideGameboard() {
-    this.gameboard.style.display="none"; 
+    this.gameboard.style.display = "none";
   }
 
   showGameboard() {
-    this.gameboard.style.display="flex"; 
+    this.gameboard.style.display = "flex";
   }
 
   showGameRules() {
-    this.gameRules.style.display="flex";
+    this.gameRules.style.display = "flex";
   }
 
   hideGameRules() {
-    this.gameRules.style.display="none";
+    this.gameRules.style.display = "none";
   }
 
   createCounters(quantity = 1, className, prefix, color) {
@@ -368,60 +365,58 @@ class gameView {
   hidePauseMenu() {
     this.pauseMenu.style.display = "none";
   }
-  
-  showMenu()
-  {
-    this.mainmenu.style.display="flex";
+
+  showMenu() {
+    this.mainmenu.style.display = "flex";
   }
 
-  hideMenu()
-  {
-    this.mainmenu.style.display="none";
+  hideMenu() {
+    this.mainmenu.style.display = "none";
   }
 
   render() {
     // main menu 
-    this.mainmenuVsCpu.addEventListener("click",(event) =>{
+    this.mainmenuVsCpu.addEventListener("click", (event) => {
       this.mainmenuVsCpuEvent.trigger("VSCPU");
     });
-    this.mainmenuVsPlayer.addEventListener("click",(event) =>{
+    this.mainmenuVsPlayer.addEventListener("click", (event) => {
       this.mainmenuVsPlayerEvent.trigger("VsPlayer");
     });
-    this.mainmenuGameRulesOpen.addEventListener("click",(event) =>{
+    this.mainmenuGameRulesOpen.addEventListener("click", (event) => {
       this.mainmenuGameRulesOpenEvent.trigger("rules");
     });
-    this.mainmenuGameRulesClose.addEventListener("click",() =>{
+    this.mainmenuGameRulesClose.addEventListener("click", () => {
       this.mainmenuGameRulesCloseEvent.trigger("rules");
     })
 
-    
+
     // main menu
-    
+
   }
 
   renderGame() {
-    
 
-    this.playagain.addEventListener("click",(event) =>{
+
+    this.playagain.addEventListener("click", (event) => {
       this.playagainEvent.trigger("playAgain");
     });
-     // pause menu 
-     this.pauseMenuContinue.addEventListener("click",(event) =>{
+    // pause menu 
+    this.pauseMenuContinue.addEventListener("click", (event) => {
       this.PauseMenuContinueEvent.trigger();
     });
-    this.pauseMenuRestart.addEventListener("click",(event) =>{
+    this.pauseMenuRestart.addEventListener("click", (event) => {
       this.PauseMenuResetEvent.trigger();
     });
-    this.pauseMenuQuit.addEventListener("click",(event) =>{
+    this.pauseMenuQuit.addEventListener("click", (event) => {
       this.PauseQuitEvent.trigger();
     });
     //pause menu 
 
     // board controles
-    this.reset.addEventListener("click",(event) =>{
+    this.reset.addEventListener("click", (event) => {
       this.resetGameEvent.trigger("reset");
     })
-    this.menu.addEventListener("click",(event) =>{
+    this.menu.addEventListener("click", (event) => {
       this.showPauseMenuEvent.trigger("menu");
     })
     // board controles
@@ -429,37 +424,36 @@ class gameView {
       this.checkScreenSize();
     });
 
-    
-  
-   
+
+
+
   }
 
-  
-addListenersDroppoint(){
-  this.drops.forEach((droppoint) => {
-    droppoint.addEventListener("dragenter", this.dragEnter.bind(this));
-    droppoint.addEventListener("dragover", this.dragOver.bind(this));
-    droppoint.addEventListener("dragleave", this.dragLeave.bind(this));
-    droppoint.addEventListener("drop", this.drop.bind(this));
-  });
- 
-}
 
-addListenersCounters(color)
-{
-  let counters="";
-  let countersRed = document.querySelectorAll(".counters .counter-red-small, .counter-red-large");
-  let countersYellow = document.querySelectorAll(".counters .counter-yellow-small, .counter-yellow-large");
-  color==="red"?counters = countersRed:counters = countersYellow;
-  counters.forEach((counter) => {
-    counter.addEventListener("dragstart", this.dragStart.bind(this));
-  });
-  counters.forEach((counter) => {
-    counter.addEventListener("touchstart", this.TouchStart.bind(this));
-    counter.addEventListener("touchmove", this.TouchMove.bind(this));
-    counter.addEventListener("touchend", this.TouchEnd.bind(this));
-  });
-}
+  addListenersDroppoint() {
+    this.drops.forEach((droppoint) => {
+      droppoint.addEventListener("dragenter", this.dragEnter.bind(this));
+      droppoint.addEventListener("dragover", this.dragOver.bind(this));
+      droppoint.addEventListener("dragleave", this.dragLeave.bind(this));
+      droppoint.addEventListener("drop", this.drop.bind(this));
+    });
+
+  }
+
+  addListenersCounters(color) {
+    let counters = "";
+    let countersRed = document.querySelectorAll(".counters .counter-red-small, .counter-red-large");
+    let countersYellow = document.querySelectorAll(".counters .counter-yellow-small, .counter-yellow-large");
+    color === "red" ? counters = countersRed : counters = countersYellow;
+    counters.forEach((counter) => {
+      counter.addEventListener("dragstart", this.dragStart.bind(this));
+    });
+    counters.forEach((counter) => {
+      counter.addEventListener("touchstart", this.TouchStart.bind(this));
+      counter.addEventListener("touchmove", this.TouchMove.bind(this));
+      counter.addEventListener("touchend", this.TouchEnd.bind(this));
+    });
+  }
 
   removeListeners() {
     let counters = document.querySelectorAll(".counters div");
@@ -467,66 +461,65 @@ addListenersCounters(color)
       counter.replaceWith(counter.cloneNode(true));
     });
   }
-  
-  
-   dragStart(event) {
+
+
+  dragStart(event) {
     event.dataTransfer.setData("text/plain", event.target.id);
   }
-  
-   dragEnter(event) {
+
+  dragEnter(event) {
     event.preventDefault();
-    
-      let color = event.dataTransfer.getData("text/plain").split("-")[1];
-      let target = event.target.id;
-    
-  
-   
+
+    let color = event.dataTransfer.getData("text/plain").split("-")[1];
+    let target = event.target.id;
+
+
+
   }
-  
-   dragOver(event) {
+
+  dragOver(event) {
     event.preventDefault();
-    
+
     this.dragoverEvent.trigger(event.target.id);
-    
-    
+
+
   }
-  
-   dragLeave(event) {
+
+  dragLeave(event) {
     event.preventDefault();
   }
-  
-   drop(event) {
-   
+
+  drop(event) {
+
     const id = event.dataTransfer.getData("text/plain");
     const dragElement = document.getElementById(id);
-    this.dropEvent.trigger([event.target.id,dragElement]);
-    
-    
+    this.dropEvent.trigger([event.target.id, dragElement]);
+
+
   }
-  
-   TouchStart(event) {
+
+  TouchStart(event) {
     this.originalX = event.target.offsetLeft + "px";
     this.originalY = event.target.offsetTop + "px";
     this.activeEvent = "start";
   }
-  
-   TouchMove(event) {
+
+  TouchMove(event) {
     event.preventDefault();
     let pageX;
     let pageY;
     let width = parseInt(window.getComputedStyle(event.target).width);
     let touchLocation = event.targetTouches[0];
-    let shift =(this.screenSize.offsetWidth -this.gameboard.offsetWidth)/2;
+    let shift = (this.screenSize.offsetWidth - this.gameboard.offsetWidth) / 2;
     let color = touchLocation.target.id.split("-")[1];
-    if(this.screenSize.offsetWidth>this.gameboard.offsetWidth)
-    {
-      pageX = touchLocation.pageX -shift -50 + "px";
-      pageY = touchLocation.pageY  + "px";
-    }else {
-      pageX= touchLocation.pageX - 50 + "px";
-      pageY= touchLocation.pageY - 50 + "px";
+    if (this.screenSize.offsetWidth > this.gameboard.offsetWidth) {
+      pageX = touchLocation.pageX - shift - 50 + "px";
+      pageY = touchLocation.pageY + "px";
+    } else {
+      pageX = touchLocation.pageX - 50 + "px";
+      pageY = touchLocation.pageY - 50 + "px";
     }
-    
+
     event.target.style.zIndex = 100;
     event.target.style.position = "absolute";
     event.target.style.left = pageX;
@@ -538,8 +531,8 @@ addListenersCounters(color)
       this.showMarker(color, current.id);
     }
   }
-  
-   TouchEnd(event) {
+
+  TouchEnd(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
     let element = event.target;
@@ -551,8 +544,8 @@ addListenersCounters(color)
 
       if (this.detectTouchEnd(pageX, pageY, width) != null) {
         let current = this.detectTouchEnd(pageX, pageY, width);
-        this.dropEvent.trigger([current.id,event.target]);
-        
+        this.dropEvent.trigger([current.id, event.target]);
+
       } else {
         event.target.style.left = this.originalX;
         event.target.style.top = this.originalY;
