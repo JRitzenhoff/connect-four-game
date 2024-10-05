@@ -1,28 +1,22 @@
 {
-  "name": "connect4",
-  "version": "1.0.0",
-  "description": "Connect four game ",
-  "main": "index.js",
+  "name": "connect-four-game",
+  "version": "0.0.1",
+  "description": "A modified Connect4 Implementation supporting real-world button presses",
+  "main": "server.js",
   "scripts": {
-    "sass": "sass --no-source-map --watch src/sass:src/css",
-    "gulp": "gulp concat "
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kmlson/Connect-Four-game.git"
+    "url": "git+https://github.com/JRitzenhoff/connect-four-game.git"
   },
-  "author": "kmlson",
+  "author": "JRitzenhoff",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kmlson/Connect-Four-game/issues"
+    "url": "https://github.com/JRitzenhoff/connect-four-game/issues"
   },
-  "homepage": "https://github.com/kmlson/Connect-Four-game#readme",
+  "homepage": "https://github.com/JRitzenhoff/connect-four-game#readme",
   "dependencies": {
-    "gulp-cli": "^3.0.0",
-    "sass": "^1.55.0"
-  },
-  "devDependencies": {
-    "gulp": "^5.0.0",
-    "gulp-concat": "^2.6.1"
+    "express": "^4.21.0"
   }
 }
