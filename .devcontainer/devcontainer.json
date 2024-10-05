@@ -5,5 +5,17 @@
 		"context": "../..",
 		"dockerfile": "Dockerfile"
 	},
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					}
+				}
+			}
+		}
+	},
 }
