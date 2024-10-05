@@ -1,6 +1,6 @@
 # Ignore the .vscode configuration files
-.vscode/*
+.vscode
 
 # Ignore the generated node_modules and distribution folder
-node_modules/
-dist/
+node_modules
+dist
