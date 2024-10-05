@@ -32,3 +32,7 @@ With an ssh-cloned repo, there appear to be difficulties accessing github from w
 
 Possible solutions include:
 * https://tom01098.github.io/2022/12/05/devcontainer-ssh.html
+
+### RECOMMENDATION
+
+* Clone the repo using HTTPS instead of SSH
