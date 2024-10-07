@@ -127,7 +127,6 @@ class gameView {
   }
 
   runAnimation(data) {
-
     this.screen == "mobile" ? this.animate(data.element, this.mobileAnimation[data.column].slice(0, data.lenght + 1)) : "";
     this.screen == "tablet" ? this.animate(data.element, this.tabletAnimation[data.column].slice(0, data.lenght + 1)) : "";
     this.screen == "desktop" ? this.animate(data.element, this.desktopAnimation[data.column].slice(0, data.lenght + 1)) : "";
@@ -182,8 +181,7 @@ class gameView {
           (parseInt(pageX) + width / 2) - shift > current.getBoundingClientRect().left &&
           (parseInt(pageX) + width / 2) - shift < current.getBoundingClientRect().right &&
           (parseInt(pageY) + width / 2) > current.getBoundingClientRect().top &&
-          (parseInt(pageY) + width / 2) <
-          current.getBoundingClientRect().bottom + scrollTop
+          (parseInt(pageY) + width / 2) < current.getBoundingClientRect().bottom + scrollTop
         ) {
           currentDrop = current;
         }
@@ -232,8 +230,6 @@ class gameView {
       markerLarge.style.left = this.desktopMarker[target];
       markerLarge.style.top = "100px";
       markerLarge.style.display = "block";
-
-
     }
   }
 
@@ -325,10 +321,6 @@ class gameView {
     this.gameResult.style.display = "flex";
     this.gameResultPlayer.innerHTML = data.playerName;
     data.counters === "red" ? this.setPlayerScore(0, data.score) : this.setPlayerScore(1, data.score);
-
-
-
-
   }
 
   hideGameboard() {
@@ -465,6 +457,7 @@ class gameView {
 
   dragStart(event) {
     event.dataTransfer.setData("text/plain", event.target.id);
+    console.log(`The drag-start event id is: ${event.target.id}`)
   }
 
   dragEnter(event) {
@@ -472,17 +465,12 @@ class gameView {
 
     let color = event.dataTransfer.getData("text/plain").split("-")[1];
     let target = event.target.id;
-
-
-
   }
 
   dragOver(event) {
     event.preventDefault();
 
     this.dragoverEvent.trigger(event.target.id);
-
-
   }
 
   dragLeave(event) {
@@ -490,12 +478,10 @@ class gameView {
   }
 
   drop(event) {
-
     const id = event.dataTransfer.getData("text/plain");
+    console.log(`Dropping current item id: ${id} into target id: ${event.target.id}`);
     const dragElement = document.getElementById(id);
     this.dropEvent.trigger([event.target.id, dragElement]);
-
-
   }
 
   TouchStart(event) {
@@ -561,6 +547,40 @@ class gameView {
     this.createCounters(20, "counter-yellow-large", "desktop", "yellow");
     this.createCounters(20, "counter-yellow-large", "tablet", "yellow");
     this.createCounters(20, "counter-yellow-small", "mobile", "yellow");
+
+    let redCounter = 20;
+    let yellowCounter = 20;
+    let redActive = true;
+
+    // Add an eventsource callback that calls the drop-command with the current counter value
+    const evntSource = new EventSource('/receive_events');
+    evntSource.onmessage = (eventMessage) => {
+      console.log('Got counter event', eventMessage.data);
+
+      let spoofedDataTransfer = new DataTransfer();
+
+      if (redActive) {
+        spoofedDataTransfer.setData("text/plain", `desktop#${redCounter}-red`);
+        redCounter--;
+      }
+      else {
+        spoofedDataTransfer.setData("text/plain", `desktop#${yellowCounter}-yellow`);
+        yellowCounter--;
+      }
+      redActive = !redActive;
+
+      const spoofedTarget = {
+        id: eventMessage.data
+      };
+
+      const spoofedCounterEvent = {
+        dataTransfer: spoofedDataTransfer,
+        target: spoofedTarget
+      };
+
+      this.drop(spoofedCounterEvent)
+    };
+
   }
 
 }

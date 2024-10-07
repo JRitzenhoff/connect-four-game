@@ -101,6 +101,7 @@
           <div class="marker-yellow-small"></div>
           <div class="marker-yellow-large"></div>
         </div>
+        <!-- This contains the structure for the actual connect-4 dropable section -->
         <div class="dropbox">
           <div id="0" class="droppoint"></div>
           <div id="1" class="droppoint"></div>
@@ -148,7 +149,7 @@
     <script type="module" src="./src/js/main.js"></script>
 
     <!-- Listen to events on the correct endpoint -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       const evntSource = new EventSource('/receive_events');
 
       // /*
@@ -166,7 +167,7 @@
       evntSource.onmessage = (eventMessage) => {
         console.log('Got event', eventMessage.data);
       };
-    </script>
+    </script> -->
 </body>
 
 </html>

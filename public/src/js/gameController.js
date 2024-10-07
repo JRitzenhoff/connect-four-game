@@ -10,8 +10,6 @@ class gameController {
     this.view.dropEvent.addListener((drop) => {
       this.model.play(drop);
       this.view.hideAllMarkes();
-
-
     });
 
     this.view.dragoverEvent.addListener((over) => {
