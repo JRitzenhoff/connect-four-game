@@ -473,7 +473,7 @@ function detectTouchEnd(pageX, pageY, width) {
       parseInt(pageX) + width / 2 < current.getBoundingClientRect().right &&
       parseInt(pageY) + width / 2 > current.getBoundingClientRect().top &&
       parseInt(pageY) + width / 2 <
-        current.getBoundingClientRect().bottom + scrollTop
+      current.getBoundingClientRect().bottom + scrollTop
     ) {
       currentDrop = current;
     }
@@ -615,6 +615,39 @@ function changeTurn(color) {
 
 function runGame() {
   gameResult.style.display = "none";
+
+  let redActive = true;
+  let redCounter = 20;
+  let yellowCounter = 20;
+
+  // Add an eventsource callback that calls the drop-command with the current counter value
+  const evntSource = new EventSource('/receive_events');
+  evntSource.onmessage = (eventMessage) => {
+    console.log('Got counter event', eventMessage.data);
+
+    let spoofedDataTransfer = new DataTransfer();
+
+    if (redActive) {
+      spoofedDataTransfer.setData("text/plain", `desktop#${redCounter}-red`);
+      redCounter = redCounter - 1;
+    }
+    else {
+      spoofedDataTransfer.setData("text/plain", `desktop#${yellowCounter}-yellow`);
+      yellowCounter = yellowCounter - 1;
+    }
+    redActive = !redActive;
+
+    const spoofedTarget = {
+      id: eventMessage.data
+    };
+
+    const spoofedCounterEvent = {
+      dataTransfer: spoofedDataTransfer,
+      target: spoofedTarget
+    };
+
+    drop(spoofedCounterEvent)
+  };
 }
 
 runGame();
