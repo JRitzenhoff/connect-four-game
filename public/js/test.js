@@ -1,11 +1,11 @@
 let desktopAnimation = [
   [
-    { left: "29.2%", top: "22%" },
-    { left: "29.2%", top: "32%" },
-    { left: "29.2%", top: "41.5%" },
-    { left: "29.2%", top: "51.5%" },
-    { left: "29.2%", top: "61.2%" },
-    { left: "29.2%", top: "71%" },
+    { left: "29.2%", top: " 22%" },
+    { left: "29.2%", top: " 32%" },
+    { left: "29.2%", top: " 41.5%" },
+    { left: "29.2%", top: " 51.5%" },
+    { left: "29.2%", top: " 61.2%" },
+    { left: "29.2%", top: " 71%" },
   ],
   [
     { left: "35.4%", top: " 22%" },
@@ -57,124 +57,6 @@ let desktopAnimation = [
   ],
 ];
 
-let tabletAnimation = [
-  [
-    { left: "12.2%", top: " 31.5%" },
-    { left: "12.2%", top: " 40.1%" },
-    { left: "12.2%", top: " 49%" },
-    { left: "12.2%", top: " 57.5%" },
-    { left: "12.2%", top: " 66.2%" },
-    { left: "12.2%", top: "75%" },
-  ],
-  [
-    { left: "23.7%", top: " 31.5%" },
-    { left: "23.7%", top: " 40.1%" },
-    { left: "23.7%", top: " 49%" },
-    { left: "23.7%", top: " 57.5%" },
-    { left: "23.7%", top: " 66.2%" },
-    { left: "23.7%", top: "75%" },
-  ],
-  [
-    { left: "35.2%", top: " 31.5%" },
-    { left: "35.2%", top: " 40.1%" },
-    { left: "35.2%", top: " 49%" },
-    { left: "35.2%", top: " 57.5%" },
-    { left: "35.2%", top: " 66.2%" },
-    { left: "35.2%", top: "75%" },
-  ],
-  [
-    { left: "46.5%", top: " 31.5%" },
-    { left: "46.5%", top: " 40.1%" },
-    { left: "46.5%", top: " 49%" },
-    { left: "46.5%", top: " 57.5%" },
-    { left: "46.5%", top: " 66.2%" },
-    { left: "46.5%", top: "75%" },
-  ],
-  [
-    { left: "58.1%", top: " 31.5%" },
-    { left: "58.1%", top: " 40.1%" },
-    { left: "58.1%", top: " 49%" },
-    { left: "58.1%", top: " 57.5%" },
-    { left: "58.1%", top: " 66.2%" },
-    { left: "58.1%", top: "75%" },
-  ],
-  [
-    { left: "69.5%", top: " 31.5%" },
-    { left: "69.5%", top: " 40.1%" },
-    { left: "69.5%", top: " 49%" },
-    { left: "69.5%", top: " 57.5%" },
-    { left: "69.5%", top: " 66.2%" },
-    { left: "69.5%", top: "75%" },
-  ],
-  [
-    { left: "80.9%", top: " 31.5%" },
-    { left: "80.9%", top: " 40.1%" },
-    { left: "80.9%", top: " 49%" },
-    { left: "80.9%", top: " 57.5%" },
-    { left: "80.9%", top: " 66.2%" },
-    { left: "80.9%", top: "75%" },
-  ],
-];
-
-let mobileAnimation = [
-  [
-    { left: "6.5%", top: " 35.8%" },
-    { left: "6.5%", top: " 41.8%" },
-    { left: "6.5%", top: " 47.3%" },
-    { left: "6.5%", top: " 53.3%" },
-    { left: "6.5%", top: " 59.1%" },
-    { left: "6.5%", top: " 64.8%" },
-  ],
-  [
-    { left: "19.5%", top: " 35.8%" },
-    { left: "19.5%", top: " 41.8%" },
-    { left: "19.5%", top: " 47.3%" },
-    { left: "19.5%", top: " 53.3%" },
-    { left: "19.5%", top: " 59.1%" },
-    { left: "19.5%", top: " 64.8%" },
-  ],
-  [
-    { left: "31.5%", top: " 35.8%" },
-    { left: "31.5%", top: " 41.8%" },
-    { left: "31.5%", top: " 47.3%" },
-    { left: "31.5%", top: " 53.3%" },
-    { left: "31.5%", top: " 59.1%" },
-    { left: "31.5%", top: " 64.8%" },
-  ],
-  [
-    { left: "44.5%", top: " 35.8%" },
-    { left: "44.5%", top: " 41.8%" },
-    { left: "44.5%", top: " 47.3%" },
-    { left: "44.5%", top: " 53.3%" },
-    { left: "44.5%", top: " 59.1%" },
-    { left: "44.5%", top: " 64.8%" },
-  ],
-  [
-    { left: "56.5%", top: " 35.8%" },
-    { left: "56.5%", top: " 41.8%" },
-    { left: "56.5%", top: " 47.3%" },
-    { left: "56.5%", top: " 53.3%" },
-    { left: "56.5%", top: " 59.1%" },
-    { left: "56.5%", top: " 64.8%" },
-  ],
-  [
-    { left: "69.2%", top: " 35.8%" },
-    { left: "69.2%", top: " 41.8%" },
-    { left: "69.2%", top: " 47.3%" },
-    { left: "69.2%", top: " 53.3%" },
-    { left: "69.2%", top: " 59.1%" },
-    { left: "69.2%", top: " 64.8%" },
-  ],
-  [
-    { left: "81.5%", top: " 35.8%" },
-    { left: "81.5%", top: " 41.8%" },
-    { left: "81.5%", top: " 47.3%" },
-    { left: "81.5%", top: " 53.3%" },
-    { left: "81.5%", top: " 59.1%" },
-    { left: "81.5%", top: " 64.8%" },
-  ],
-];
-
 const gameArray = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
@@ -192,24 +74,7 @@ let desktopMarker = [
   "860px",
   "950px",
 ];
-let mobileMarker = [
-  "25px",
-  "75px",
-  "120px",
-  "170px",
-  "215px",
-  "260px",
-  "310px",
-];
-let tabletMarker = [
-  "95px",
-  "185px",
-  "270px",
-  "355px",
-  "450px",
-  "540px",
-  "630px",
-];
+
 let large = document.getElementById("counter");
 let small = document.getElementById("counter1");
 let game = document.getElementsByClassName("flex-conter-board");
@@ -227,30 +92,9 @@ let turn = document.querySelector(".turn-red");
 
 const drops = document.querySelectorAll(".droppoint");
 const counters = document.querySelectorAll(".counters div");
-const countersMobile = document.querySelector(".game-counters .mobile");
-const countersTablet = document.querySelector(".game-counters .tablet");
 const countersDesktop = document.querySelector(".game-counters .desktop");
 
-const countersMobileAll = document.querySelectorAll(".counters .mobile");
-const countersTabletAll = document.querySelectorAll(".counters .tablet");
 const countersDesktopAll = document.querySelectorAll(".counters .desktop");
-
-const MobileAllCounters = document.querySelectorAll(".counters .mobile div");
-const MobileAllRed = document.querySelectorAll(
-  ".counters .mobile .counter-red-small"
-);
-const MobileAllYellow = document.querySelectorAll(
-  ".counters .mobile .counter-yellow-small"
-);
-
-const TabletAllCounters = document.querySelectorAll(".counters .tablet div");
-
-const TabletAllRed = document.querySelectorAll(
-  ".counters .tablet .counter-red-large"
-);
-const TabletAllYellow = document.querySelectorAll(
-  ".counters .tablet .counter-yellow-large"
-);
 
 const DesktopAllCounters = document.querySelectorAll(".counters .desktop div");
 const DesktopAllRed = Array.from(
@@ -259,7 +103,6 @@ const DesktopAllRed = Array.from(
 const DesktopAllYellow = Array.from(
   document.querySelectorAll(".counters .desktop .counter-yellow-large")
 );
-let tabletArray = Array.from(TabletAllCounters);
 
 let drop0 = document.getElementById("0");
 let drop1 = document.getElementById("1");
@@ -283,12 +126,6 @@ function animate(element, frames) {
 function checkScreenSize() {
   let screen = "";
 
-  if (window.matchMedia("(max-width: 767px)").matches) {
-    screen = "mobile";
-  }
-  if (window.matchMedia("(min-width: 768px) and (max-width: 1439px)").matches) {
-    screen = "tablet";
-  }
   if (window.matchMedia("(min-width: 1440px)").matches) {
     screen = "desktop";
   }
@@ -304,21 +141,6 @@ function setDisplayCounters(counters) {
 
 function animateOnScreen(element, frameNumber) {
   switch (checkScreenSize()) {
-    case "mobile":
-      // setDisplayCounters(countersTabletAll);
-      // setDisplayCounters(countersDesktopAll);
-
-      animate(element, mobileAnimation[frameNumber]);
-      savePlayerMove(element, mobileAnimation[frameNumber], frameNumber);
-
-      break;
-    case "tablet":
-      // setDisplayCounters(countersMobileAll);
-      // setDisplayCounters(countersDesktopAll);
-      animate(element, tabletAnimation[frameNumber]);
-      savePlayerMove(element, tabletAnimation[frameNumber], frameNumber);
-
-      break;
     case "desktop":
       // setDisplayCounters(countersTabletAll);
       // setDisplayCounters(countersMobileAll);
@@ -344,16 +166,6 @@ function setCounterPosition(element, frameNumber) {
         newElement.style.left = desktop.left;
         newElement.style.top = desktop.top;
         moveCounterToGameBoard(newElement, "desktop");
-        break;
-      case "tablet":
-        newElement.style.left = tablet.left;
-        newElement.style.top = tablet.top;
-        moveCounterToGameBoard(newElement, "tablet");
-        break;
-      case "mobile":
-        newElement.style.left = mobile.left;
-        newElement.style.top = mobile.top;
-        moveCounterToGameBoard(newElement, "mobile");
         break;
     }
   });
@@ -490,17 +302,7 @@ function showMarker(color, target) {
     markerLarge = markerYellowLarge;
   }
 
-  if (checkScreenSize() === "mobile") {
-    markerSmall.style.position = "absolute";
-    markerSmall.style.left = mobileMarker[target];
-    markerSmall.style.top = "230px";
-    markerSmall.style.display = "block";
-  } else if (checkScreenSize() === "tablet") {
-    markerLarge.style.position = "absolute";
-    markerLarge.style.left = tabletMarker[target];
-    markerLarge.style.top = "230px";
-    markerLarge.style.display = "block";
-  } else if (checkScreenSize() === "desktop") {
+  if (checkScreenSize() === "desktop") {
     markerLarge.style.position = "absolute";
     markerLarge.style.left = desktopMarker[target];
     markerLarge.style.top = "100px";
