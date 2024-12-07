@@ -10,7 +10,12 @@ body {
 
 .grid-container {
   display: grid;
-  gap: 10px 10px;
+  column-gap: 10px;
+}
+
+.drop-column {
+  display: grid;
+  row-gap: 10px;
 }
 
 .box {
@@ -22,6 +27,7 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 8px;
+  opacity: 1;
 }
 
 .icon {
