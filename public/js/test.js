@@ -116,6 +116,8 @@ function animate(element, frames) {
   if (frames.length === 1) {
     frames.push(frames[0]);
   }
+
+  // this steps through the provided keyFrames at the provided duration
   element.animate(frames, {
     duration: 500,
     iterations: 1,
@@ -140,35 +142,24 @@ function setDisplayCounters(counters) {
 }
 
 function animateOnScreen(element, frameNumber) {
-  switch (checkScreenSize()) {
-    case "desktop":
-      // setDisplayCounters(countersTabletAll);
-      // setDisplayCounters(countersMobileAll);
 
-      animate(element, desktopAnimation[frameNumber]);
-      savePlayerMove(element, desktopAnimation[frameNumber], frameNumber);
-      break;
-  }
+  animate(element, desktopAnimation[frameNumber]);
+  savePlayerMove(element, desktopAnimation[frameNumber], frameNumber);
+
   setCounterPosition(element, frameNumber);
 }
 
 function setCounterPosition(element, frameNumber) {
   let desktop = desktopAnimation[frameNumber].pop();
-  let tablet = tabletAnimation[frameNumber].pop();
-  let mobile = mobileAnimation[frameNumber].pop();
-  const prefix = ["desktop", "tablet", "mobile"];
+  const prefix = ["desktop"];
   let elementNumber = element.id.split("#")[1];
-  prefix.forEach((item) => {
-    let name = item + "#" + elementNumber;
-    let newElement = document.getElementById(name.toString());
-    switch (item) {
-      case "desktop":
-        newElement.style.left = desktop.left;
-        newElement.style.top = desktop.top;
-        moveCounterToGameBoard(newElement, "desktop");
-        break;
-    }
-  });
+
+  let name = "desktop" + "#" + elementNumber;
+  let newElement = document.getElementById(name.toString());
+
+  newElement.style.left = desktop.left;
+  newElement.style.top = desktop.top;
+  moveCounterToGameBoard(newElement, "desktop");
 }
 
 function moveCounterToGameBoard(element, boardElement) {

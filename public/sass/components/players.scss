@@ -1,54 +1,55 @@
 .players-container {
-    
+
     margin: 0 20px;
     height: $mobilePlayerContainerHeight;
     @include flex-space-between;
-  
+
     .player-box {
         width: $mobilePlayerBoxWidth;
         height: $mobilePlayerBoxHeight;
         border-radius: $mobilePlayerBoxRadius;
         background-color: $white;
         text-align: center;
-        padding-top: 15px; 
+        padding-top: 15px;
         margin: 0 15px;
         font-family: $font-main-bold;
         font-size: $headingSmall-size;
         font-weight: $headingSmall-weight;
         @include border-shadow;
     }
-    
+
     .player-icon {
         position: relative;
     }
-    
+
     .player1 {
         background-image: url("../assets/images/player-one.svg");
         bottom: 30px;
         right: 25px;
         @include playerBox;
     }
+
     .player2 {
         background-image: url("../assets/images/player-two.svg");
         bottom: 30px;
-        left:110px;
+        left: 110px;
         @include playerBox;
-        
+
     }
-    
+
     .player-score {
         position: relative;
         bottom: 60px;
     }
 }
 
-@media (min-width:$tabletWidth)
-{
+@media (min-width:$tabletWidth) {
     .players-container {
-       
+
         width: $tabletPlayerContainerWidth;
         height: $tabletPlayerContainerHeight;
-        top:250px;
+        top: 250px;
+
         .player-box {
             width: $tabletPlayerBoxWidth;
             height: $tabletPlayerBoxHeight;
@@ -58,23 +59,25 @@
             font-size: $headingSmall-size;
             font-weight: $headingSmall-weight;
             @include border-shadow;
-            
-    
+
+
         }
 
         .player1 {
             background-image: url("../assets/images/player-one.svg");
             bottom: 25px;
             left: -25px;
-            
+
         }
+
         .player2 {
             background-image: url("../assets/images/player-two.svg");
             bottom: 25px;
-            left:240px;
-           
-            
+            left: 240px;
+
+
         }
+
         .player-name {
             font-size: $headingSmall-size;
             font-weight: $headingSmall-weight;
@@ -85,52 +88,53 @@
             font-weight: $headingLarge-weight;
         }
 
-      
-        
-       
-        
 
-        
-    } 
+
+
+
+
+
+    }
+
     #player1name {
         position: relative;
         left: -50px;
-        top:20px;
+        top: 20px;
     }
 
-    #player1score  {
+    #player1score {
         position: relative;
-        left:80px;
-        top:-85px;
+        left: 80px;
+        top: -85px;
     }
 
 
     #player2name {
         position: relative;
         left: 50px;
-        top:20px;
+        top: 20px;
     }
 
-    #player2score  {
+    #player2score {
         position: relative;
-        left:-80px;
-        top:-85px;
-      
+        left: -80px;
+        top: -85px;
+
     }
 
 }
 
 
 
-@media (min-width:$desktopWidth)
-{
+@media (min-width:$desktopWidth) {
     .players-container {
-       
+
         width: 1200px;
         height: 160px;
         position: relative;
-        top:300px;
+        top: 300px;
         z-index: 0;
+
         .player-box {
             width: $mobilePlayerBoxWidth;
             height: 160px;
@@ -140,23 +144,25 @@
             font-size: $headingSmall-size;
             font-weight: $headingSmall-weight;
             @include border-shadow;
-            
-    
+
+
         }
 
         .player1 {
             background-image: url("../assets/images/player-one.svg");
             bottom: 75px;
             left: 50px;
-            
+
         }
+
         .player2 {
             background-image: url("../assets/images/player-two.svg");
             bottom: 75px;
-            left:50px;
-           
-            
+            left: 50px;
+
+
         }
+
         .player-name {
             font-size: $headingSmall-size;
             font-weight: $headingSmall-weight;
@@ -165,34 +171,34 @@
         .player-score {
             font-size: $headingLarge-size;
             font-weight: $headingLarge-weight;
-        } 
-    } 
+        }
+    }
+
     #player1name {
         position: relative;
         left: 0px;
-        top:20px;
+        top: 20px;
     }
 
-    #player1score  {
+    #player1score {
         position: relative;
-        left:0px;
-        top:-20px;
+        left: 0px;
+        top: -20px;
     }
 
 
     #player2name {
         position: relative;
         left: 0px;
-        top:20px;
+        top: 20px;
     }
 
-    #player2score  {
+    #player2score {
         position: relative;
-        left:0px;
-        top:-20px;
-      
+        left: 0px;
+        top: -20px;
+
     }
 
 
 }
-
