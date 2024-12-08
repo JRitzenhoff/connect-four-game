@@ -31,7 +31,8 @@ app.listen(PORT, () => {
 // ---------------------
 function formatColumnNumberEventMessage(number) {
     // https://web.dev/articles/eventsource-basics
-    return `data: ${number}\n\n`;
+    const eventTypeDescriptor = 'columnNumber';
+    return `event: ${eventTypeDescriptor}\ndata: ${number}\n\n`;
 }
 
 // save the client and send an initial data message
@@ -70,9 +71,7 @@ app.get('/receive_events', registerEventClient);
 function sendPlacedColumnEvent(columnNumber) {
     const updatedColumnEventMessage = formatColumnNumberEventMessage(columnNumber);
 
-    eventClients.forEach(client =>
-        client.response.write(updatedColumnEventMessage)
-    );
+    eventClients.forEach(client => client.response.write(updatedColumnEventMessage));
 }
 
 // ----------------------------------------

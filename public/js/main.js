@@ -110,7 +110,7 @@ const buildGameBoard = () => {
 const extractPossibleColumnElements = (columnIndex) => {
     const gameBoard = document.getElementById(GAMEBOARD_ID);
     const allColumns = gameBoard.getElementsByClassName(COLUMN_CLASS_NAME);
-    const selectedColumnBoxes = allColumns[columnIndex].getElementsByClassName(ROW_CLASS_NAME);
+    const selectedColumnBoxes = allColumns[columnIndex - 1].getElementsByClassName(ROW_CLASS_NAME);
     const startElement = selectedColumnBoxes[0];
 
     let endElement = null;
@@ -208,8 +208,22 @@ const initializeGame = () => {
         // columnElements[columnElements.length - 1].style.backgroundColor = COLOR_PAIRS[columnIndex][1];
 
         // TEMP: Should move out of the gameBoard to handle button clicks
-        columnElements[0].addEventListener('click', () => dropInColumn(columnIndex));
+        columnElements[0].addEventListener('click', () => dropInColumn(columnIndex + 1));
     }
+
+    const evntSource = new EventSource('/receive_events');
+
+    /*
+    * This will listen only for events
+    * similar to the following:
+    *
+    * event: 'columnNumber'
+    * data: <actual data value>
+    * id: <actual id value>
+    */
+    evntSource.addEventListener('columnNumber', message => {
+        dropInColumn(message.data);
+    });
 }
 
 
