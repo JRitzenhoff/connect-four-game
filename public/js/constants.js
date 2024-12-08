@@ -15,9 +15,17 @@ export const PLAYER_ENUM = {
     TWO: 'TWO'
 };
 
+// export const PLAYER_ICONS = {
+//     [PLAYER_ENUM.ONE]: '🚀',
+//     [PLAYER_ENUM.TWO]: '🍎'
+// };
+
 export const PLAYER_ICONS = {
-    [PLAYER_ENUM.ONE]: '🚀',
-    [PLAYER_ENUM.TWO]: '🍎'
+    [PLAYER_ENUM.ONE]: '🔴',
+    [PLAYER_ENUM.TWO]: '🟡'
+    // [PLAYER_ENUM.THREE]: '🟢'
+    // [PLAYER_ENUM.FOUR]: '🔵'
+    // [PLAYER_ENUM.FIVE]: '🟣'
 };
 
 export const PLAYER_ORDER = [PLAYER_ENUM.ONE, PLAYER_ENUM.TWO];

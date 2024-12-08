@@ -92,14 +92,15 @@ const buildGameBoard = () => {
     const gameBoard = document.getElementById(GAMEBOARD_ID);
     const gameDropColumns = gameBoard.getElementsByClassName(COLUMN_CLASS_NAME);
 
+    // 1fr = 1fraction = splits the available space into equal fractions
     gameBoard.style.gridTemplateColumns = `repeat(${gameDropColumns.length}, 1fr)`;
+
+    // TODO: Magic number for minimum pixel size of the grid
     gameBoard.style.gridTemplateRows = `repeat(${GAMEBOARD_ROW_COUNT}, 100px)`;
 
     for (let columnIndex = 0; columnIndex < gameDropColumns.length; ++columnIndex) {
         for (let rowIndex = 0; rowIndex < GAMEBOARD_ROW_COUNT; ++rowIndex) {
-            const gameBox = document.createElement('div');
-            gameBox.classList.add('box')
-            gameBox.style.opacity = '1';
+            const gameBox = createGameBox();
             gameDropColumns[columnIndex].appendChild(gameBox);
         }
     }
@@ -129,8 +130,17 @@ const createPlayerIcon = (playerId) => {
     const icon = document.createElement('span')
     icon.classList.add('icon')
     icon.innerHTML = PLAYER_ICONS[playerId];
+    // dynamically create the .player field of the box HTML element
     icon.player = playerId;
     return icon
+}
+
+const createGameBox = () => {
+    const gameBox = document.createElement('div');
+    gameBox.classList.add('box')
+    gameBox.style.opacity = '1';
+
+    return gameBox;
 }
 
 const getNextActivePlayer = (playerId) => {
@@ -169,23 +179,24 @@ const dropInColumn = (columnIndex) => {
     window.gameIsOver = calculateWinner();
 
     if (!window.gameIsOver) {
+        // don't cycle to the next player if the game has been won
         window.activePlayer = getNextActivePlayer(window.activePlayer);
     }
     else {
         console.log("Player", window.activePlayer, "won!");
     }
 
-    // Trigger the movement
+    // Trigger the movement (after a small delay)
     setTimeout(() => {
         // Animate the icon to the end element's position
-        // const deltaX = endRect.left - startRect.left;
         const deltaY = endRect.top - startRect.top;
 
         // Set the initial position of the icon (starting position)
+        // TODO: Remove magic numbers
         icon.style.position = 'absolute' // works because the parent box has a "relative" position
         icon.style.top = `${-deltaY + 1}px`;
         icon.style.left = `${8}px`;
-        icon.style.opacity = '1'; // Make the icon visible
+        icon.style.opacity = '1';
 
         const fallingTime = (deltaY * SPEED_RATE_FACTOR);
 
@@ -202,10 +213,6 @@ const initializeGame = () => {
         const selectedColumn = gameBoardColumns[columnIndex];
 
         const columnElements = selectedColumn.getElementsByClassName(ROW_CLASS_NAME);
-
-        // // TEMP: Color the top and bottom of every column
-        // columnElements[0].style.backgroundColor = COLOR_PAIRS[columnIndex][0];
-        // columnElements[columnElements.length - 1].style.backgroundColor = COLOR_PAIRS[columnIndex][1];
 
         // TEMP: Should move out of the gameBoard to handle button clicks
         columnElements[0].addEventListener('click', () => dropInColumn(columnIndex + 1));
