@@ -1,9 +1,12 @@
-export const GAMEBOARD_ROWS = 6;
+export const GAMEBOARD_ROW_COUNT = 6;
 
 export const SPEED_RATE_FACTOR = 0.005;
 
 export const START_DROP_DELAY_MILLISECONDS = 100;
 
+export const REQUIRED_CONNECTION_LENGTH = 4;
+
+export const GAMEBOARD_ID = "game-board";
 export const COLUMN_CLASS_NAME = "drop-column";
 export const ROW_CLASS_NAME = "box";
 

@@ -28,6 +28,7 @@ body {
   align-items: center;
   border-radius: 8px;
   opacity: 1;
+  position: relative;
 }
 
 .icon {
