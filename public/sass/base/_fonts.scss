@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'SpaceGrotesk-Bold';
+    src: url('../assets/fonts/static/SpaceGrotesk-Bold.ttf') format('truetype');
+  }
+
+@font-face {
+    font-family: 'SpaceGrotesk-Medium';
+    src: url('../assets/fonts/static/SpaceGrotesk-Medium.ttf') format('truetype');
+  }
+
+$font-main:'SpaceGrotesk-Medium';
+$font-main-bold:'SpaceGrotesk-Bold';
+
+body {
+  font-family: "SpaceGrotesk-Medium";
+  
+}

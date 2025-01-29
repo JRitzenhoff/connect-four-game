@@ -1,0 +1,22 @@
+@import "base/variables";
+@import "base/colors";
+@import "base/fonts";
+@import "base/mixins";
+@import "base/reset";
+
+
+@import 'components/menutop';
+@import 'components/players';
+@import 'components/turn';
+@import 'components/gameboard';
+@import 'components/rules';
+@import 'components/main-menu';
+@import 'components/gamecontainer';
+@import 'components/footer';
+@import 'components/gameResult';
+@import 'components/pausemenu.scss';
+@import 'components/screen.scss';
+@import 'components/counter.scss';
+@import 'components/marker.scss';
+@import 'components/droppoint.scss';
+

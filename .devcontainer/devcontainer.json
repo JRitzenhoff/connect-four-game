@@ -1,0 +1,24 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+	"name": "Connect4 Node.js project",
+	"build": {
+		"context": "../..",
+		"dockerfile": "Dockerfile"
+	},
+	"remoteUser": "vscode",
+	"forwardPorts": [
+		3000
+	],
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					}
+				}
+			}
+		}
+	}
+}

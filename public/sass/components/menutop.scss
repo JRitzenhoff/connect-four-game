@@ -1,0 +1,50 @@
+.menu-top {
+  width: $mobileTopMenuWidht;
+  height: $mobileTopMenuHeight;
+  color: $white;
+  position: relative;
+  top: 40px;
+  
+  
+  @include flex-space-between;
+
+  .menu-item {
+    @include menu-item;
+    @include flex-center;
+  }
+  .menu-item:hover {
+    background-color: $red;
+  }
+  .logo {
+    background-image: url("../assets/images/logo.svg");
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media (min-width: $tabletWidth) {
+  .menu-top {
+    width: $tabletTopMenuWidht;
+    height: $tabletTopMenuHeight;
+    top: 30px;
+    .logo {
+        background-size: 52px 52px;
+        height: 52px;
+        width: 52px;
+      }
+  }
+}
+
+@media (min-width: $desktopWidth) {
+  .menu-top {
+    width: $desktopTopMenuWidht;
+    height: $desktopTopMenuHeight;
+    .logo {
+      background-size: 52px 52px;
+      height: 52px;
+      width: 52px;
+    }
+  }
+}

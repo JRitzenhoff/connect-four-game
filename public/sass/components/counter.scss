@@ -1,0 +1,132 @@
+.counter-red-small {
+    background-image: url("../assets/images/counter-red-small.svg");
+      background-repeat: no-repeat;
+      background-size: 41px 46px;
+      width: 41px;
+      height: 46px;
+      position: absolute;
+      
+
+      z-index: 15;
+}
+
+.counter-red-large {
+    background-image: url("../assets/images/counter-red-large.svg");
+      background-repeat: no-repeat;
+      background-size: 70px 75px;
+      width: 70px;
+      height: 75px;
+      position: absolute;
+      left: 175.6px;
+      top: 673.2px;
+      z-index: 15;
+}
+
+.counter-yellow-small {
+  background-image: url("../assets/images/counter-yellow-small.svg");
+    background-repeat: no-repeat;
+    background-size: 41px 46px;
+    width: 41px;
+    height: 46px;
+    position: absolute;
+   
+    z-index: 15;
+}
+
+.counter-yellow-large {
+  background-image: url("../assets/images/counter-yellow-large.svg");
+    background-repeat: no-repeat;
+    background-size: 70px 75px;
+    width: 70px;
+    height: 75px;
+    position: absolute;
+    left: 1212px;
+    top: 673.2px;
+    z-index: 15;
+}
+
+.game-counters .mobile {
+  display: none;
+}
+.game-counters .tablet {
+  display: none;
+}
+
+.counters .mobile {
+  display: none;
+}
+
+.counters .tablet {
+  display: none;
+}
+
+@media(min-width:768px) and (max-width:1439px) {
+  .counter-red-large {
+    left: 93.5px;
+    top: 919.5px;
+  }
+
+  .counter-yellow-large {
+    left: 646.6px;
+    top: 919.5px;
+  }
+
+
+  
+  .counters .desktop {
+    display: none;
+  }
+
+  .game-counters .desktop {
+    display: none;
+  }
+ 
+
+  .game-counters .tablet {
+    display: block;
+  }
+
+  .counters .tablet {
+    display: block;
+  }
+}
+
+@media(max-width:767px) {
+  .counter-red-large {
+    display: none;
+  }
+
+  .game-counters .desktop {
+    display: none;
+  }
+  .game-counters .tablet {
+    display: none;
+  }
+  
+  .counters .desktop {
+    display: none;
+  }
+  
+  .counters .tablet {
+    display: none;
+  }
+
+  .game-counters .mobile {
+    display: block;
+  }
+  
+  .counters .mobile {
+    display: block;
+  }
+
+  .counter-red-small {
+    left: 46.5px;
+      top: 747px; 
+  }
+
+  .counter-yellow-small {
+    left: 316.5px;
+    top: 747px; 
+  }
+}
+
